@@ -1,10 +1,10 @@
-import { GarminService } from "../src/garmin/garmin-service";
+import { GarminProvider } from "../src/providers/GarminProvider";
 
-describe('GarminService', () => {
+describe('GarminProvider', () => {
   test('getData returns mapped fields when client methods exist', async () => {
-    const svc = new GarminService('u','p');
+    const provider = new GarminProvider('u','p');
     // mock client with necessary methods
-    svc.client = {
+    provider.client = {
       getSteps: async (_d: Date) => 2000,
       getWeight: async (_d: Date) => ({ weight: 72 }),
       getHeartRate: async (_d: Date) => ({ average: 58 }),
@@ -15,7 +15,7 @@ describe('GarminService', () => {
       ]
     } as any;
 
-    const data = await svc.getData(new Date('2025-12-24'));
+    const data = await provider.getData(new Date('2025-12-24'));
     expect(data.steps).toBe(2000);
     expect(data.weight).toBe(72);
     expect(data.averageHeartRate).toBe(58);
@@ -27,8 +27,8 @@ describe('GarminService', () => {
   });
 
   test('getData handles missing values gracefully', async () => {
-    const svc = new GarminService('u','p');
-    svc.client = {
+    const provider = new GarminProvider('u','p');
+    provider.client = {
       getSteps: async () => null,
       getWeight: async () => null,
       getHeartRate: async () => null,
@@ -36,7 +36,7 @@ describe('GarminService', () => {
       getActivities: async () => []
     } as any;
 
-    const data = await svc.getData(new Date());
+    const data = await provider.getData(new Date());
     expect(data.steps).toBeNull();
     expect(data.weight).toBeNull();
     expect(data.averageHeartRate).toBeNull();

@@ -1,33 +1,9 @@
-import * as GarminConnectModule from 'garmin-connect';
+import * as GarminConnectModule from 'garmin-connect-obsidian';
 import { logger } from '../common/Logger';
 import type { HealthData } from '../types/health';
 import type { IHealthProvider } from './IHealthProvider';
 
 const { GarminConnect } = GarminConnectModule as any;
-
-// Transport activity types (cycling + walking) → counted as transport, not sport
-const GARMIN_TRANSPORT_RE = /\bcycl|biking|bike\b|bicycle|velomobile|handcycle|e.bike|\bwalk(ing)?\b|indoor.?walk|casual.?walk|speed.?walk|race.?walk|commute.?walk/;
-
-// Ordered map of sport emoji by activity keyword
-const GARMIN_SPORT_EMOJI: Array<{ re: RegExp; emoji: string }> = [
-  { re: /\brun|trail.?run|treadmill|indoor.?run|track.?run|virtual.?run/, emoji: '\uD83C\uDFC3' },
-  { re: /\bswim/, emoji: '\uD83C\uDFCA' },
-  { re: /\bhik|backcountry.?hik|raquette/, emoji: '\uD83E\uDD7E' },
-  { re: /\bstrength|gym\b|fitness.?equip|crossfit|weight.?train|bouldering|climbing/, emoji: '\uD83C\uDFCB\uFE0F' },
-  { re: /\byoga|pilates|meditation/, emoji: '\uD83E\uDDD8' },
-  { re: /\brow|kayak|paddl|canoe/, emoji: '\uD83D\uDEA3' },
-  { re: /\btennis|squash|badminton|racquet|pickleball|padel/, emoji: '\uD83C\uDFBE' },
-  { re: /\bgolf/, emoji: '\u26F3' },
-  { re: /\bski|snowboard|nordic.?ski/, emoji: '\u26F7\uFE0F' },
-  { re: /\bsoccer|football\b|basketball|volleyball|hockey|rugby/, emoji: '\u26BD' },
-];
-
-function getGarminSportEmoji(lower: string): string {
-  for (const { re, emoji } of GARMIN_SPORT_EMOJI) {
-    if (re.test(lower)) return emoji;
-  }
-  return '\uD83C\uDFC5'; // 🏅 generic
-}
 
 function extractDistanceFromActivity(activity: any): number | null {
   if (!activity) return null;
@@ -69,11 +45,7 @@ export class GarminProvider implements IHealthProvider {
 
   async init() {
     if (this.client) return;
-    this.client = new GarminConnect(
-      { username: this.username, password: this.password } as any,
-      'garmin.com',
-      { httpClientConfig: { logLevel: 'error' } }
-    );
+    this.client = new GarminConnect({ username: this.username, password: this.password } as any);
     await this.client.login();
   }
 
@@ -120,11 +92,9 @@ export class GarminProvider implements IHealthProvider {
       if (avgHeartRate !== null && isNaN(avgHeartRate)) avgHeartRate = null;
     } catch (e) { avgHeartRate = null; }
 
-    const sportsSet = new Set<string>();
-    let transportKm = 0;
     let didRunning = false, runningDistance: number | null = null;
     let didSwimming = false, swimmingDistance: number | null = null;
-    let didCycling = false;
+    let didCycling = false, cyclingDistance: number | null = null;
     try {
       const activities = await this.client.getActivities(0, 100).catch(() => null);
       if (activities && Array.isArray(activities)) {
@@ -137,23 +107,17 @@ export class GarminProvider implements IHealthProvider {
         for (const a of todays) {
           const lower = JSON.stringify(a).toLowerCase();
           const dist = extractDistanceFromActivity(a);
-          const distKm = dist != null ? metersToKm(dist) : null;
-
-          if (GARMIN_TRANSPORT_RE.test(lower)) {
-            // Cycling / walking → transport, not sport
-            didCycling = lower.includes('cycl') || lower.includes('bik');
-            transportKm = Number((transportKm + (distKm ?? 0)).toFixed(2));
-          } else {
-            // Sport activity
-            sportsSet.add(getGarminSportEmoji(lower));
-            if (/\brun|trail.?run|treadmill|indoor.?run/.test(lower)) {
-              didRunning = true;
-              runningDistance = Number(((runningDistance ?? 0) + (distKm ?? 0)).toFixed(2));
-            }
-            if (/\bswim/.test(lower)) {
-              didSwimming = true;
-              swimmingDistance = Number(((swimmingDistance ?? 0) + (distKm ?? 0)).toFixed(2));
-            }
+          if (!didRunning && /run|running/.test(lower)) {
+            didRunning = true;
+            if (dist != null) runningDistance = metersToKm(dist);
+          }
+          if (!didSwimming && /swim|swimming/.test(lower)) {
+            didSwimming = true;
+            if (dist != null) swimmingDistance = metersToKm(dist);
+          }
+          if (!didCycling && /bike|cycling|cycle|bicycle/.test(lower)) {
+            didCycling = true;
+            if (dist != null) cyclingDistance = metersToKm(dist);
           }
         }
       }
@@ -183,22 +147,68 @@ export class GarminProvider implements IHealthProvider {
       sleepScore = null;
     }
 
+    // Optional Garmin metrics (availability depends on account/device/API capabilities)
+    let hrv: number | null = null;
+    let stress: number | null = null;
+    let bodyBattery: number | null = null;
+    let spO2: number | null = null;
+
+    try {
+      const stressData = await this.client.getStress?.(targetDate).catch(() => null);
+      const stressAny = stressData as any;
+      const stressVal = stressAny?.averageStressLevel ?? stressAny?.avgStressLevel ?? stressAny?.stressLevel;
+      if (stressVal !== undefined && stressVal !== null && !isNaN(Number(stressVal))) {
+        stress = Number(stressVal);
+      }
+    } catch {}
+
+    try {
+      const bodyBatteryData = await this.client.getBodyBattery?.(targetDate).catch(() => null);
+      const bbAny = bodyBatteryData as any;
+      const bbVal = bbAny?.mostRecentValue ?? bbAny?.average ?? bbAny?.bodyBattery;
+      if (bbVal !== undefined && bbVal !== null && !isNaN(Number(bbVal))) {
+        bodyBattery = Number(bbVal);
+      }
+    } catch {}
+
+    try {
+      const pulseOxData = await this.client.getPulseOx?.(targetDate).catch(() => null);
+      const poAny = pulseOxData as any;
+      const poVal = poAny?.average ?? poAny?.averageSpo2 ?? poAny?.spo2;
+      if (poVal !== undefined && poVal !== null && !isNaN(Number(poVal))) {
+        spO2 = Number(poVal);
+      }
+    } catch {}
+
+    try {
+      const hrvData = await this.client.getHrv?.(targetDate).catch(() => null);
+      const hrvAny = hrvData as any;
+      const hrvVal = hrvAny?.dailyAverage ?? hrvAny?.average ?? hrvAny?.hrv;
+      if (hrvVal !== undefined && hrvVal !== null && !isNaN(Number(hrvVal))) {
+        hrv = Number(hrvVal);
+      }
+    } catch {}
+
     const otherActivities = false;
 
     return {
       steps: steps ?? null,
       weight,
       averageHeartRate: avgHeartRate,
+      hrv,
+      stress,
+      bodyBattery,
+      spO2,
       sleep: sleepMinutes,
       sleepScore,
-      sports: [...sportsSet],
-      transport_km: transportKm > 0 ? transportKm : null,
+      sports: [],
+      transport_km: cyclingDistance,
       didRunning,
       runningDistance_km: runningDistance,
       didSwimming,
       SwimmingDistance_km: swimmingDistance,
       didCycling,
-      cyclingDistance_km: transportKm > 0 ? transportKm : null,
+      cyclingDistance_km: cyclingDistance,
       otherActivities,
     };
   }

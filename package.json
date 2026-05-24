@@ -3,7 +3,8 @@
   "version": "1.0.1",
   "scripts": {
     "dev": "rollup -c -w",
-    "build": "rollup -c && mkdir -p dist && cp main.js manifest.json styles.css dist/ && cp main.js manifest.json styles.css \"/Users/axgd/Library/CloudStorage/SynologyDrive-syncOD/Notes/.obsidian/plugins/obsidian-health-connector/\"",
+    "build": "rollup -c && mkdir -p dist && cp main.js manifest.json styles.css dist/",
+    "deploy:obsidian": "test -n \"$OBSIDIAN_PLUGIN_DIR/obsidian-health-connector\" && cp main.js manifest.json styles.css \"$OBSIDIAN_PLUGIN_DIR/obsidian-health-connector\"",
     "test": "vitest",
     "package": "npm run build && (cd dist && zip -r ${npm_package_name}-${npm_package_version}.zip main.js manifest.json styles.css) && echo 'Created dist/${npm_package_name}-${npm_package_version}.zip'",
     "get-steps": "node scripts/get_steps.js",
@@ -23,6 +24,6 @@
   },
   "dependencies": {
     "dotenv": "^17.2.3",
-    "garmin-connect-obsidian": "^1.0.1"
+    "garmin-connect-obsidian": "^1.0.2"
   }
 }

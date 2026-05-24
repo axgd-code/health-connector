@@ -27,6 +27,10 @@ export function buildGarminFrontmatter(date: Date, data: any): string {
   if (data.sleepScore !== null && data.sleepScore !== undefined) fm += `sleepScore: ${data.sleepScore}\n`;
   if (data.weight !== null && data.weight !== undefined) fm += `weight: ${data.weight}\n`;
   if (data.averageHeartRate !== null && data.averageHeartRate !== undefined) fm += `averageHeartRate: ${data.averageHeartRate}\n`;
+  if (data.hrv !== null && data.hrv !== undefined) fm += `hrv: ${data.hrv}\n`;
+  if (data.stress !== null && data.stress !== undefined) fm += `stress: ${data.stress}\n`;
+  if (data.bodyBattery !== null && data.bodyBattery !== undefined) fm += `bodyBattery: ${data.bodyBattery}\n`;
+  if (data.spO2 !== null && data.spO2 !== undefined) fm += `spO2: ${data.spO2}\n`;
   fm += `didRunning: ${data.didRunning}\n`;
   if (data.runningDistance_km !== null && data.runningDistance_km !== undefined) fm += `runningDistance_km: ${data.runningDistance_km}\n`;
   fm += `didSwimming: ${data.didSwimming}\n`;
@@ -41,19 +45,23 @@ export function buildObsidianNote(date: Date, data: any, locale?: string): strin
   const day = date.toISOString().slice(0,10);
   const front = buildGarminFrontmatter(date, data);
   const i18n = getLocale(locale);
+  const avgHeartRate = data.averageHeartRate ?? data.avgHeartRate;
+  const runningDistance = data.runningDistance_km ?? data.runningDistance;
+  const cyclingDistance = data.cyclingDistance_km ?? data.cyclingDistance;
+  const swimmingDistance = data.SwimmingDistance_km ?? data.swimmingDistance;
   // human readable body
   const bodyLines = [] as string[];
   bodyLines.push(`# ${i18n.template.title} (${day})`);
   bodyLines.push('');
   bodyLines.push(`- ${i18n.template.steps} : ${data.steps ?? i18n.template.noData}`);
   if (data.weight !== null && data.weight !== undefined) bodyLines.push(`- ${i18n.template.weight} : ${data.weight} kg`);
-  if (data.avgHeartRate !== null && data.avgHeartRate !== undefined) bodyLines.push(`- ${i18n.template.avgHeartRate} : ${data.avgHeartRate} bpm`);
+  if (avgHeartRate !== null && avgHeartRate !== undefined) bodyLines.push(`- ${i18n.template.avgHeartRate} : ${avgHeartRate} bpm`);
   bodyLines.push(`- ${i18n.template.running} : ${data.didRunning}`);
-  if (data.runningDistance) bodyLines.push(`  - ${i18n.template.running} km : ${data.runningDistance} km`);
+  if (runningDistance) bodyLines.push(`  - ${i18n.template.running} km : ${runningDistance} km`);
   bodyLines.push(`- ${i18n.template.cycling} : ${data.didCycling}`);
-  if (data.cyclingDistance) bodyLines.push(`  - ${i18n.template.cycling} km : ${data.cyclingDistance} km`);
+  if (cyclingDistance) bodyLines.push(`  - ${i18n.template.cycling} km : ${cyclingDistance} km`);
   bodyLines.push(`- ${i18n.template.swimming} : ${data.didSwimming}`);
-  if (data.swimmingDistance) bodyLines.push(`  - ${i18n.template.swimming} km : ${data.swimmingDistance} km`);
+  if (swimmingDistance) bodyLines.push(`  - ${i18n.template.swimming} km : ${swimmingDistance} km`);
 
   return '---\n' + front + '---\n\n' + bodyLines.join('\n') + '\n';
 }

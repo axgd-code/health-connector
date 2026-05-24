@@ -3,8 +3,9 @@
   "name": "Health Connector",
   "version": "1.0.1",
   "minAppVersion": "1.5.0",
-  "description": "Connecteur santé générique : récupère des données (Garmin, etc.) et les ajoute à vos notes.",
-  "author": "Axel Guillerme",
+  "description": "Health Connector centralizes your Garmin, Strava, and Google Health data in Obsidian, directly in the frontmatter of your daily notes.",
+  "author": "axgd-code",
+  "fundingUrl": "https://paypal.me/axgdcode",
   "isDesktopOnly": false,
   "js": "main.js",
   "css": "styles.css"

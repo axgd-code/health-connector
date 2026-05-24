@@ -1,9 +1,9 @@
-import { GarminService } from "../src/garmin/garmin-service";
+import { GarminProvider } from "../src/providers/GarminProvider";
 
-describe('GarminService distance extraction variations', () => {
+describe('GarminProvider distance extraction variations', () => {
   test('parses various distance key names and formats', async () => {
-    const svc = new GarminService('u','p');
-    svc.client = {
+    const provider = new GarminProvider('u','p');
+    provider.client = {
       getSteps: async () => null,
       getWeight: async () => null,
       getHeartRate: async () => null,
@@ -16,7 +16,7 @@ describe('GarminService distance extraction variations', () => {
       ]
     } as any;
 
-    const data = await svc.getData(new Date('2025-12-24'));
+    const data = await provider.getData(new Date('2025-12-24'));
     expect(data.didRunning).toBe(true);
     // should pick the first running distance found (3000m -> 3.00 km)
     expect(data.runningDistance_km).toBeCloseTo(3.00, 2);

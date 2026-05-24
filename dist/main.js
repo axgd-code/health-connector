@@ -33,99 +33,99 @@ var UrlClass$1 = {};
 Object.defineProperty(UrlClass$1, "__esModule", { value: true });
 UrlClass$1.UrlClass = void 0;
 class UrlClass {
-  constructor(domain = "garmin.com") {
-    this.domain = domain;
-    this.GC_MODERN = `https://connect.${this.domain}/modern`;
-    this.GARMIN_SSO_ORIGIN = `https://sso.${this.domain}`;
-    this.GC_API = `https://connectapi.${this.domain}`;
-  }
-  get GARMIN_SSO() {
-    return `${this.GARMIN_SSO_ORIGIN}/sso`;
-  }
-  get GARMIN_SSO_EMBED() {
-    return `${this.GARMIN_SSO_ORIGIN}/sso/embed`;
-  }
-  get BASE_URL() {
-    return `${this.GC_MODERN}/proxy`;
-  }
-  get SIGNIN_URL() {
-    return `${this.GARMIN_SSO}/signin`;
-  }
-  get LOGIN_URL() {
-    return `${this.GARMIN_SSO}/login`;
-  }
-  get OAUTH_URL() {
-    return `${this.GC_API}/oauth-service/oauth`;
-  }
-  get USER_SETTINGS() {
-    return `${this.GC_API}/userprofile-service/userprofile/user-settings/`;
-  }
-  get USER_PROFILE() {
-    return `${this.GC_API}/userprofile-service/socialProfile`;
-  }
-  get ACTIVITIES() {
-    return `${this.GC_API}/activitylist-service/activities/search/activities`;
-  }
-  get ACTIVITY() {
-    return `${this.GC_API}/activity-service/activity/`;
-  }
-  get STAT_ACTIVITIES() {
-    return `${this.GC_API}/fitnessstats-service/activity`;
-  }
-  get DOWNLOAD_ZIP() {
-    return `${this.GC_API}/download-service/files/activity/`;
-  }
-  get DOWNLOAD_GPX() {
-    return `${this.GC_API}/download-service/export/gpx/activity/`;
-  }
-  get DOWNLOAD_TCX() {
-    return `${this.GC_API}/download-service/export/tcx/activity/`;
-  }
-  get DOWNLOAD_KML() {
-    return `${this.GC_API}/download-service/export/kml/activity/`;
-  }
-  get UPLOAD() {
-    return `${this.GC_API}/upload-service/upload/`;
-  }
-  get IMPORT_DATA() {
-    return `${this.GC_API}/modern/import-data`;
-  }
-  get DAILY_STEPS() {
-    return `${this.GC_API}/usersummary-service/stats/steps/daily/`;
-  }
-  get DAILY_SLEEP() {
-    return `${this.GC_API}/sleep-service/sleep/dailySleepData`;
-  }
-  get DAILY_WEIGHT() {
-    return `${this.GC_API}/weight-service/weight/dayview`;
-  }
-  get UPDATE_WEIGHT() {
-    return `${this.GC_API}/weight-service/user-weight`;
-  }
-  get DAILY_HYDRATION() {
-    return `${this.GC_API}/usersummary-service/usersummary/hydration/allData`;
-  }
-  get HYDRATION_LOG() {
-    return `${this.GC_API}/usersummary-service/usersummary/hydration/log`;
-  }
-  get GOLF_SCORECARD_SUMMARY() {
-    return `${this.GC_API}/gcs-golfcommunity/api/v2/scorecard/summary`;
-  }
-  get GOLF_SCORECARD_DETAIL() {
-    return `${this.GC_API}/gcs-golfcommunity/api/v2/scorecard/detail`;
-  }
-  get DAILY_HEART_RATE() {
-    return `${this.GC_API}/wellness-service/wellness/dailyHeartRate`;
-  }
-  WORKOUT(id) {
-    if (id) {
-      return `${this.GC_API}/workout-service/workout/${id}`;
+    constructor(domain = 'garmin.com') {
+        this.domain = domain;
+        this.GC_MODERN = `https://connect.${this.domain}/modern`;
+        this.GARMIN_SSO_ORIGIN = `https://sso.${this.domain}`;
+        this.GC_API = `https://connectapi.${this.domain}`;
     }
-    return `${this.GC_API}/workout-service/workout`;
-  }
-  get WORKOUTS() {
-    return `${this.GC_API}/workout-service/workouts`;
-  }
+    get GARMIN_SSO() {
+        return `${this.GARMIN_SSO_ORIGIN}/sso`;
+    }
+    get GARMIN_SSO_EMBED() {
+        return `${this.GARMIN_SSO_ORIGIN}/sso/embed`;
+    }
+    get BASE_URL() {
+        return `${this.GC_MODERN}/proxy`;
+    }
+    get SIGNIN_URL() {
+        return `${this.GARMIN_SSO}/signin`;
+    }
+    get LOGIN_URL() {
+        return `${this.GARMIN_SSO}/login`;
+    }
+    get OAUTH_URL() {
+        return `${this.GC_API}/oauth-service/oauth`;
+    }
+    get USER_SETTINGS() {
+        return `${this.GC_API}/userprofile-service/userprofile/user-settings/`;
+    }
+    get USER_PROFILE() {
+        return `${this.GC_API}/userprofile-service/socialProfile`;
+    }
+    get ACTIVITIES() {
+        return `${this.GC_API}/activitylist-service/activities/search/activities`;
+    }
+    get ACTIVITY() {
+        return `${this.GC_API}/activity-service/activity/`;
+    }
+    get STAT_ACTIVITIES() {
+        return `${this.GC_API}/fitnessstats-service/activity`;
+    }
+    get DOWNLOAD_ZIP() {
+        return `${this.GC_API}/download-service/files/activity/`;
+    }
+    get DOWNLOAD_GPX() {
+        return `${this.GC_API}/download-service/export/gpx/activity/`;
+    }
+    get DOWNLOAD_TCX() {
+        return `${this.GC_API}/download-service/export/tcx/activity/`;
+    }
+    get DOWNLOAD_KML() {
+        return `${this.GC_API}/download-service/export/kml/activity/`;
+    }
+    get UPLOAD() {
+        return `${this.GC_API}/upload-service/upload/`;
+    }
+    get IMPORT_DATA() {
+        return `${this.GC_API}/modern/import-data`;
+    }
+    get DAILY_STEPS() {
+        return `${this.GC_API}/usersummary-service/stats/steps/daily/`;
+    }
+    get DAILY_SLEEP() {
+        return `${this.GC_API}/sleep-service/sleep/dailySleepData`;
+    }
+    get DAILY_WEIGHT() {
+        return `${this.GC_API}/weight-service/weight/dayview`;
+    }
+    get UPDATE_WEIGHT() {
+        return `${this.GC_API}/weight-service/user-weight`;
+    }
+    get DAILY_HYDRATION() {
+        return `${this.GC_API}/usersummary-service/usersummary/hydration/allData`;
+    }
+    get HYDRATION_LOG() {
+        return `${this.GC_API}/usersummary-service/usersummary/hydration/log`;
+    }
+    get GOLF_SCORECARD_SUMMARY() {
+        return `${this.GC_API}/gcs-golfcommunity/api/v2/scorecard/summary`;
+    }
+    get GOLF_SCORECARD_DETAIL() {
+        return `${this.GC_API}/gcs-golfcommunity/api/v2/scorecard/detail`;
+    }
+    get DAILY_HEART_RATE() {
+        return `${this.GC_API}/wellness-service/wellness/dailyHeartRate`;
+    }
+    WORKOUT(id) {
+        if (id) {
+            return `${this.GC_API}/workout-service/workout/${id}`;
+        }
+        return `${this.GC_API}/workout-service/workout`;
+    }
+    get WORKOUTS() {
+        return `${this.GC_API}/workout-service/workouts`;
+    }
 }
 UrlClass$1.UrlClass = UrlClass;
 
@@ -153,7 +153,7 @@ var lodash = {
 	  var undefined$1;
 
 	  /** Used as the semantic version number. */
-	  var VERSION = '4.17.21';
+	  var VERSION = '4.18.1';
 
 	  /** Used as the size to enable large array optimizations. */
 	  var LARGE_ARRAY_SIZE = 200;
@@ -161,7 +161,8 @@ var lodash = {
 	  /** Error message constants. */
 	  var CORE_ERROR_TEXT = 'Unsupported core-js use. Try https://npms.io/search?q=ponyfill.',
 	      FUNC_ERROR_TEXT = 'Expected a function',
-	      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
+	      INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`',
+	      INVALID_TEMPL_IMPORTS_ERROR_TEXT = 'Invalid `imports` option passed into `_.template`';
 
 	  /** Used to stand-in for `undefined` hash values. */
 	  var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -1893,6 +1894,10 @@ var lodash = {
 	     * embedded Ruby (ERB) as well as ES2015 template strings. Change the
 	     * following template settings to use alternative delimiters.
 	     *
+	     * **Security:** See
+	     * [threat model](https://github.com/lodash/lodash/blob/main/threat-model.md)
+	     * — `_.template` is insecure and will be removed in v5.
+	     *
 	     * @static
 	     * @memberOf _
 	     * @type {Object}
@@ -2441,7 +2446,7 @@ var lodash = {
 	     * @name has
 	     * @memberOf SetCache
 	     * @param {*} value The value to search for.
-	     * @returns {number} Returns `true` if `value` is found, else `false`.
+	     * @returns {boolean} Returns `true` if `value` is found, else `false`.
 	     */
 	    function setCacheHas(value) {
 	      return this.__data__.has(value);
@@ -3907,7 +3912,7 @@ var lodash = {
 	          if (isArray(iteratee)) {
 	            return function(value) {
 	              return baseGet(value, iteratee.length === 1 ? iteratee[0] : iteratee);
-	            }
+	            };
 	          }
 	          return iteratee;
 	        });
@@ -4511,8 +4516,34 @@ var lodash = {
 	     */
 	    function baseUnset(object, path) {
 	      path = castPath(path, object);
-	      object = parent(object, path);
-	      return object == null || delete object[toKey(last(path))];
+
+	      // Prevent prototype pollution:
+	      // https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg
+	      // https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh
+	      var index = -1,
+	          length = path.length;
+
+	      if (!length) {
+	        return true;
+	      }
+
+	      while (++index < length) {
+	        var key = toKey(path[index]);
+
+	        // Always block "__proto__" anywhere in the path if it's not expected
+	        if (key === '__proto__' && !hasOwnProperty.call(object, '__proto__')) {
+	          return false;
+	        }
+
+	        // Block constructor/prototype as non-terminal traversal keys to prevent
+	        // escaping the object graph into built-in constructors and prototypes.
+	        if ((key === 'constructor' || key === 'prototype') && index < length - 1) {
+	          return false;
+	        }
+	      }
+
+	      var obj = parent(object, path);
+	      return obj == null || delete obj[toKey(last(path))];
 	    }
 
 	    /**
@@ -7063,7 +7094,7 @@ var lodash = {
 
 	    /**
 	     * Creates an array with all falsey values removed. The values `false`, `null`,
-	     * `0`, `""`, `undefined`, and `NaN` are falsey.
+	     * `0`, `-0`, `0n`, `""`, `undefined`, and `NaN` are falsy.
 	     *
 	     * @static
 	     * @memberOf _
@@ -7602,7 +7633,7 @@ var lodash = {
 
 	      while (++index < length) {
 	        var pair = pairs[index];
-	        result[pair[0]] = pair[1];
+	        baseAssignValue(result, pair[0], pair[1]);
 	      }
 	      return result;
 	    }
@@ -14262,6 +14293,8 @@ var lodash = {
 	     * **Note:** JavaScript follows the IEEE-754 standard for resolving
 	     * floating-point values which can produce unexpected results.
 	     *
+	     * **Note:** If `lower` is greater than `upper`, the values are swapped.
+	     *
 	     * @static
 	     * @memberOf _
 	     * @since 0.7.0
@@ -14275,8 +14308,15 @@ var lodash = {
 	     * _.random(0, 5);
 	     * // => an integer between 0 and 5
 	     *
+	     * // when lower is greater than upper the values are swapped
+	     * _.random(5, 0);
+	     * // => an integer between 0 and 5
+	     *
 	     * _.random(5);
 	     * // => also an integer between 0 and 5
+	     *
+	     * _.random(-5);
+	     * // => an integer between -5 and 0
 	     *
 	     * _.random(5, true);
 	     * // => a floating-point number between 0 and 5
@@ -14879,6 +14919,10 @@ var lodash = {
 	     * properties may be accessed as free variables in the template. If a setting
 	     * object is given, it takes precedence over `_.templateSettings` values.
 	     *
+	     * **Security:** `_.template` is insecure and should not be used. It will be
+	     * removed in Lodash v5. Avoid untrusted input. See
+	     * [threat model](https://github.com/lodash/lodash/blob/main/threat-model.md).
+	     *
 	     * **Note:** In the development build `_.template` utilizes
 	     * [sourceURLs](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl)
 	     * for easier debugging.
@@ -14986,11 +15030,17 @@ var lodash = {
 	        options = undefined$1;
 	      }
 	      string = toString(string);
-	      options = assignInWith({}, options, settings, customDefaultsAssignIn);
+	      options = assignWith({}, options, settings, customDefaultsAssignIn);
 
-	      var imports = assignInWith({}, options.imports, settings.imports, customDefaultsAssignIn),
+	      var imports = assignWith({}, options.imports, settings.imports, customDefaultsAssignIn),
 	          importsKeys = keys(imports),
 	          importsValues = baseValues(imports, importsKeys);
+
+	      arrayEach(importsKeys, function(key) {
+	        if (reForbiddenIdentifierChars.test(key)) {
+	          throw new Error(INVALID_TEMPL_IMPORTS_ERROR_TEXT);
+	        }
+	      });
 
 	      var isEscaping,
 	          isEvaluating,
@@ -26148,9 +26198,8 @@ var sideChannelList = function getSideChannelList() {
 			}
 		},
 		'delete': function (key) {
-			var root = $o && $o.next;
 			var deletedNode = listDelete($o, key);
-			if (deletedNode && root && root === deletedNode) {
+			if (deletedNode && $o && !$o.next) {
 				$o = void undefined;
 			}
 			return !!deletedNode;
@@ -26172,7 +26221,6 @@ var sideChannelList = function getSideChannelList() {
 			listSet(/** @type {NonNullable<typeof $o>} */ ($o), key, value);
 		}
 	};
-	// @ts-expect-error TODO: figure out why this is erroring
 	return channel;
 };
 
@@ -26466,17 +26514,8 @@ function requireFunctionBind () {
 	return functionBind;
 }
 
-var functionCall;
-var hasRequiredFunctionCall;
-
-function requireFunctionCall () {
-	if (hasRequiredFunctionCall) return functionCall;
-	hasRequiredFunctionCall = 1;
-
-	/** @type {import('./functionCall')} */
-	functionCall = Function.prototype.call;
-	return functionCall;
-}
+/** @type {import('./functionCall')} */
+var functionCall = Function.prototype.call;
 
 var functionApply;
 var hasRequiredFunctionApply;
@@ -26496,7 +26535,7 @@ var reflectApply = typeof Reflect !== 'undefined' && Reflect && Reflect.apply;
 var bind$2 = requireFunctionBind();
 
 var $apply$1 = requireFunctionApply();
-var $call$2 = requireFunctionCall();
+var $call$2 = functionCall;
 var $reflectApply = reflectApply;
 
 /** @type {import('./actualApply')} */
@@ -26505,7 +26544,7 @@ var actualApply = $reflectApply || bind$2.call($call$2, $apply$1);
 var bind$1 = requireFunctionBind();
 var $TypeError$4 = type;
 
-var $call$1 = requireFunctionCall();
+var $call$1 = functionCall;
 var $actualApply = actualApply;
 
 /** @type {(args: [Function, thisArg?: unknown, ...args: unknown[]]) => Function} TODO FIXME, find a way to use import('.') */
@@ -26664,7 +26703,7 @@ var $ObjectGPO = requireObject_getPrototypeOf();
 var $ReflectGPO = requireReflect_getPrototypeOf();
 
 var $apply = requireFunctionApply();
-var $call = requireFunctionCall();
+var $call = functionCall;
 
 var needsEval = {};
 
@@ -27215,14 +27254,36 @@ var formats$3 = {
 };
 
 var formats$2 = formats$3;
+var getSideChannel$1 = sideChannel;
 
 var has$2 = Object.prototype.hasOwnProperty;
 var isArray$2 = Array.isArray;
 
+// Track objects created from arrayLimit overflow using side-channel
+// Stores the current max numeric index for O(1) lookup
+var overflowChannel = getSideChannel$1();
+
+var markOverflow = function markOverflow(obj, maxIndex) {
+    overflowChannel.set(obj, maxIndex);
+    return obj;
+};
+
+var isOverflow = function isOverflow(obj) {
+    return overflowChannel.has(obj);
+};
+
+var getMaxIndex = function getMaxIndex(obj) {
+    return overflowChannel.get(obj);
+};
+
+var setMaxIndex = function setMaxIndex(obj, maxIndex) {
+    overflowChannel.set(obj, maxIndex);
+};
+
 var hexTable = (function () {
     var array = [];
     for (var i = 0; i < 256; ++i) {
-        array.push('%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase());
+        array[array.length] = '%' + ((i < 16 ? '0' : '') + i.toString(16)).toUpperCase();
     }
 
     return array;
@@ -27238,7 +27299,7 @@ var compactQueue = function compactQueue(queue) {
 
             for (var j = 0; j < obj.length; ++j) {
                 if (typeof obj[j] !== 'undefined') {
-                    compacted.push(obj[j]);
+                    compacted[compacted.length] = obj[j];
                 }
             }
 
@@ -27266,9 +27327,20 @@ var merge = function merge(target, source, options) {
 
     if (typeof source !== 'object' && typeof source !== 'function') {
         if (isArray$2(target)) {
-            target.push(source);
+            var nextIndex = target.length;
+            if (options && typeof options.arrayLimit === 'number' && nextIndex > options.arrayLimit) {
+                return markOverflow(arrayToObject(target.concat(source), options), nextIndex);
+            }
+            target[nextIndex] = source;
         } else if (target && typeof target === 'object') {
-            if (
+            if (isOverflow(target)) {
+                // Add at next numeric index for overflow objects
+                var newIndex = getMaxIndex(target) + 1;
+                target[newIndex] = source;
+                setMaxIndex(target, newIndex);
+            } else if (options && options.strictMerge) {
+                return [target, source];
+            } else if (
                 (options && (options.plainObjects || options.allowPrototypes))
                 || !has$2.call(Object.prototype, source)
             ) {
@@ -27282,7 +27354,23 @@ var merge = function merge(target, source, options) {
     }
 
     if (!target || typeof target !== 'object') {
-        return [target].concat(source);
+        if (isOverflow(source)) {
+            // Create new object with target at 0, source values shifted by 1
+            var sourceKeys = Object.keys(source);
+            var result = options && options.plainObjects
+                ? { __proto__: null, 0: target }
+                : { 0: target };
+            for (var m = 0; m < sourceKeys.length; m++) {
+                var oldKey = parseInt(sourceKeys[m], 10);
+                result[oldKey + 1] = source[sourceKeys[m]];
+            }
+            return markOverflow(result, getMaxIndex(source) + 1);
+        }
+        var combined = [target].concat(source);
+        if (options && typeof options.arrayLimit === 'number' && combined.length > options.arrayLimit) {
+            return markOverflow(arrayToObject(combined, options), combined.length - 1);
+        }
+        return combined;
     }
 
     var mergeTarget = target;
@@ -27297,7 +27385,7 @@ var merge = function merge(target, source, options) {
                 if (targetItem && typeof targetItem === 'object' && item && typeof item === 'object') {
                     target[i] = merge(targetItem, item, options);
                 } else {
-                    target.push(item);
+                    target[target.length] = item;
                 }
             } else {
                 target[i] = item;
@@ -27314,6 +27402,17 @@ var merge = function merge(target, source, options) {
         } else {
             acc[key] = value;
         }
+
+        if (isOverflow(source) && !isOverflow(acc)) {
+            markOverflow(acc, getMaxIndex(source));
+        }
+        if (isOverflow(acc)) {
+            var keyNum = parseInt(key, 10);
+            if (String(keyNum) === key && keyNum >= 0 && keyNum > getMaxIndex(acc)) {
+                setMaxIndex(acc, keyNum);
+            }
+        }
+
         return acc;
     }, mergeTarget);
 };
@@ -27430,8 +27529,8 @@ var compact = function compact(value) {
             var key = keys[j];
             var val = obj[key];
             if (typeof val === 'object' && val !== null && refs.indexOf(val) === -1) {
-                queue.push({ obj: obj, prop: key });
-                refs.push(val);
+                queue[queue.length] = { obj: obj, prop: key };
+                refs[refs.length] = val;
             }
         }
     }
@@ -27453,15 +27552,27 @@ var isBuffer = function isBuffer(obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
-var combine = function combine(a, b) {
-    return [].concat(a, b);
+var combine = function combine(a, b, arrayLimit, plainObjects) {
+    // If 'a' is already an overflow object, add to it
+    if (isOverflow(a)) {
+        var newIndex = getMaxIndex(a) + 1;
+        a[newIndex] = b;
+        setMaxIndex(a, newIndex);
+        return a;
+    }
+
+    var result = [].concat(a, b);
+    if (result.length > arrayLimit) {
+        return markOverflow(arrayToObject(result, { plainObjects: plainObjects }), result.length - 1);
+    }
+    return result;
 };
 
 var maybeMap = function maybeMap(val, fn) {
     if (isArray$2(val)) {
         var mapped = [];
         for (var i = 0; i < val.length; i += 1) {
-            mapped.push(fn(val[i]));
+            mapped[mapped.length] = fn(val[i]);
         }
         return mapped;
     }
@@ -27476,7 +27587,9 @@ var utils$2 = {
     decode: decode,
     encode: encode,
     isBuffer: isBuffer,
+    isOverflow: isOverflow,
     isRegExp: isRegExp,
+    markOverflow: markOverflow,
     maybeMap: maybeMap,
     merge: merge
 };
@@ -27599,7 +27712,7 @@ var stringify$1 = function stringify(
 
     if (obj === null) {
         if (strictNullHandling) {
-            return encoder && !encodeValuesOnly ? encoder(prefix, defaults$1.encoder, charset, 'key', format) : prefix;
+            return formatter(encoder && !encodeValuesOnly ? encoder(prefix, defaults$1.encoder, charset, 'key', format) : prefix);
         }
 
         obj = '';
@@ -27623,7 +27736,9 @@ var stringify$1 = function stringify(
     if (generateArrayPrefix === 'comma' && isArray$1(obj)) {
         // we need to join elements in
         if (encodeValuesOnly && encoder) {
-            obj = utils$1.maybeMap(obj, encoder);
+            obj = utils$1.maybeMap(obj, function (v) {
+                return v == null ? v : encoder(v);
+            });
         }
         objKeys = [{ value: obj.length > 0 ? obj.join(',') || null : void undefined }];
     } else if (isArray$1(filter)) {
@@ -27793,6 +27908,11 @@ var stringify_1 = function (object, opts) {
     var sideChannel = getSideChannel();
     for (var i = 0; i < objKeys.length; ++i) {
         var key = objKeys[i];
+
+        if (typeof key === 'undefined' || key === null) {
+            continue;
+        }
+
         var value = obj[key];
 
         if (options.skipNulls && value === null) {
@@ -27826,10 +27946,10 @@ var stringify_1 = function (object, opts) {
     if (options.charsetSentinel) {
         if (options.charset === 'iso-8859-1') {
             // encodeURIComponent('&#10003;'), the "numeric entity" representation of a checkmark
-            prefix += 'utf8=%26%2310003%3B&';
+            prefix += 'utf8=%26%2310003%3B' + options.delimiter;
         } else {
             // encodeURIComponent('✓')
-            prefix += 'utf8=%E2%9C%93&';
+            prefix += 'utf8=%E2%9C%93' + options.delimiter;
         }
     }
 
@@ -27861,6 +27981,7 @@ var defaults = {
     parseArrays: true,
     plainObjects: false,
     strictDepth: false,
+    strictMerge: true,
     strictNullHandling: false,
     throwOnLimitExceeded: false
 };
@@ -27899,13 +28020,13 @@ var parseValues = function parseQueryStringValues(str, options) {
     var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, '') : str;
     cleanStr = cleanStr.replace(/%5B/gi, '[').replace(/%5D/gi, ']');
 
-    var limit = options.parameterLimit === Infinity ? undefined : options.parameterLimit;
+    var limit = options.parameterLimit === Infinity ? void undefined : options.parameterLimit;
     var parts = cleanStr.split(
         options.delimiter,
-        options.throwOnLimitExceeded ? limit + 1 : limit
+        options.throwOnLimitExceeded && typeof limit !== 'undefined' ? limit + 1 : limit
     );
 
-    if (options.throwOnLimitExceeded && parts.length > limit) {
+    if (options.throwOnLimitExceeded && typeof limit !== 'undefined' && parts.length > limit) {
         throw new RangeError('Parameter limit exceeded. Only ' + limit + ' parameter' + (limit === 1 ? '' : 's') + ' allowed.');
     }
 
@@ -27944,16 +28065,18 @@ var parseValues = function parseQueryStringValues(str, options) {
         } else {
             key = options.decoder(part.slice(0, pos), defaults.decoder, charset, 'key');
 
-            val = utils.maybeMap(
-                parseArrayValue(
-                    part.slice(pos + 1),
-                    options,
-                    isArray(obj[key]) ? obj[key].length : 0
-                ),
-                function (encodedVal) {
-                    return options.decoder(encodedVal, defaults.decoder, charset, 'value');
-                }
-            );
+            if (key !== null) {
+                val = utils.maybeMap(
+                    parseArrayValue(
+                        part.slice(pos + 1),
+                        options,
+                        isArray(obj[key]) ? obj[key].length : 0
+                    ),
+                    function (encodedVal) {
+                        return options.decoder(encodedVal, defaults.decoder, charset, 'value');
+                    }
+                );
+            }
         }
 
         if (val && options.interpretNumericEntities && charset === 'iso-8859-1') {
@@ -27964,11 +28087,25 @@ var parseValues = function parseQueryStringValues(str, options) {
             val = isArray(val) ? [val] : val;
         }
 
-        var existing = has.call(obj, key);
-        if (existing && options.duplicates === 'combine') {
-            obj[key] = utils.combine(obj[key], val);
-        } else if (!existing || options.duplicates === 'last') {
-            obj[key] = val;
+        if (options.comma && isArray(val) && val.length > options.arrayLimit) {
+            if (options.throwOnLimitExceeded) {
+                throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');
+            }
+            val = utils.combine([], val, options.arrayLimit, options.plainObjects);
+        }
+
+        if (key !== null) {
+            var existing = has.call(obj, key);
+            if (existing && (options.duplicates === 'combine' || part.indexOf('[]=') > -1)) {
+                obj[key] = utils.combine(
+                    obj[key],
+                    val,
+                    options.arrayLimit,
+                    options.plainObjects
+                );
+            } else if (!existing || options.duplicates === 'last') {
+                obj[key] = val;
+            }
         }
     }
 
@@ -27989,25 +28126,39 @@ var parseObject = function (chain, val, options, valuesParsed) {
         var root = chain[i];
 
         if (root === '[]' && options.parseArrays) {
-            obj = options.allowEmptyArrays && (leaf === '' || (options.strictNullHandling && leaf === null))
-                ? []
-                : utils.combine([], leaf);
+            if (utils.isOverflow(leaf)) {
+                // leaf is already an overflow object, preserve it
+                obj = leaf;
+            } else {
+                obj = options.allowEmptyArrays && (leaf === '' || (options.strictNullHandling && leaf === null))
+                    ? []
+                    : utils.combine(
+                        [],
+                        leaf,
+                        options.arrayLimit,
+                        options.plainObjects
+                    );
+            }
         } else {
             obj = options.plainObjects ? { __proto__: null } : {};
             var cleanRoot = root.charAt(0) === '[' && root.charAt(root.length - 1) === ']' ? root.slice(1, -1) : root;
             var decodedRoot = options.decodeDotInKeys ? cleanRoot.replace(/%2E/g, '.') : cleanRoot;
             var index = parseInt(decodedRoot, 10);
-            if (!options.parseArrays && decodedRoot === '') {
-                obj = { 0: leaf };
-            } else if (
-                !isNaN(index)
+            var isValidArrayIndex = !isNaN(index)
                 && root !== decodedRoot
                 && String(index) === decodedRoot
                 && index >= 0
-                && (options.parseArrays && index <= options.arrayLimit)
-            ) {
+                && options.parseArrays;
+            if (!options.parseArrays && decodedRoot === '') {
+                obj = { 0: leaf };
+            } else if (isValidArrayIndex && index < options.arrayLimit) {
                 obj = [];
                 obj[index] = leaf;
+            } else if (isValidArrayIndex && options.throwOnLimitExceeded) {
+                throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');
+            } else if (isValidArrayIndex) {
+                obj[index] = leaf;
+                utils.markOverflow(obj, index);
             } else if (decodedRoot !== '__proto__') {
                 obj[decodedRoot] = leaf;
             }
@@ -28019,58 +28170,101 @@ var parseObject = function (chain, val, options, valuesParsed) {
     return leaf;
 };
 
-var parseKeys = function parseQueryStringKeys(givenKey, val, options, valuesParsed) {
-    if (!givenKey) {
-        return;
+// Split a key like "a[b][c[]]" into ['a', '[b]', '[c[]]'] while preserving
+// qs parse semantics for depth/prototype guards.
+var splitKeyIntoSegments = function splitKeyIntoSegments(originalKey, options) {
+    var key = options.allowDots ? originalKey.replace(/\.([^.[]+)/g, '[$1]') : originalKey;
+
+    // depth <= 0 keeps the whole key as one segment
+    if (options.depth <= 0) {
+        if (!options.plainObjects && has.call(Object.prototype, key)) {
+            if (!options.allowPrototypes) {
+                return;
+            }
+        }
+
+        return [key];
     }
 
-    // Transform dot notation to bracket notation
-    var key = options.allowDots ? givenKey.replace(/\.([^.[]+)/g, '[$1]') : givenKey;
+    var segments = [];
 
-    // The regex chunks
-
-    var brackets = /(\[[^[\]]*])/;
-    var child = /(\[[^[\]]*])/g;
-
-    // Get the parent
-
-    var segment = options.depth > 0 && brackets.exec(key);
-    var parent = segment ? key.slice(0, segment.index) : key;
-
-    // Stash the parent if it exists
-
-    var keys = [];
+    // parent before the first '[' (may be empty if key starts with '[')
+    var first = key.indexOf('[');
+    var parent = first >= 0 ? key.slice(0, first) : key;
     if (parent) {
-        // If we aren't using plain objects, optionally prefix keys that would overwrite object prototype properties
         if (!options.plainObjects && has.call(Object.prototype, parent)) {
             if (!options.allowPrototypes) {
                 return;
             }
         }
 
-        keys.push(parent);
+        segments[segments.length] = parent;
     }
 
-    // Loop through children appending to the array until we hit depth
+    var n = key.length;
+    var open = first;
+    var collected = 0;
 
-    var i = 0;
-    while (options.depth > 0 && (segment = child.exec(key)) !== null && i < options.depth) {
-        i += 1;
-        if (!options.plainObjects && has.call(Object.prototype, segment[1].slice(1, -1))) {
-            if (!options.allowPrototypes) {
-                return;
+    while (open >= 0 && collected < options.depth) {
+        var level = 1;
+        var i = open + 1;
+        var close = -1;
+
+        // balance nested '[' and ']' inside this bracket group using a nesting level counter
+        while (i < n && close < 0) {
+            var cu = key.charCodeAt(i);
+            if (cu === 0x5B) { // '['
+                level += 1;
+            } else if (cu === 0x5D) { // ']'
+                level -= 1;
+                if (level === 0) {
+                    close = i; // found matching close; loop will exit by condition
+                }
             }
+            i += 1;
         }
-        keys.push(segment[1]);
+
+        if (close < 0) {
+            // Unterminated group: wrap the raw remainder in one bracket pair so it stays
+            // a single literal segment (e.g. "[[]b" -> "[[]b]"); we do not infer missing ']'.
+            segments[segments.length] = '[' + key.slice(open) + ']';
+            return segments;
+        }
+
+        var seg = key.slice(open, close + 1);
+        // prototype guard for the content of this group
+        var content = seg.slice(1, -1);
+        if (!options.plainObjects && has.call(Object.prototype, content) && !options.allowPrototypes) {
+            return;
+        }
+
+        segments[segments.length] = seg;
+        collected += 1;
+
+        // find the next '[' after this balanced group
+        open = key.indexOf('[', close + 1);
     }
 
-    // If there's a remainder, check strictDepth option for throw, else just add whatever is left
-
-    if (segment) {
+    if (open >= 0) {
         if (options.strictDepth === true) {
             throw new RangeError('Input depth exceeded depth option of ' + options.depth + ' and strictDepth is true');
         }
-        keys.push('[' + key.slice(segment.index) + ']');
+
+        segments[segments.length] = '[' + key.slice(open) + ']';
+    }
+
+    return segments;
+};
+
+var parseKeys = function parseQueryStringKeys(givenKey, val, options, valuesParsed) {
+    if (!givenKey) {
+        return;
+    }
+
+    var keys = splitKeyIntoSegments(givenKey, options);
+
+    if (!keys) {
+        return;
     }
 
     return parseObject(keys, val, options, valuesParsed);
@@ -28132,6 +28326,7 @@ var normalizeParseOptions = function normalizeParseOptions(opts) {
         parseArrays: opts.parseArrays !== false,
         plainObjects: typeof opts.plainObjects === 'boolean' ? opts.plainObjects : defaults.plainObjects,
         strictDepth: typeof opts.strictDepth === 'boolean' ? !!opts.strictDepth : defaults.strictDepth,
+        strictMerge: typeof opts.strictMerge === 'boolean' ? !!opts.strictMerge : defaults.strictMerge,
         strictNullHandling: typeof opts.strictNullHandling === 'boolean' ? opts.strictNullHandling : defaults.strictNullHandling,
         throwOnLimitExceeded: typeof opts.throwOnLimitExceeded === 'boolean' ? opts.throwOnLimitExceeded : false
     };
@@ -35743,54 +35938,58 @@ function requireBlowfish () {
 
 var Logger$2 = {};
 
+/**
+ * Simple logger with configurable log levels
+ */
 Object.defineProperty(Logger$2, "__esModule", { value: true });
 Logger$2.logger = Logger$2.Logger = void 0;
 const LOG_LEVELS$1 = {
-  silent: 0,
-  error: 1,
-  warn: 2,
-  info: 3,
-  debug: 4
+    silent: 0,
+    error: 1,
+    warn: 2,
+    info: 3,
+    debug: 4
 };
 let Logger$1 = class Logger {
-  constructor(level = "error") {
-    this.level = level;
-  }
-  setLevel(level) {
-    this.level = level;
-  }
-  getLevel() {
-    return this.level;
-  }
-  shouldLog(level) {
-    return LOG_LEVELS$1[level] <= LOG_LEVELS$1[this.level];
-  }
-  error(...args) {
-    if (this.shouldLog("error")) {
-      console.error("\u274C", ...args);
+    constructor(level = 'error') {
+        this.level = level;
     }
-  }
-  warn(...args) {
-    if (this.shouldLog("warn")) {
-      console.warn("\u26A0\uFE0F ", ...args);
+    setLevel(level) {
+        this.level = level;
     }
-  }
-  info(...args) {
-    if (this.shouldLog("info")) {
-      console.log("\u2139\uFE0F ", ...args);
+    getLevel() {
+        return this.level;
     }
-  }
-  debug(...args) {
-    if (this.shouldLog("debug")) {
-      console.log("\u{1F41B}", ...args);
+    shouldLog(level) {
+        return LOG_LEVELS$1[level] <= LOG_LEVELS$1[this.level];
     }
-  }
+    error(...args) {
+        if (this.shouldLog('error')) {
+            console.error('❌', ...args);
+        }
+    }
+    warn(...args) {
+        if (this.shouldLog('warn')) {
+            console.warn('⚠️ ', ...args);
+        }
+    }
+    info(...args) {
+        if (this.shouldLog('info')) {
+            console.log('ℹ️ ', ...args);
+        }
+    }
+    debug(...args) {
+        if (this.shouldLog('debug')) {
+            console.log('🐛', ...args);
+        }
+    }
 };
 Logger$2.Logger = Logger$1;
+// Export a default instance
 Logger$2.logger = new Logger$1();
 
-var __importDefault = commonjsGlobal && commonjsGlobal.__importDefault || function(mod) {
-  return mod && mod.__esModule ? mod : { "default": mod };
+var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(HttpClient$1, "__esModule", { value: true });
 HttpClient$1.HttpClient = void 0;
@@ -35800,793 +35999,967 @@ const oauth_1_0a_1 = __importDefault(oauth1_0aExports);
 const qs_1 = __importDefault(lib);
 const crypto_js_1 = __importDefault(cryptoJsExports);
 const Logger_1 = Logger$2;
-let requestUrl$1;
+// Import Obsidian requestUrl function (with fallback)
+let requestUrl$2;
 try {
-  const obsidian = require("obsidian");
-  const _obsidianRequestUrl = obsidian.requestUrl;
-  requestUrl$1 = (config) => _obsidianRequestUrl({ ...config, throw: false });
-} catch (e) {
-  requestUrl$1 = async (config) => {
-    var _a, _b;
-    const response = await fetch(config.url, {
-      method: config.method || "GET",
-      headers: config.headers || {},
-      body: config.body
-    });
-    const arrayBuffer = await response.arrayBuffer();
-    const text = new TextDecoder().decode(arrayBuffer);
-    let json;
-    try {
-      json = JSON.parse(text);
-    } catch (e2) {
-      json = void 0;
-    }
-    const headers = {};
-    response.headers.forEach((value, key) => {
-      if (key.toLowerCase() !== "set-cookie") {
-        headers[key] = value;
-      }
-    });
-    try {
-      const setCookies = (_b = (_a = response.headers).getSetCookie) === null || _b === void 0 ? void 0 : _b.call(_a);
-      if (setCookies && setCookies.length > 0) {
-        headers["set-cookie"] = setCookies;
-      } else {
-        const sc = response.headers.get("set-cookie");
-        if (sc)
-          headers["set-cookie"] = [sc];
-      }
-    } catch (_e) {
-      const sc = response.headers.get("set-cookie");
-      if (sc)
-        headers["set-cookie"] = [sc];
-    }
-    return {
-      status: response.status,
-      headers,
-      text,
-      arrayBuffer,
-      json
-    };
-  };
+    const obsidian = require('obsidian');
+    const _obsidianRequestUrl = obsidian.requestUrl;
+    // Always use throw:false so we handle errors ourselves and can always
+    // read response bodies/headers even on non-2xx status codes.
+    requestUrl$2 = (config) => _obsidianRequestUrl({ ...config, throw: false });
 }
+catch (e) {
+    // Fallback for non-Obsidian environments (Node.js)
+    requestUrl$2 = async (config) => {
+        var _a, _b;
+        // Use Node.js native fetch (available in Node 18+)
+        const response = await fetch(config.url, {
+            method: config.method || 'GET',
+            headers: config.headers || {},
+            body: config.body
+        });
+        // Read body once as arrayBuffer
+        const arrayBuffer = await response.arrayBuffer();
+        const text = new TextDecoder().decode(arrayBuffer);
+        let json;
+        try {
+            json = JSON.parse(text);
+        }
+        catch (e) {
+            json = undefined;
+        }
+        // Convert headers to plain object
+        // Use getSetCookie() for set-cookie to preserve all cookies (Node 18+)
+        const headers = {};
+        response.headers.forEach((value, key) => {
+            if (key.toLowerCase() !== 'set-cookie') {
+                headers[key] = value;
+            }
+        });
+        // Handle set-cookie separately to keep all cookies as array
+        try {
+            const setCookies = (_b = (_a = response.headers).getSetCookie) === null || _b === void 0 ? void 0 : _b.call(_a);
+            if (setCookies && setCookies.length > 0) {
+                headers['set-cookie'] = setCookies;
+            }
+            else {
+                const sc = response.headers.get('set-cookie');
+                if (sc)
+                    headers['set-cookie'] = [sc];
+            }
+        }
+        catch (_e) {
+            const sc = response.headers.get('set-cookie');
+            if (sc)
+                headers['set-cookie'] = [sc];
+        }
+        return {
+            status: response.status,
+            headers: headers,
+            text: text,
+            arrayBuffer: arrayBuffer,
+            json: json
+        };
+    };
+}
+// --- Regular Expressions CORRECTED ---
 const CSRF_RE = /name="_csrf"\s+value="([^"]+)"|value="([^"]+)"\s+name="_csrf"/;
 const TICKET_RE = /ticket=([^"&]+)/;
 const ACCOUNT_LOCKED_RE = /var status\s*=\s*"([^"]*)"/;
 const PAGE_TITLE_RE = /<title>([^<]*)<\/title>/;
-const USER_AGENT_CONNECTMOBILE = "com.garmin.android.apps.connectmobile";
-const USER_AGENT_BROWSER = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
-const OAUTH_CONSUMER_URL = "https://thegarth.s3.amazonaws.com/oauth_consumer.json";
+// --- Constants ---
+const USER_AGENT_CONNECTMOBILE = 'com.garmin.android.apps.connectmobile';
+const USER_AGENT_BROWSER = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+const OAUTH_CONSUMER_URL = 'https://thegarth.s3.amazonaws.com/oauth_consumer.json';
+// --- Token Refresh Logic (Global) ---
 let isRefreshing = false;
 let refreshSubscribers = [];
+// --- Migrated HttpClient Class ---
 class HttpClient {
-  constructor(url, config) {
-    this.commonHeaders = {};
-    this.cookieJar = /* @__PURE__ */ new Map();
-    this.maxRetries = 5;
-    this._tokenLoadPromise = null;
-    this.url = url;
-    this.logger = new Logger_1.Logger((config === null || config === void 0 ? void 0 : config.logLevel) || "error");
-    if ((config === null || config === void 0 ? void 0 : config.maxRetries) !== void 0) {
-      this.maxRetries = config.maxRetries;
-    }
-    if ((config === null || config === void 0 ? void 0 : config.tokenFilePath) !== void 0) {
-      this.logger.warn("tokenFilePath is deprecated in Obsidian/mobile environments. Use tokenPersistence instead.");
-    }
-    this.tokenPersistence = config === null || config === void 0 ? void 0 : config.tokenPersistence;
-    this.commonHeaders = {
-      "User-Agent": USER_AGENT_BROWSER,
-      "Accept-Language": "en-US,en;q=0.9",
-      // NOTE: In Obsidian (mobile/plugin), requestUrl doesn't auto-decompress
-      // So we avoid gzip/deflate to get plain text responses
-      "Accept-Encoding": "identity",
-      "DNT": "1",
-      "Connection": "keep-alive",
-      "Upgrade-Insecure-Requests": "1",
-      "Sec-Fetch-Dest": "document",
-      "Sec-Fetch-Mode": "navigate",
-      "Sec-Fetch-Site": "none",
-      "Cache-Control": "max-age=0"
-    };
-    this._tokenLoadPromise = this.loadTokensFromPersistence().catch((err) => {
-      this.logger.warn("Failed to load persisted tokens:", (err === null || err === void 0 ? void 0 : err.message) || err);
-    });
-  }
-  /**
-   * Helper to safely access response.json in Obsidian
-   * because response.json is a getter that can throw an exception
-   */
-  safeGetJson(response) {
-    try {
-      const json = response.json;
-      return json;
-    } catch (error) {
-      return null;
-    }
-  }
-  // Extract cookies from response
-  extractCookies(response) {
-    if (!response.headers) {
-      this.logger.debug("\u{1F36A} extractCookies: no headers in response");
-      return;
-    }
-    this.logger.debug("\u{1F36A} Response header keys:", Object.keys(response.headers).join(", "));
-    const rawCookies = [];
-    const headers = response.headers;
-    const splitCookieHeader = (raw) => raw.split("\n").map((s) => s.trim()).filter(Boolean);
-    for (const key of Object.keys(headers)) {
-      if (key.toLowerCase() === "set-cookie") {
-        const val = headers[key];
-        if (Array.isArray(val)) {
-          rawCookies.push(...val);
-        } else if (typeof val === "string") {
-          rawCookies.push(...splitCookieHeader(val));
-        }
-      }
-    }
-    this.logger.debug(`\u{1F36A} Found ${rawCookies.length} cookie(s) to parse`);
-    for (const cookieStr of rawCookies) {
-      const maxAgeMatch = /Max-Age=0/i.exec(cookieStr);
-      const parts = cookieStr.split(";");
-      const nameValue = parts[0].trim();
-      const eqIdx = nameValue.indexOf("=");
-      if (eqIdx === -1)
-        continue;
-      const name = nameValue.substring(0, eqIdx).trim();
-      const value = nameValue.substring(eqIdx + 1).trim();
-      if (!name)
-        continue;
-      if (maxAgeMatch) {
-        this.cookieJar.delete(name);
-        this.logger.debug("\u{1F36A} Cookie deleted:", name);
-      } else {
-        this.cookieJar.set(name, value);
-        this.logger.debug("\u{1F36A} Cookie stored:", name);
-      }
-    }
-    this.logger.debug(`\u{1F36A} Jar now has ${this.cookieJar.size} cookies:`, [...this.cookieJar.keys()].join(", "));
-  }
-  // Build Cookie header from jar
-  getCookieHeader() {
-    const cookies = Array.from(this.cookieJar.entries()).map(([name, value]) => `${name}=${value}`).join("; ");
-    return cookies;
-  }
-  /**
-   * Execute an HTTP request using requestUrl and implement manual
-   * interceptor logic (auth token and refresh token).
-   */
-  async _request(config, isRetry = false, retryCount = 0) {
-    var _a, _b, _c;
-    try {
-      await this.checkTokenVaild();
-    } catch (err) {
-      this.logger.warn("checkTokenVaild failed:", (err === null || err === void 0 ? void 0 : err.message) || err);
-    }
-    const finalConfig = {
-      ...config,
-      headers: {
-        ...this.commonHeaders,
-        ...config.headers || {}
-      }
-    };
-    if (this.cookieJar.size > 0) {
-      const cookieHeader = this.getCookieHeader();
-      if (cookieHeader) {
-        finalConfig.headers["Cookie"] = cookieHeader;
-      }
-    }
-    if (this.oauth2Token && !((_a = finalConfig.headers) === null || _a === void 0 ? void 0 : _a.Authorization)) {
-      finalConfig.headers.Authorization = "Bearer " + this.oauth2Token.access_token;
-    }
-    try {
-      if ((_b = finalConfig.url) === null || _b === void 0 ? void 0 : _b.includes("signin")) {
-        this.logger.debug("\u{1F310} REQUEST:", finalConfig.method, finalConfig.url);
-        this.logger.debug("\u{1F310} HEADERS:", JSON.stringify(finalConfig.headers, null, 2));
-        const bodyLength = finalConfig.body ? typeof finalConfig.body === "string" ? finalConfig.body.length : finalConfig.body.byteLength : 0;
-        this.logger.debug("\u{1F310} BODY LENGTH:", bodyLength);
-      }
-      const response = await requestUrl$1(finalConfig);
-      if ((_c = finalConfig.url) === null || _c === void 0 ? void 0 : _c.includes("signin")) {
-        this.logger.debug("\u2705 RESPONSE STATUS:", response.status);
-        this.logger.debug("\u2705 RESPONSE TYPE:", typeof response);
-        this.logger.debug("\u2705 RESPONSE KEYS:", Object.keys(response));
-        this.logger.debug("\u2705 RESPONSE HEADERS:", response.headers ? "Present" : "Missing");
-        this.logger.debug("\u2705 RESPONSE TEXT:", response.text ? `${response.text.substring(0, 100)}...` : "Missing");
-      }
-      this.extractCookies(response);
-      let data;
-      const jsonData = this.safeGetJson(response);
-      if (jsonData !== null) {
-        data = jsonData;
-      } else if (response.text) {
-        data = response.text;
-      } else {
-        data = void 0;
-      }
-      if (response.status === 429) {
-        const BASE_DELAY_MS = 1e3;
-        const headersAny = response.headers || {};
-        const retryAfterHeader = headersAny["retry-after"] || headersAny["Retry-After"] || headersAny["Retry-after"];
-        let delayMs = BASE_DELAY_MS * Math.pow(2, Math.max(0, retryCount));
-        if (retryAfterHeader) {
-          const asInt = parseInt(String(retryAfterHeader), 10);
-          if (!isNaN(asInt)) {
-            delayMs = asInt * 1e3;
-          } else {
-            const parsed = Date.parse(String(retryAfterHeader));
-            if (!isNaN(parsed)) {
-              const until = parsed - Date.now();
-              if (until > 0)
-                delayMs = until;
-            }
-          }
-        }
-        if (retryCount < this.maxRetries) {
-          this.logger.warn(`HTTP 429 received - retrying in ${Math.round(delayMs)}ms (attempt ${retryCount + 1}/${this.maxRetries})`);
-          await new Promise((resolve) => setTimeout(resolve, delayMs));
-          return this._request(config, true, retryCount + 1);
-        }
-        this.logger.error(`HTTP 429: Max retries (${this.maxRetries}) exceeded`);
-      }
-      if (response.status >= 400) {
-        this.handleHttpError(response);
-      }
-      return {
-        status: response.status,
-        headers: response.headers,
-        text: response.text,
-        arrayBuffer: response.arrayBuffer,
-        json: data
-      };
-    } catch (error) {
-      const status = (error === null || error === void 0 ? void 0 : error.status) || 0;
-      const isNetworkError = !status && error instanceof Error;
-      if (isNetworkError) {
-        this.logger.error("Network error:", error.message);
-        if (error.message.includes("is not valid JSON") || error.message.includes("Unexpected token")) {
-          this.logger.warn("JSON parsing error ignored - response is likely HTML");
-        }
-      }
-      if (!isRetry && status === 401) {
-        if (!this.oauth2Token) {
-          throw error;
-        }
-        if (isRefreshing) {
-          try {
-            const token = await new Promise((resolve) => {
-              refreshSubscribers.push(resolve);
-            });
-            finalConfig.headers.Authorization = `Bearer ${token}`;
-            return this._request(finalConfig, true);
-          } catch (err) {
-            this.logger.error("Erreur lors de l'attente du token rafra\xEEchi:", err);
-            throw err;
-          }
-        }
-        isRefreshing = true;
-        try {
-          this.logger.debug("interceptors: refreshOauth2Token start");
-          await this.refreshOauth2Token();
-          this.logger.debug("interceptors: refreshOauth2Token end");
-        } catch (refreshError) {
-          isRefreshing = false;
-          throw refreshError;
-        }
-        isRefreshing = false;
-        refreshSubscribers.forEach((subscriber) => subscriber(this.oauth2Token.access_token));
-        refreshSubscribers = [];
-        finalConfig.headers.Authorization = `Bearer ${this.oauth2Token.access_token}`;
-        return this._request(finalConfig, true);
-      }
-      throw error;
-    }
-  }
-  // --- Token persistence helpers ---
-  async loadTokensFromPersistence() {
-    try {
-      const globalStore = typeof globalThis !== "undefined" ? globalThis.__GarminTokenStore : void 0;
-      if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncLoad) && typeof globalStore.syncLoad === "function") {
-        const cached = globalStore.syncLoad();
-        if (cached) {
-          if (cached.oauth1Token)
-            this.oauth1Token = cached.oauth1Token;
-          if (cached.oauth2Token)
-            this.oauth2Token = cached.oauth2Token;
-          this.logger.info("\u2705 Persisted tokens loaded from plugin data");
-          return;
-        }
-      }
-    } catch (e) {
-      this.logger.warn("Token load via plugin data failed:", (e === null || e === void 0 ? void 0 : e.message) || e);
-    }
-    if (!this.tokenPersistence)
-      return;
-    try {
-      const stored = await this.tokenPersistence.load();
-      if (stored === null || stored === void 0 ? void 0 : stored.oauth1Token)
-        this.oauth1Token = stored.oauth1Token;
-      if (stored === null || stored === void 0 ? void 0 : stored.oauth2Token)
-        this.oauth2Token = stored.oauth2Token;
-      if ((stored === null || stored === void 0 ? void 0 : stored.oauth1Token) || (stored === null || stored === void 0 ? void 0 : stored.oauth2Token)) {
-        this.logger.info("\u2705 Persisted tokens loaded via adapter");
-      }
-    } catch (err) {
-      this.logger.warn("Failed to load tokens via adapter:", (err === null || err === void 0 ? void 0 : err.message) || err);
-    }
-  }
-  async saveTokens() {
-    try {
-      const globalStore = typeof globalThis !== "undefined" ? globalThis.__GarminTokenStore : void 0;
-      if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncSave) && typeof globalStore.syncSave === "function") {
-        globalStore.syncSave({
-          oauth1Token: this.oauth1Token,
-          oauth2Token: this.oauth2Token
-        });
-        return;
-      }
-    } catch (e) {
-      this.logger.warn("Token save via plugin data failed:", (e === null || e === void 0 ? void 0 : e.message) || e);
-    }
-    if (!this.tokenPersistence)
-      return;
-    try {
-      await this.tokenPersistence.save({
-        oauth1Token: this.oauth1Token,
-        oauth2Token: this.oauth2Token
-      });
-    } catch (err) {
-      this.logger.warn("Failed to persist tokens:", (err === null || err === void 0 ? void 0 : err.message) || err);
-    }
-  }
-  /**
-   * Clear persisted OAuth tokens using provided adapter (if any)
-   */
-  async clearPersistedTokens() {
-    var _a;
-    try {
-      const globalStore = typeof globalThis !== "undefined" ? globalThis.__GarminTokenStore : void 0;
-      if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncClear) && typeof globalStore.syncClear === "function") {
-        globalStore.syncClear();
-      }
-    } catch (e) {
-      this.logger.warn("Token clear via plugin data failed:", (e === null || e === void 0 ? void 0 : e.message) || e);
-    }
-    if ((_a = this.tokenPersistence) === null || _a === void 0 ? void 0 : _a.clear) {
-      try {
-        await this.tokenPersistence.clear();
-        this.logger.info("\u2705 Persisted tokens cleared via adapter");
-      } catch (err) {
-        this.logger.warn("Failed to clear persisted tokens:", (err === null || err === void 0 ? void 0 : err.message) || err);
-      }
-    }
-    this.oauth1Token = void 0;
-    this.oauth2Token = void 0;
-  }
-  // --- Public HTTP Methods ---
-  async get(url, options) {
-    let finalUrl = url;
-    if (options === null || options === void 0 ? void 0 : options.params) {
-      const queryString = qs_1.default.stringify(options.params);
-      finalUrl = `${url}?${queryString}`;
-    }
-    const response = await this._request({
-      url: finalUrl,
-      method: "GET",
-      headers: options === null || options === void 0 ? void 0 : options.headers
-    });
-    const data = response.json !== void 0 && response.json !== null ? response.json : response.text;
-    if ((options === null || options === void 0 ? void 0 : options.responseType) === "arraybuffer") {
-      return Buffer.from(response.text);
-    }
-    return data;
-  }
-  async post(url, data, options) {
-    let finalUrl = url;
-    if (options === null || options === void 0 ? void 0 : options.params) {
-      const queryString = qs_1.default.stringify(options.params);
-      finalUrl = `${url}?${queryString}`;
-    }
-    let body;
-    let headers = { ...options === null || options === void 0 ? void 0 : options.headers };
-    if (data && typeof data.getHeaders === "function" && typeof data.getBuffer === "function") {
-      const buffer = data.getBuffer();
-      body = buffer.toString("utf-8");
-      const formHeaders = data.getHeaders();
-      headers = { ...formHeaders, ...headers };
-      this.logger.debug("\u{1F4CB} Using multipart/form-data with boundary");
-      if (body) {
-        this.logger.debug("\u{1F4CB} Body length:", body.length);
-        this.logger.debug("\u{1F4CB} Body preview:", body.substring(0, 200));
-      }
-    } else {
-      const contentType = headers["Content-Type"] || "application/json";
-      if (contentType.includes("application/x-www-form-urlencoded")) {
-        body = qs_1.default.stringify(data);
-      } else if (contentType.includes("application/json")) {
-        body = JSON.stringify(data);
-      } else if (typeof data === "string") {
-        body = data;
-      }
-    }
-    const response = await this._request({
-      url: finalUrl,
-      method: "POST",
-      headers,
-      body
-    });
-    return response.json !== void 0 && response.json !== null ? response.json : response.text;
-  }
-  async put(url, data, options) {
-    var _a;
-    let finalUrl = url;
-    if (options === null || options === void 0 ? void 0 : options.params) {
-      const queryString = qs_1.default.stringify(options.params);
-      finalUrl = `${url}?${queryString}`;
-    }
-    const body = JSON.stringify(data);
-    const response = await this._request({
-      url: finalUrl,
-      method: "PUT",
-      headers: {
-        ...options === null || options === void 0 ? void 0 : options.headers,
-        "Content-Type": ((_a = options === null || options === void 0 ? void 0 : options.headers) === null || _a === void 0 ? void 0 : _a["Content-Type"]) || "application/json"
-      },
-      body
-    });
-    return response.json;
-  }
-  async delete(url, options) {
-    const response = await this.post(url, null, {
-      params: options === null || options === void 0 ? void 0 : options.params,
-      headers: {
-        ...options === null || options === void 0 ? void 0 : options.headers,
-        "X-Http-Method-Override": "DELETE"
-      }
-    });
-    return response;
-  }
-  // --- Configuration ---
-  setCommonHeader(headers) {
-    this.commonHeaders = { ...this.commonHeaders, ...headers };
-  }
-  // --- Error Handling ---
-  handleError(response) {
-    this.handleHttpError(response);
-  }
-  handleHttpError(response) {
-    const { status, text } = response;
-    this.logger.error(`\u{1F534} HTTP ${status} Error`);
-    if (text && text.length < 1e3) {
-      this.logger.error("Response body:", text);
-    } else if (text) {
-      this.logger.error("Response body (truncated):", text.substring(0, 500));
-    }
-    if (status === 403) {
-      const isCloudflare = (text === null || text === void 0 ? void 0 : text.includes("Cloudflare")) || (text === null || text === void 0 ? void 0 : text.includes("cf-browser-verification")) || (text === null || text === void 0 ? void 0 : text.includes("cf_clearance"));
-      if (isCloudflare) {
-        this.logger.error("Cloudflare protection detected (403)");
-        throw new Error("Cloudflare protection detected. This operation requires a real browser environment. Please run this code inside Obsidian, not as a standalone script.");
-      }
-    }
-    const msg = `ERROR: (${status}), ${status === 401 ? "Unauthorized" : "HTTP Error"}, ${(text === null || text === void 0 ? void 0 : text.substring(0, 200)) || "No response body"}`;
-    this.logger.error(msg);
-    throw new Error(msg);
-  }
-  // --- Authentication Methods ---
-  async fetchOauthConsumer() {
-    const response = await requestUrl$1({ url: OAUTH_CONSUMER_URL, method: "GET" });
-    if (response.status !== 200) {
-      throw new Error(`Failed to fetch OAuth Consumer: ${response.status}`);
-    }
-    this.OAUTH_CONSUMER = {
-      key: response.json.consumer_key,
-      secret: response.json.consumer_secret
-    };
-  }
-  async checkTokenVaild() {
-    if (this.oauth2Token) {
-      if (this.oauth2Token.expires_at < luxon_1.DateTime.now().toSeconds()) {
-        this.logger.error("Token expired!");
-        await this.refreshOauth2Token();
-      }
-    }
-  }
-  /**
-   * Login to Garmin Connect
-   * @param username
-   * @param password
-   * @returns {Promise<HttpClient>}
-   */
-  async login(username, password) {
-    try {
-      if (this._tokenLoadPromise) {
-        await this._tokenLoadPromise;
+    constructor(url, config) {
+        // Common headers
+        this.commonHeaders = {};
+        // Cookie store to maintain session across stateless requestUrl calls
+        this.cookieJar = new Map();
+        // Configuration
+        this.maxRetries = 5;
         this._tokenLoadPromise = null;
-      }
-      if (this.oauth1Token && this.oauth2Token) {
-        this.logger.info("\u267B\uFE0F Valid tokens found, skipping SSO login...");
+        this.url = url;
+        // Initialize logger with configured level
+        this.logger = new Logger_1.Logger((config === null || config === void 0 ? void 0 : config.logLevel) || 'error');
+        // Apply configuration
+        if ((config === null || config === void 0 ? void 0 : config.maxRetries) !== undefined) {
+            this.maxRetries = config.maxRetries;
+        }
+        if ((config === null || config === void 0 ? void 0 : config.tokenFilePath) !== undefined) {
+            this.logger.warn('tokenFilePath is deprecated in Obsidian/mobile environments. Use tokenPersistence instead.');
+        }
+        this.tokenPersistence = config === null || config === void 0 ? void 0 : config.tokenPersistence;
+        // Set default headers for all requests
+        // This helps pass anti-bot protections
+        this.commonHeaders = {
+            'User-Agent': USER_AGENT_BROWSER,
+            'Accept-Language': 'en-US,en;q=0.9',
+            // NOTE: In Obsidian (mobile/plugin), requestUrl doesn't auto-decompress
+            // So we avoid gzip/deflate to get plain text responses
+            'Accept-Encoding': 'identity',
+            DNT: '1',
+            Connection: 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Cache-Control': 'max-age=0'
+        };
+        // Try to load persisted tokens — store the promise so login() can await it
+        this._tokenLoadPromise = this.loadTokensFromPersistence().catch((err) => {
+            this.logger.warn('Failed to load persisted tokens:', (err === null || err === void 0 ? void 0 : err.message) || err);
+        });
+    }
+    /**
+     * Helper to safely access response.json in Obsidian
+     * because response.json is a getter that can throw an exception
+     */
+    safeGetJson(response) {
         try {
-          await this.checkTokenVaild();
-          this.logger.info("\u2705 Session restored from persisted tokens");
-          return this;
-        } catch (refreshErr) {
-          this.logger.warn("Token refresh failed, falling back to full login:", refreshErr === null || refreshErr === void 0 ? void 0 : refreshErr.message);
-          this.oauth1Token = void 0;
-          this.oauth2Token = void 0;
+            const json = response.json;
+            return json;
         }
-      }
-      this.logger.info("\u{1F510} Starting Garmin login...");
-      await this.fetchOauthConsumer();
-      this.logger.info("\u{1F3AB} Getting login ticket...");
-      const ticket = await this.getLoginTicket(username, password);
-      this.logger.info("\u{1F511} Getting OAuth1 token...");
-      const oauth1 = await this.getOauth1Token(ticket);
-      this.logger.info("\u{1F504} Exchanging for OAuth2 token...");
-      await this.exchange(oauth1);
-      this.logger.info("\u2705 Login successful!");
-      return this;
-    } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      if (errorMsg.includes("403") || errorMsg.includes("Cloudflare")) {
-        this.logger.error("\u274C Cloudflare protection detected");
-        throw new Error("Garmin login blocked by Cloudflare protection. This can happen if:\n1. You login too frequently (wait a few minutes)\n2. Garmin detects unusual activity\n3. Your IP is flagged\n\nTry again in a few minutes, or login manually on garmin.com first.");
-      }
-      throw error;
-    }
-  }
-  async getLoginTicket(username, password) {
-    const step1Params = {
-      clientId: "GarminConnect",
-      locale: "en",
-      service: this.url.GC_MODERN
-    };
-    const step1Url = `${this.url.GARMIN_SSO_EMBED}?${qs_1.default.stringify(step1Params)}`;
-    await this.get(step1Url);
-    await new Promise((resolve) => setTimeout(resolve, 1e3));
-    const step2Params = {
-      id: "gauth-widget",
-      embedWidget: "true",
-      locale: "en",
-      gauthHost: this.url.GARMIN_SSO_EMBED
-    };
-    const step2Url = `${this.url.SIGNIN_URL}?${qs_1.default.stringify(step2Params)}`;
-    const step2Result = await this.get(step2Url);
-    const csrfRegResult = CSRF_RE.exec(step2Result);
-    if (!csrfRegResult) {
-      this.logger.error("CSRF token not found in HTML.");
-      this.logger.error("Response preview:", step2Result.substring(0, 500));
-      throw new Error("login - csrf not found");
-    }
-    const csrf_token = csrfRegResult[1] || csrfRegResult[2];
-    this.logger.debug("CSRF token found:", csrf_token.substring(0, 10) + "...");
-    const cfDelay = 3e3 + Math.floor(Math.random() * 2e3);
-    await new Promise((resolve) => setTimeout(resolve, cfDelay));
-    const signinParams = {
-      id: "gauth-widget",
-      embedWidget: "true",
-      clientId: "GarminConnect",
-      locale: "en",
-      gauthHost: this.url.GARMIN_SSO_EMBED,
-      service: this.url.GARMIN_SSO_EMBED,
-      source: this.url.GARMIN_SSO_EMBED,
-      redirectAfterAccountLoginUrl: this.url.GARMIN_SSO_EMBED,
-      redirectAfterAccountCreationUrl: this.url.GARMIN_SSO_EMBED
-    };
-    const step3Url = `${this.url.SIGNIN_URL}?${qs_1.default.stringify(signinParams)}`;
-    const step3Data = {
-      username,
-      password,
-      embed: "true",
-      _csrf: csrf_token
-    };
-    let step3Result;
-    this.logger.debug("\u{1F511} Step3 cookie jar before POST:", [...this.cookieJar.keys()].join(", "));
-    this.logger.debug("\u{1F511} Step3 cookie count:", this.cookieJar.size);
-    try {
-      step3Result = await this.post(step3Url, step3Data, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-          "Accept-Language": "en-US,en;q=0.9",
-          "DNT": "1",
-          "Origin": this.url.GARMIN_SSO_ORIGIN,
-          "Referer": step2Url,
-          "User-Agent": USER_AGENT_BROWSER
+        catch (error) {
+            // JSON parsing failed (probably HTML response)
+            return null;
         }
-      });
-    } catch (error) {
-      const errorMsg = error instanceof Error ? error.message : String(error);
-      this.logger.error("Step3 POST failed:", errorMsg);
-      throw new Error(`Step3 POST failed: ${errorMsg}`);
     }
-    if (!step3Result || typeof step3Result !== "string") {
-      this.logger.error("Step3 result is not a string:", typeof step3Result, step3Result);
-      throw new Error("Step3 failed: Invalid response from server");
-    }
-    this.handleAccountLocked(step3Result);
-    this.handlePageTitle(step3Result);
-    this.handleMFA(step3Result);
-    let ticketRegResult = TICKET_RE.exec(step3Result);
-    if (ticketRegResult) {
-      const ticket = ticketRegResult[1];
-      this.logger.debug("Ticket found in step3:", ticket.substring(0, 20) + "...");
-      return ticket;
-    }
-    this.logger.debug("No ticket in step3, checking if it's an embed page...");
-    if (step3Result.includes("GAUTH.checkAuthentication")) {
-      this.logger.debug("Embed page detected, calling authentication check endpoint...");
-      const verifyParams = {
-        clientId: "GarminConnect",
-        service: this.url.GC_MODERN,
-        locale: "en"
-      };
-      const verifyUrl = `${this.url.GARMIN_SSO_ORIGIN}/sso/verifyauth/initialize?${qs_1.default.stringify(verifyParams)}`;
-      try {
-        const verifyResult = await this.get(verifyUrl);
-        this.logger.debug("Verify auth result:", verifyResult);
-        if (verifyResult && typeof verifyResult === "object") {
-          if (verifyResult.serviceTicket) {
-            this.logger.debug("Ticket found in verify result:", verifyResult.serviceTicket.substring(0, 20) + "...");
-            return verifyResult.serviceTicket;
-          }
-          if (verifyResult.serviceUrl && verifyResult.serviceUrl.includes("ticket=")) {
-            const urlTicket = TICKET_RE.exec(verifyResult.serviceUrl);
-            if (urlTicket) {
-              this.logger.debug("Ticket found in serviceUrl:", urlTicket[1].substring(0, 20) + "...");
-              return urlTicket[1];
+    // Extract cookies from response
+    extractCookies(response) {
+        if (!response.headers) {
+            this.logger.debug('🍪 extractCookies: no headers in response');
+            return;
+        }
+        // Log all header keys to debug cookie visibility in Obsidian
+        this.logger.debug('🍪 Response header keys:', Object.keys(response.headers).join(', '));
+        // Handle set-cookie as array or single string.
+        // In Obsidian (Electron), multiple set-cookie headers are combined into
+        // a single \n-separated string because RequestUrlResponse.headers is
+        // Record<string, string>. We must split by \n to get individual cookies.
+        const rawCookies = [];
+        const headers = response.headers;
+        const splitCookieHeader = (raw) => raw
+            .split('\n')
+            .map((s) => s.trim())
+            .filter(Boolean);
+        // Try all case variations (Obsidian may lowercase or capitalize)
+        for (const key of Object.keys(headers)) {
+            if (key.toLowerCase() === 'set-cookie') {
+                const val = headers[key];
+                if (Array.isArray(val)) {
+                    rawCookies.push(...val);
+                }
+                else if (typeof val === 'string') {
+                    rawCookies.push(...splitCookieHeader(val));
+                }
             }
-          }
         }
-        if (typeof verifyResult === "string") {
-          const verifyTicket = TICKET_RE.exec(verifyResult);
-          if (verifyTicket) {
-            this.logger.debug("Ticket found in verify string:", verifyTicket[1].substring(0, 20) + "...");
-            return verifyTicket[1];
-          }
+        this.logger.debug(`🍪 Found ${rawCookies.length} cookie(s) to parse`);
+        for (const cookieStr of rawCookies) {
+            // Handle expired cookies (Max-Age=0 or Expires in the past)
+            const maxAgeMatch = /Max-Age=0/i.exec(cookieStr);
+            // Parse "name=value; Path=/; ..." — only keep name=value part
+            const parts = cookieStr.split(';');
+            const nameValue = parts[0].trim();
+            const eqIdx = nameValue.indexOf('=');
+            if (eqIdx === -1)
+                continue;
+            const name = nameValue.substring(0, eqIdx).trim();
+            const value = nameValue.substring(eqIdx + 1).trim();
+            if (!name)
+                continue;
+            if (maxAgeMatch) {
+                // Server is deleting this cookie
+                this.cookieJar.delete(name);
+                this.logger.debug('🍪 Cookie deleted:', name);
+            }
+            else {
+                this.cookieJar.set(name, value);
+                this.logger.debug('🍪 Cookie stored:', name);
+            }
         }
-      } catch (error) {
-        this.logger.error("Verify auth failed:", error);
-      }
-      this.logger.debug("Verify auth did not return ticket, trying embed page again...");
-      const embedResult = await this.get(step1Url);
-      ticketRegResult = TICKET_RE.exec(embedResult);
-      if (ticketRegResult) {
-        const ticket = ticketRegResult[1];
-        this.logger.debug("Ticket found in embed page:", ticket.substring(0, 20) + "...");
-        return ticket;
-      }
+        this.logger.debug(`🍪 Jar now has ${this.cookieJar.size} cookies:`, [...this.cookieJar.keys()].join(', '));
     }
-    this.logger.error("Ticket not found in response");
-    this.logger.error("Response type:", typeof step3Result);
-    this.logger.error("Response length:", (step3Result === null || step3Result === void 0 ? void 0 : step3Result.length) || 0);
-    if (step3Result) {
-      this.logger.error("Response preview:", step3Result.substring(0, 500));
+    // Build Cookie header from jar
+    getCookieHeader() {
+        const cookies = Array.from(this.cookieJar.entries())
+            .map(([name, value]) => `${name}=${value}`)
+            .join('; ');
+        return cookies;
     }
-    throw new Error("login failed (Ticket not found or MFA), please check username and password");
-  }
-  handleMFA(htmlStr) {
-  }
-  handlePageTitle(htmlStr) {
-    const pageTitileRegResult = PAGE_TITLE_RE.exec(htmlStr);
-    if (pageTitileRegResult) {
-      const title = pageTitileRegResult[1];
-      this.logger.debug("login page title:", title);
-      if (lodash_1.default.includes(title, "Update Phone Number")) {
-        throw new Error("login failed (Update Phone number), please update your phone number, currently I don't know where to update it");
-      }
-    }
-  }
-  handleAccountLocked(htmlStr) {
-    const accountLockedRegResult = ACCOUNT_LOCKED_RE.exec(htmlStr);
-    if (accountLockedRegResult) {
-      const msg = accountLockedRegResult[1];
-      this.logger.error(msg);
-      throw new Error("login failed (AccountLocked), please open connect web page to unlock your account");
-    }
-  }
-  async refreshOauth2Token() {
-    if (!this.OAUTH_CONSUMER) {
-      await this.fetchOauthConsumer();
-    }
-    if (!this.oauth2Token || !this.oauth1Token) {
-      throw new Error("No Oauth2Token or Oauth1Token");
-    }
-    const oauth1 = {
-      oauth: this.getOauthClient(this.OAUTH_CONSUMER),
-      token: this.oauth1Token
-    };
-    await this.exchange(oauth1);
-    this.logger.info("Oauth2 token refreshed!");
-  }
-  async getOauth1Token(ticket) {
-    if (!this.OAUTH_CONSUMER) {
-      throw new Error("No OAUTH_CONSUMER");
-    }
-    const params = {
-      ticket,
-      "login-url": this.url.GARMIN_SSO_EMBED,
-      "accepts-mfa-tokens": true
-    };
-    const url = `${this.url.OAUTH_URL}/preauthorized?${qs_1.default.stringify(params)}`;
-    this.logger.debug("\u{1F511} getOauth1Token URL:", url);
-    const oauth = this.getOauthClient(this.OAUTH_CONSUMER);
-    const step4RequestData = {
-      url,
-      method: "GET"
-    };
-    const headers = oauth.toHeader(oauth.authorize(step4RequestData));
-    this.logger.debug("\u{1F511} OAuth1 authorization headers:", Object.keys(headers).join(", "));
-    const response = await this.get(url, {
-      headers: {
-        ...headers,
-        "User-Agent": USER_AGENT_CONNECTMOBILE
-      }
-    });
-    this.logger.debug("\u{1F511} OAuth1 response type:", typeof response, "length:", String(response).length);
-    if (typeof response === "string" && response.length < 500) {
-      this.logger.debug("\u{1F511} OAuth1 response:", response);
-    }
-    const token = qs_1.default.parse(response);
-    this.logger.debug("\u{1F511} Parsed token keys:", Object.keys(token).join(", "));
-    this.oauth1Token = token;
-    this.saveTokens().catch(() => {
-    });
-    return { token, oauth };
-  }
-  getOauthClient(consumer) {
-    const oauth = new oauth_1_0a_1.default({
-      consumer,
-      signature_method: "HMAC-SHA1",
-      hash_function(base_string, key) {
-        return crypto_js_1.default.HmacSHA1(base_string, key).toString(crypto_js_1.default.enc.Base64);
-      }
-    });
-    return oauth;
-  }
-  async exchange(oauth1) {
-    const token = {
-      key: oauth1.token.oauth_token,
-      secret: oauth1.token.oauth_token_secret
-    };
-    const baseUrl = `${this.url.OAUTH_URL}/exchange/user/2.0`;
-    const requestData = {
-      url: baseUrl,
-      method: "POST",
-      data: null
-    };
-    this.logger.debug("\u{1F504} exchange OAuth1 \u2192 OAuth2");
-    this.logger.debug("\u{1F504} OAuth1 token key:", token.key ? token.key.substring(0, 10) + "..." : "MISSING");
-    this.logger.debug("\u{1F504} OAuth1 token secret:", token.secret ? "present" : "MISSING");
-    const step5AuthData = oauth1.oauth.authorize(requestData, token);
-    this.logger.debug("\u{1F504} OAuth signature data keys:", Object.keys(step5AuthData).join(", "));
-    const url = `${baseUrl}?${qs_1.default.stringify(step5AuthData)}`;
-    this.logger.debug("\u{1F504} Exchange URL (masked):", url.substring(0, 100) + "...");
-    this.oauth2Token = void 0;
-    try {
-      const response = await this.post(url, null, {
-        headers: {
-          "User-Agent": USER_AGENT_CONNECTMOBILE,
-          "Content-Type": "application/x-www-form-urlencoded"
+    /**
+     * Execute an HTTP request using requestUrl and implement manual
+     * interceptor logic (auth token and refresh token).
+     */
+    async _request(config, isRetry = false, retryCount = 0) {
+        var _a, _b, _c;
+        // Ensure token is valid before making requests
+        try {
+            await this.checkTokenVaild();
         }
-      });
-      this.logger.debug("\u{1F504} Exchange response keys:", Object.keys(response).join(", "));
-      this.oauth2Token = this.setOauth2TokenExpiresAt(response);
-      this.logger.debug("\u2705 OAuth2 token set, expires in:", response.expires_in, "seconds");
-    } catch (error) {
-      this.logger.error("\u274C Exchange failed:", error instanceof Error ? error.message : error);
-      throw error;
+        catch (err) {
+            // If token refresh fails we continue and let login flow handle it
+            this.logger.warn('checkTokenVaild failed:', (err === null || err === void 0 ? void 0 : err.message) || err);
+        }
+        const finalConfig = {
+            ...config,
+            headers: {
+                ...this.commonHeaders,
+                ...(config.headers || {})
+            }
+        };
+        // Always inject cookies manually.
+        // - In Node.js, fetch has no automatic cookie store.
+        // - In Obsidian, requestUrl is a stateless HTTP wrapper with no session
+        //   cookie management — cookies must be forwarded explicitly.
+        if (this.cookieJar.size > 0) {
+            const cookieHeader = this.getCookieHeader();
+            if (cookieHeader) {
+                finalConfig.headers['Cookie'] = cookieHeader;
+            }
+        }
+        // Request interceptor logic (add authentication token)
+        if (this.oauth2Token && !((_a = finalConfig.headers) === null || _a === void 0 ? void 0 : _a.Authorization)) {
+            finalConfig.headers.Authorization =
+                'Bearer ' + this.oauth2Token.access_token;
+        }
+        try {
+            // Debug: log request (only for signin URLs)
+            if ((_b = finalConfig.url) === null || _b === void 0 ? void 0 : _b.includes('signin')) {
+                this.logger.debug('🌐 REQUEST:', finalConfig.method, finalConfig.url);
+                this.logger.debug('🌐 HEADERS:', JSON.stringify(finalConfig.headers, null, 2));
+                const bodyLength = finalConfig.body
+                    ? typeof finalConfig.body === 'string'
+                        ? finalConfig.body.length
+                        : finalConfig.body.byteLength
+                    : 0;
+                this.logger.debug('🌐 BODY LENGTH:', bodyLength);
+            }
+            const response = await requestUrl$2(finalConfig);
+            // Debug: log full response (only for signin URLs)
+            if ((_c = finalConfig.url) === null || _c === void 0 ? void 0 : _c.includes('signin')) {
+                this.logger.debug('✅ RESPONSE STATUS:', response.status);
+                this.logger.debug('✅ RESPONSE TYPE:', typeof response);
+                this.logger.debug('✅ RESPONSE KEYS:', Object.keys(response));
+                this.logger.debug('✅ RESPONSE HEADERS:', response.headers ? 'Present' : 'Missing');
+                this.logger.debug('✅ RESPONSE TEXT:', response.text
+                    ? `${response.text.substring(0, 100)}...`
+                    : 'Missing');
+                // DO NOT access response.json here because it's a getter that may throw
+            }
+            // Extract and store cookies from the response
+            this.extractCookies(response);
+            // Attempt to parse the body as JSON in a safe manner
+            let data;
+            const jsonData = this.safeGetJson(response);
+            if (jsonData !== null) {
+                // On a réussi à parser le JSON
+                data = jsonData;
+            }
+            else if (response.text) {
+                // Pas de JSON valide, utiliser le texte (HTML typiquement)
+                data = response.text;
+            }
+            else {
+                // Aucune donnée disponible
+                data = undefined;
+            }
+            // Handle rate limiting (429) with retries respecting Retry-After header
+            if (response.status === 429) {
+                const BASE_DELAY_MS = 1000; // 1s base
+                // attempt to read Retry-After header (cases)
+                const headersAny = response.headers || {};
+                const retryAfterHeader = headersAny['retry-after'] ||
+                    headersAny['Retry-After'] ||
+                    headersAny['Retry-after'];
+                let delayMs = BASE_DELAY_MS * Math.pow(2, Math.max(0, retryCount));
+                if (retryAfterHeader) {
+                    const asInt = parseInt(String(retryAfterHeader), 10);
+                    if (!isNaN(asInt)) {
+                        delayMs = asInt * 1000;
+                    }
+                    else {
+                        const parsed = Date.parse(String(retryAfterHeader));
+                        if (!isNaN(parsed)) {
+                            const until = parsed - Date.now();
+                            if (until > 0)
+                                delayMs = until;
+                        }
+                    }
+                }
+                if (retryCount < this.maxRetries) {
+                    this.logger.warn(`HTTP 429 received - retrying in ${Math.round(delayMs)}ms (attempt ${retryCount + 1}/${this.maxRetries})`);
+                    await new Promise((resolve) => setTimeout(resolve, delayMs));
+                    return this._request(config, true, retryCount + 1);
+                }
+                // Exceeded retries, fallthrough to error handling below
+                this.logger.error(`HTTP 429: Max retries (${this.maxRetries}) exceeded`);
+            }
+            // Manual error handling for other statuses
+            if (response.status >= 400) {
+                this.handleHttpError(response);
+            }
+            // IMPORTANT: Ne pas utiliser spread operator {...response} car response.json
+            // est un getter qui peut lancer une exception
+            return {
+                status: response.status,
+                headers: response.headers,
+                text: response.text,
+                arrayBuffer: response.arrayBuffer,
+                json: data
+            };
+        }
+        catch (error) {
+            // Token refresh logic
+            const status = (error === null || error === void 0 ? void 0 : error.status) || 0;
+            const isNetworkError = !status && error instanceof Error;
+            // Log error for debugging
+            if (isNetworkError) {
+                this.logger.error('Network error:', error.message);
+                // If the error is related to JSON parsing, do not treat it as fatal
+                if (error.message.includes('is not valid JSON') ||
+                    error.message.includes('Unexpected token')) {
+                    this.logger.warn('JSON parsing error ignored - response is likely HTML');
+                    // Retrying the request without parsing won't help; propagate the error
+                }
+            }
+            if (!isRetry && status === 401) {
+                if (!this.oauth2Token) {
+                    throw error;
+                }
+                if (isRefreshing) {
+                    try {
+                        const token = await new Promise((resolve) => {
+                            refreshSubscribers.push(resolve);
+                        });
+                        finalConfig.headers.Authorization = `Bearer ${token}`;
+                        return this._request(finalConfig, true);
+                    }
+                    catch (err) {
+                        this.logger.error("Erreur lors de l'attente du token rafraîchi:", err);
+                        throw err;
+                    }
+                }
+                isRefreshing = true;
+                try {
+                    this.logger.debug('interceptors: refreshOauth2Token start');
+                    await this.refreshOauth2Token();
+                    this.logger.debug('interceptors: refreshOauth2Token end');
+                }
+                catch (refreshError) {
+                    isRefreshing = false;
+                    throw refreshError;
+                }
+                isRefreshing = false;
+                refreshSubscribers.forEach((subscriber) => subscriber(this.oauth2Token.access_token));
+                refreshSubscribers = [];
+                finalConfig.headers.Authorization = `Bearer ${this.oauth2Token.access_token}`;
+                return this._request(finalConfig, true);
+            }
+            throw error;
+        }
     }
-  }
-  setOauth2TokenExpiresAt(token) {
-    token["last_update_date"] = luxon_1.DateTime.now().toLocal().toString();
-    token["expires_date"] = luxon_1.DateTime.fromSeconds(luxon_1.DateTime.now().toSeconds() + token["expires_in"]).toLocal().toString();
-    token["expires_at"] = luxon_1.DateTime.now().toSeconds() + token["expires_in"];
-    token["refresh_token_expires_at"] = luxon_1.DateTime.now().toSeconds() + token["refresh_token_expires_in"];
-    this.oauth2Token = token;
-    this.saveTokens().catch(() => {
-    });
-    return token;
-  }
+    // --- Token persistence helpers ---
+    async loadTokensFromPersistence() {
+        // Try global store first (for mobile/plugin environments)
+        try {
+            const globalStore = typeof globalThis !== 'undefined'
+                ? globalThis.__GarminTokenStore
+                : undefined;
+            if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncLoad) &&
+                typeof globalStore.syncLoad === 'function') {
+                const cached = globalStore.syncLoad();
+                if (cached) {
+                    if (cached.oauth1Token)
+                        this.oauth1Token = cached.oauth1Token;
+                    if (cached.oauth2Token)
+                        this.oauth2Token = cached.oauth2Token;
+                    this.logger.info('✅ Persisted tokens loaded from plugin data');
+                    return;
+                }
+            }
+        }
+        catch (e) {
+            this.logger.warn('Token load via plugin data failed:', (e === null || e === void 0 ? void 0 : e.message) || e);
+        }
+        // Fallback to async adapter if available
+        if (!this.tokenPersistence)
+            return;
+        try {
+            const stored = await this.tokenPersistence.load();
+            if (stored === null || stored === void 0 ? void 0 : stored.oauth1Token)
+                this.oauth1Token = stored.oauth1Token;
+            if (stored === null || stored === void 0 ? void 0 : stored.oauth2Token)
+                this.oauth2Token = stored.oauth2Token;
+            if ((stored === null || stored === void 0 ? void 0 : stored.oauth1Token) || (stored === null || stored === void 0 ? void 0 : stored.oauth2Token)) {
+                this.logger.info('✅ Persisted tokens loaded via adapter');
+            }
+        }
+        catch (err) {
+            this.logger.warn('Failed to load tokens via adapter:', (err === null || err === void 0 ? void 0 : err.message) || err);
+        }
+    }
+    async saveTokens() {
+        // Try global store first (for mobile/plugin environments)
+        try {
+            const globalStore = typeof globalThis !== 'undefined'
+                ? globalThis.__GarminTokenStore
+                : undefined;
+            if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncSave) &&
+                typeof globalStore.syncSave === 'function') {
+                globalStore.syncSave({
+                    oauth1Token: this.oauth1Token,
+                    oauth2Token: this.oauth2Token
+                });
+                return;
+            }
+        }
+        catch (e) {
+            this.logger.warn('Token save via plugin data failed:', (e === null || e === void 0 ? void 0 : e.message) || e);
+        }
+        // Fallback to async adapter if available
+        if (!this.tokenPersistence)
+            return;
+        try {
+            await this.tokenPersistence.save({
+                oauth1Token: this.oauth1Token,
+                oauth2Token: this.oauth2Token
+            });
+        }
+        catch (err) {
+            this.logger.warn('Failed to persist tokens:', (err === null || err === void 0 ? void 0 : err.message) || err);
+        }
+    }
+    /**
+     * Clear persisted OAuth tokens using provided adapter (if any)
+     */
+    async clearPersistedTokens() {
+        var _a;
+        // Try global store first (for mobile/plugin environments)
+        try {
+            const globalStore = typeof globalThis !== 'undefined'
+                ? globalThis.__GarminTokenStore
+                : undefined;
+            if ((globalStore === null || globalStore === void 0 ? void 0 : globalStore.syncClear) &&
+                typeof globalStore.syncClear === 'function') {
+                globalStore.syncClear();
+            }
+        }
+        catch (e) {
+            this.logger.warn('Token clear via plugin data failed:', (e === null || e === void 0 ? void 0 : e.message) || e);
+        }
+        // Fallback to async adapter if available
+        if ((_a = this.tokenPersistence) === null || _a === void 0 ? void 0 : _a.clear) {
+            try {
+                await this.tokenPersistence.clear();
+                this.logger.info('✅ Persisted tokens cleared via adapter');
+            }
+            catch (err) {
+                this.logger.warn('Failed to clear persisted tokens:', (err === null || err === void 0 ? void 0 : err.message) || err);
+            }
+        }
+        // Also clear in-memory tokens
+        this.oauth1Token = undefined;
+        this.oauth2Token = undefined;
+    }
+    // --- Public HTTP Methods ---
+    async get(url, options) {
+        let finalUrl = url;
+        if (options === null || options === void 0 ? void 0 : options.params) {
+            const queryString = qs_1.default.stringify(options.params);
+            finalUrl = `${url}?${queryString}`;
+        }
+        const response = await this._request({
+            url: finalUrl,
+            method: 'GET',
+            headers: options === null || options === void 0 ? void 0 : options.headers
+        });
+        const data = response.json !== undefined && response.json !== null
+            ? response.json
+            : response.text;
+        if ((options === null || options === void 0 ? void 0 : options.responseType) === 'arraybuffer') {
+            return Buffer.from(response.text);
+        }
+        return data;
+    }
+    async post(url, data, options) {
+        let finalUrl = url;
+        if (options === null || options === void 0 ? void 0 : options.params) {
+            const queryString = qs_1.default.stringify(options.params);
+            finalUrl = `${url}?${queryString}`;
+        }
+        let body;
+        let headers = { ...options === null || options === void 0 ? void 0 : options.headers };
+        // CORRECTION: Detect and handle FormData correctly
+        if (data &&
+            typeof data.getHeaders === 'function' &&
+            typeof data.getBuffer === 'function') {
+            // It's a FormData object from 'form-data' library
+            const buffer = data.getBuffer();
+            // Convert Buffer to string for requestUrl
+            body = buffer.toString('utf-8');
+            // Get multipart headers (includes Content-Type with boundary)
+            const formHeaders = data.getHeaders();
+            headers = { ...formHeaders, ...headers };
+            this.logger.debug('📋 Using multipart/form-data with boundary');
+            if (body) {
+                this.logger.debug('📋 Body length:', body.length);
+                this.logger.debug('📋 Body preview:', body.substring(0, 200));
+            }
+        }
+        else {
+            // Normal data (object, string, etc.)
+            const contentType = headers['Content-Type'] || 'application/json';
+            if (contentType.includes('application/x-www-form-urlencoded')) {
+                body = qs_1.default.stringify(data);
+            }
+            else if (contentType.includes('application/json')) {
+                body = JSON.stringify(data);
+            }
+            else if (typeof data === 'string') {
+                body = data;
+            }
+        }
+        const response = await this._request({
+            url: finalUrl,
+            method: 'POST',
+            headers: headers,
+            body: body
+        });
+        // Return response.json if it exists, otherwise response.text
+        // For HTML responses (like login), response.json will be undefined
+        return response.json !== undefined && response.json !== null
+            ? response.json
+            : response.text;
+    }
+    async put(url, data, options) {
+        var _a;
+        let finalUrl = url;
+        if (options === null || options === void 0 ? void 0 : options.params) {
+            const queryString = qs_1.default.stringify(options.params);
+            finalUrl = `${url}?${queryString}`;
+        }
+        const body = JSON.stringify(data);
+        const response = await this._request({
+            url: finalUrl,
+            method: 'PUT',
+            headers: {
+                ...options === null || options === void 0 ? void 0 : options.headers,
+                'Content-Type': ((_a = options === null || options === void 0 ? void 0 : options.headers) === null || _a === void 0 ? void 0 : _a['Content-Type']) || 'application/json'
+            },
+            body
+        });
+        return response.json;
+    }
+    async delete(url, options) {
+        const response = await this.post(url, null, {
+            params: options === null || options === void 0 ? void 0 : options.params,
+            headers: {
+                ...options === null || options === void 0 ? void 0 : options.headers,
+                'X-Http-Method-Override': 'DELETE'
+            }
+        });
+        return response;
+    }
+    // --- Configuration ---
+    setCommonHeader(headers) {
+        this.commonHeaders = { ...this.commonHeaders, ...headers };
+    }
+    // --- Error Handling ---
+    handleError(response) {
+        this.handleHttpError(response);
+    }
+    handleHttpError(response) {
+        const { status, text } = response;
+        // Log detailed error info
+        this.logger.error(`🔴 HTTP ${status} Error`);
+        if (text && text.length < 1000) {
+            this.logger.error('Response body:', text);
+        }
+        else if (text) {
+            this.logger.error('Response body (truncated):', text.substring(0, 500));
+        }
+        // Special case for 403 - probably Cloudflare
+        if (status === 403) {
+            const isCloudflare = (text === null || text === void 0 ? void 0 : text.includes('Cloudflare')) ||
+                (text === null || text === void 0 ? void 0 : text.includes('cf-browser-verification')) ||
+                (text === null || text === void 0 ? void 0 : text.includes('cf_clearance'));
+            if (isCloudflare) {
+                this.logger.error('Cloudflare protection detected (403)');
+                throw new Error('Cloudflare protection detected. This operation requires a real browser environment. ' +
+                    'Please run this code inside Obsidian, not as a standalone script.');
+            }
+        }
+        const msg = `ERROR: (${status}), ${status === 401 ? 'Unauthorized' : 'HTTP Error'}, ${(text === null || text === void 0 ? void 0 : text.substring(0, 200)) || 'No response body'}`;
+        this.logger.error(msg);
+        throw new Error(msg);
+    }
+    // --- Authentication Methods ---
+    async fetchOauthConsumer() {
+        const response = await requestUrl$2({
+            url: OAUTH_CONSUMER_URL,
+            method: 'GET'
+        });
+        if (response.status !== 200) {
+            throw new Error(`Failed to fetch OAuth Consumer: ${response.status}`);
+        }
+        this.OAUTH_CONSUMER = {
+            key: response.json.consumer_key,
+            secret: response.json.consumer_secret
+        };
+    }
+    async checkTokenVaild() {
+        if (this.oauth2Token) {
+            if (this.oauth2Token.expires_at < luxon_1.DateTime.now().toSeconds()) {
+                this.logger.error('Token expired!');
+                await this.refreshOauth2Token();
+            }
+        }
+    }
+    /**
+     * Login to Garmin Connect
+     * @param username
+     * @param password
+     * @returns {Promise<HttpClient>}
+     */
+    async login(username, password) {
+        try {
+            // Wait for any in-flight token load before checking
+            if (this._tokenLoadPromise) {
+                await this._tokenLoadPromise;
+                this._tokenLoadPromise = null;
+            }
+            // If we already have valid tokens, skip the full SSO flow
+            if (this.oauth1Token && this.oauth2Token) {
+                this.logger.info('♻️ Valid tokens found, skipping SSO login...');
+                try {
+                    await this.checkTokenVaild();
+                    this.logger.info('✅ Session restored from persisted tokens');
+                    return this;
+                }
+                catch (refreshErr) {
+                    this.logger.warn('Token refresh failed, falling back to full login:', refreshErr === null || refreshErr === void 0 ? void 0 : refreshErr.message);
+                    this.oauth1Token = undefined;
+                    this.oauth2Token = undefined;
+                }
+            }
+            this.logger.info('🔐 Starting Garmin login...');
+            await this.fetchOauthConsumer();
+            this.logger.info('🎫 Getting login ticket...');
+            const ticket = await this.getLoginTicket(username, password);
+            this.logger.info('🔑 Getting OAuth1 token...');
+            const oauth1 = await this.getOauth1Token(ticket);
+            this.logger.info('🔄 Exchanging for OAuth2 token...');
+            await this.exchange(oauth1);
+            this.logger.info('✅ Login successful!');
+            return this;
+        }
+        catch (error) {
+            const errorMsg = error instanceof Error ? error.message : String(error);
+            // Détecter Cloudflare 403
+            if (errorMsg.includes('403') || errorMsg.includes('Cloudflare')) {
+                this.logger.error('❌ Cloudflare protection detected');
+                throw new Error('Garmin login blocked by Cloudflare protection. ' +
+                    'This can happen if:\n' +
+                    '1. You login too frequently (wait a few minutes)\n' +
+                    '2. Garmin detects unusual activity\n' +
+                    '3. Your IP is flagged\n\n' +
+                    'Try again in a few minutes, or login manually on garmin.com first.');
+            }
+            throw error;
+        }
+    }
+    async getLoginTicket(username, password) {
+        // Step1: Always start with a fresh login
+        // Do not reuse tickets from previous sessions
+        const step1Params = {
+            clientId: 'GarminConnect',
+            locale: 'en',
+            service: this.url.GC_MODERN
+        };
+        const step1Url = `${this.url.GARMIN_SSO_EMBED}?${qs_1.default.stringify(step1Params)}`;
+        await this.get(step1Url);
+        // NOTE: We intentionally ignore tickets found in step1
+        // because they can be invalid or cause issues with Cloudflare
+        // Small delay to allow the server to process
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Step2 Get _csrf
+        const step2Params = {
+            id: 'gauth-widget',
+            embedWidget: 'true',
+            locale: 'en',
+            gauthHost: this.url.GARMIN_SSO_EMBED
+        };
+        const step2Url = `${this.url.SIGNIN_URL}?${qs_1.default.stringify(step2Params)}`;
+        const step2Result = await this.get(step2Url);
+        // FIX: Improved CSRF token capture
+        const csrfRegResult = CSRF_RE.exec(step2Result);
+        if (!csrfRegResult) {
+            this.logger.error('CSRF token not found in HTML.');
+            this.logger.error('Response preview:', step2Result.substring(0, 500));
+            throw new Error('login - csrf not found');
+        }
+        const csrf_token = csrfRegResult[1] || csrfRegResult[2];
+        this.logger.debug('CSRF token found:', csrf_token.substring(0, 10) + '...');
+        // Small delay before POST to allow Cloudflare cookies to settle
+        // and simulate human browsing behavior (3-5 seconds random delay)
+        const cfDelay = 3000 + Math.floor(Math.random() * 2000);
+        await new Promise((resolve) => setTimeout(resolve, cfDelay));
+        // Step3 Get ticket - Use URL-encoded body instead of FormData
+        const signinParams = {
+            id: 'gauth-widget',
+            embedWidget: 'true',
+            clientId: 'GarminConnect',
+            locale: 'en',
+            gauthHost: this.url.GARMIN_SSO_EMBED,
+            service: this.url.GARMIN_SSO_EMBED,
+            source: this.url.GARMIN_SSO_EMBED,
+            redirectAfterAccountLoginUrl: this.url.GARMIN_SSO_EMBED,
+            redirectAfterAccountCreationUrl: this.url.GARMIN_SSO_EMBED
+        };
+        const step3Url = `${this.url.SIGNIN_URL}?${qs_1.default.stringify(signinParams)}`;
+        // FIX: Use a simple object instead of FormData
+        // requestUrl does not handle multipart FormData well
+        const step3Data = {
+            username: username,
+            password: password,
+            embed: 'true',
+            _csrf: csrf_token
+        };
+        // FIX: Improved headers for URL-encoded POST
+        let step3Result;
+        this.logger.debug('🔑 Step3 cookie jar before POST:', [...this.cookieJar.keys()].join(', '));
+        this.logger.debug('🔑 Step3 cookie count:', this.cookieJar.size);
+        try {
+            step3Result = await this.post(step3Url, step3Data, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    DNT: '1',
+                    Origin: this.url.GARMIN_SSO_ORIGIN,
+                    Referer: step2Url,
+                    'User-Agent': USER_AGENT_BROWSER
+                }
+            });
+        }
+        catch (error) {
+            const errorMsg = error instanceof Error ? error.message : String(error);
+            this.logger.error('Step3 POST failed:', errorMsg);
+            throw new Error(`Step3 POST failed: ${errorMsg}`);
+        }
+        // Verify that step3Result is a string
+        if (!step3Result || typeof step3Result !== 'string') {
+            this.logger.error('Step3 result is not a string:', typeof step3Result, step3Result);
+            throw new Error('Step3 failed: Invalid response from server');
+        }
+        this.handleAccountLocked(step3Result);
+        this.handlePageTitle(step3Result);
+        this.handleMFA(step3Result);
+        // Check if we have the ticket directly in step3
+        let ticketRegResult = TICKET_RE.exec(step3Result);
+        if (ticketRegResult) {
+            const ticket = ticketRegResult[1];
+            this.logger.debug('Ticket found in step3:', ticket.substring(0, 20) + '...');
+            return ticket;
+        }
+        // If no ticket in step3, it may be an embed page that requires
+        // an additional request to obtain the ticket
+        this.logger.debug("No ticket in step3, checking if it's an embed page...");
+        // Step4: If we have an embed page, call the authentication verification
+        // endpoint which simulates what GAUTH.checkAuthentication() does
+        if (step3Result.includes('GAUTH.checkAuthentication')) {
+            this.logger.debug('Embed page detected, calling authentication check endpoint...');
+            // The verification endpoint is typically /sso/verifyauth
+            const verifyParams = {
+                clientId: 'GarminConnect',
+                service: this.url.GC_MODERN,
+                locale: 'en'
+            };
+            const verifyUrl = `${this.url.GARMIN_SSO_ORIGIN}/sso/verifyauth/initialize?${qs_1.default.stringify(verifyParams)}`;
+            try {
+                const verifyResult = await this.get(verifyUrl);
+                this.logger.debug('Verify auth result:', verifyResult);
+                // The result should contain serviceTicket and serviceUrl
+                if (verifyResult && typeof verifyResult === 'object') {
+                    if (verifyResult.serviceTicket) {
+                        this.logger.debug('Ticket found in verify result:', verifyResult.serviceTicket.substring(0, 20) + '...');
+                        return verifyResult.serviceTicket;
+                    }
+                    // Si on a un serviceUrl avec ticket
+                    if (verifyResult.serviceUrl &&
+                        verifyResult.serviceUrl.includes('ticket=')) {
+                        const urlTicket = TICKET_RE.exec(verifyResult.serviceUrl);
+                        if (urlTicket) {
+                            this.logger.debug('Ticket found in serviceUrl:', urlTicket[1].substring(0, 20) + '...');
+                            return urlTicket[1];
+                        }
+                    }
+                }
+                // Otherwise try to parse as a string
+                if (typeof verifyResult === 'string') {
+                    const verifyTicket = TICKET_RE.exec(verifyResult);
+                    if (verifyTicket) {
+                        this.logger.debug('Ticket found in verify string:', verifyTicket[1].substring(0, 20) + '...');
+                        return verifyTicket[1];
+                    }
+                }
+            }
+            catch (error) {
+                this.logger.error('Verify auth failed:', error);
+            }
+            // If verification fails, try requesting the embed page again
+            this.logger.debug('Verify auth did not return ticket, trying embed page again...');
+            const embedResult = await this.get(step1Url);
+            ticketRegResult = TICKET_RE.exec(embedResult);
+            if (ticketRegResult) {
+                const ticket = ticketRegResult[1];
+                this.logger.debug('Ticket found in embed page:', ticket.substring(0, 20) + '...');
+                return ticket;
+            }
+        }
+        // If still no ticket, error
+        this.logger.error('Ticket not found in response');
+        this.logger.error('Response type:', typeof step3Result);
+        this.logger.error('Response length:', (step3Result === null || step3Result === void 0 ? void 0 : step3Result.length) || 0);
+        if (step3Result) {
+            this.logger.error('Response preview:', step3Result.substring(0, 500));
+        }
+        throw new Error('login failed (Ticket not found or MFA), please check username and password');
+    }
+    handleMFA(htmlStr) { }
+    handlePageTitle(htmlStr) {
+        const pageTitileRegResult = PAGE_TITLE_RE.exec(htmlStr);
+        if (pageTitileRegResult) {
+            const title = pageTitileRegResult[1];
+            this.logger.debug('login page title:', title);
+            if (lodash_1.default.includes(title, 'Update Phone Number')) {
+                throw new Error("login failed (Update Phone number), please update your phone number, currently I don't know where to update it");
+            }
+        }
+    }
+    handleAccountLocked(htmlStr) {
+        const accountLockedRegResult = ACCOUNT_LOCKED_RE.exec(htmlStr);
+        if (accountLockedRegResult) {
+            const msg = accountLockedRegResult[1];
+            this.logger.error(msg);
+            throw new Error('login failed (AccountLocked), please open connect web page to unlock your account');
+        }
+    }
+    async refreshOauth2Token() {
+        if (!this.OAUTH_CONSUMER) {
+            await this.fetchOauthConsumer();
+        }
+        if (!this.oauth2Token || !this.oauth1Token) {
+            throw new Error('No Oauth2Token or Oauth1Token');
+        }
+        const oauth1 = {
+            oauth: this.getOauthClient(this.OAUTH_CONSUMER),
+            token: this.oauth1Token
+        };
+        await this.exchange(oauth1);
+        this.logger.info('Oauth2 token refreshed!');
+    }
+    async getOauth1Token(ticket) {
+        if (!this.OAUTH_CONSUMER) {
+            throw new Error('No OAUTH_CONSUMER');
+        }
+        const params = {
+            ticket,
+            'login-url': this.url.GARMIN_SSO_EMBED,
+            'accepts-mfa-tokens': true
+        };
+        const url = `${this.url.OAUTH_URL}/preauthorized?${qs_1.default.stringify(params)}`;
+        this.logger.debug('🔑 getOauth1Token URL:', url);
+        const oauth = this.getOauthClient(this.OAUTH_CONSUMER);
+        const step4RequestData = {
+            url: url,
+            method: 'GET'
+        };
+        const headers = oauth.toHeader(oauth.authorize(step4RequestData));
+        this.logger.debug('🔑 OAuth1 authorization headers:', Object.keys(headers).join(', '));
+        const response = await this.get(url, {
+            headers: {
+                ...headers,
+                'User-Agent': USER_AGENT_CONNECTMOBILE
+            }
+        });
+        this.logger.debug('🔑 OAuth1 response type:', typeof response, 'length:', String(response).length);
+        if (typeof response === 'string' && response.length < 500) {
+            this.logger.debug('🔑 OAuth1 response:', response);
+        }
+        const token = qs_1.default.parse(response);
+        this.logger.debug('🔑 Parsed token keys:', Object.keys(token).join(', '));
+        this.oauth1Token = token;
+        // Persist oauth1 token to avoid re-running full login flow
+        this.saveTokens().catch(() => { });
+        return { token, oauth };
+    }
+    getOauthClient(consumer) {
+        const oauth = new oauth_1_0a_1.default({
+            consumer: consumer,
+            signature_method: 'HMAC-SHA1',
+            hash_function(base_string, key) {
+                // Use crypto-js for browser/mobile compatibility
+                // IMPORTANT: Return base64-encoded HMAC-SHA1, not hex
+                return crypto_js_1.default.HmacSHA1(base_string, key).toString(crypto_js_1.default.enc.Base64);
+            }
+        });
+        return oauth;
+    }
+    async exchange(oauth1) {
+        const token = {
+            key: oauth1.token.oauth_token,
+            secret: oauth1.token.oauth_token_secret
+        };
+        const baseUrl = `${this.url.OAUTH_URL}/exchange/user/2.0`;
+        const requestData = {
+            url: baseUrl,
+            method: 'POST',
+            data: null
+        };
+        this.logger.debug('🔄 exchange OAuth1 → OAuth2');
+        this.logger.debug('🔄 OAuth1 token key:', token.key ? token.key.substring(0, 10) + '...' : 'MISSING');
+        this.logger.debug('🔄 OAuth1 token secret:', token.secret ? 'present' : 'MISSING');
+        const step5AuthData = oauth1.oauth.authorize(requestData, token);
+        this.logger.debug('🔄 OAuth signature data keys:', Object.keys(step5AuthData).join(', '));
+        const url = `${baseUrl}?${qs_1.default.stringify(step5AuthData)}`;
+        this.logger.debug('🔄 Exchange URL (masked):', url.substring(0, 100) + '...');
+        this.oauth2Token = undefined;
+        try {
+            const response = await this.post(url, null, {
+                headers: {
+                    'User-Agent': USER_AGENT_CONNECTMOBILE,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
+            this.logger.debug('🔄 Exchange response keys:', Object.keys(response).join(', '));
+            this.oauth2Token = this.setOauth2TokenExpiresAt(response);
+            this.logger.debug('✅ OAuth2 token set, expires in:', response.expires_in, 'seconds');
+        }
+        catch (error) {
+            this.logger.error('❌ Exchange failed:', error instanceof Error ? error.message : error);
+            throw error;
+        }
+    }
+    setOauth2TokenExpiresAt(token) {
+        token['last_update_date'] = luxon_1.DateTime.now().toLocal().toString();
+        token['expires_date'] = luxon_1.DateTime.fromSeconds(luxon_1.DateTime.now().toSeconds() + token['expires_in'])
+            .toLocal()
+            .toString();
+        token['expires_at'] = luxon_1.DateTime.now().toSeconds() + token['expires_in'];
+        token['refresh_token_expires_at'] =
+            luxon_1.DateTime.now().toSeconds() + token['refresh_token_expires_in'];
+        this.oauth2Token = token;
+        this.saveTokens().catch(() => { });
+        return token;
+    }
 }
 HttpClient$1.HttpClient = HttpClient;
 
@@ -36594,79 +36967,83 @@ var Cache$1 = {};
 
 Object.defineProperty(Cache$1, "__esModule", { value: true });
 Cache$1.Cache = void 0;
+/**
+ * Generic cache implementation with TTL (Time To Live) support
+ */
 class Cache {
-  /**
-   * @param ttl Time to live in milliseconds
-   */
-  constructor(ttl) {
-    this.cache = /* @__PURE__ */ new Map();
-    this.ttl = ttl;
-  }
-  /**
-   * Get a value from the cache
-   * @param key Cache key
-   * @returns Cached value or undefined if expired or not found
-   */
-  get(key) {
-    const cached = this.cache.get(key);
-    if (!cached) {
-      return void 0;
+    /**
+     * @param ttl Time to live in milliseconds
+     */
+    constructor(ttl) {
+        this.cache = new Map();
+        this.ttl = ttl;
     }
-    if (Date.now() - cached.timestamp >= this.ttl) {
-      this.cache.delete(key);
-      return void 0;
+    /**
+     * Get a value from the cache
+     * @param key Cache key
+     * @returns Cached value or undefined if expired or not found
+     */
+    get(key) {
+        const cached = this.cache.get(key);
+        if (!cached) {
+            return undefined;
+        }
+        // Check if expired
+        if (Date.now() - cached.timestamp >= this.ttl) {
+            this.cache.delete(key);
+            return undefined;
+        }
+        return cached.data;
     }
-    return cached.data;
-  }
-  /**
-   * Set a value in the cache
-   * @param key Cache key
-   * @param data Data to cache
-   */
-  set(key, data) {
-    this.cache.set(key, {
-      data,
-      timestamp: Date.now()
-    });
-  }
-  /**
-   * Check if a key exists and is not expired
-   * @param key Cache key
-   * @returns true if key exists and is valid
-   */
-  has(key) {
-    return this.get(key) !== void 0;
-  }
-  /**
-   * Clear a specific key from the cache
-   * @param key Cache key
-   */
-  delete(key) {
-    this.cache.delete(key);
-  }
-  /**
-   * Clear all cached data
-   */
-  clear() {
-    this.cache.clear();
-  }
-  /**
-   * Get the number of items in the cache (including expired items)
-   */
-  size() {
-    return this.cache.size;
-  }
-  /**
-   * Remove all expired items from the cache
-   */
-  prune() {
-    const now = Date.now();
-    for (const [key, value] of this.cache.entries()) {
-      if (now - value.timestamp >= this.ttl) {
+    /**
+     * Set a value in the cache
+     * @param key Cache key
+     * @param data Data to cache
+     */
+    set(key, data) {
+        this.cache.set(key, {
+            data,
+            timestamp: Date.now()
+        });
+    }
+    /**
+     * Check if a key exists and is not expired
+     * @param key Cache key
+     * @returns true if key exists and is valid
+     */
+    has(key) {
+        return this.get(key) !== undefined;
+    }
+    /**
+     * Clear a specific key from the cache
+     * @param key Cache key
+     */
+    delete(key) {
         this.cache.delete(key);
-      }
     }
-  }
+    /**
+     * Clear all cached data
+     */
+    clear() {
+        this.cache.clear();
+    }
+    /**
+     * Get the number of items in the cache (including expired items)
+     */
+    size() {
+        return this.cache.size;
+    }
+    /**
+     * Remove all expired items from the cache
+     */
+    prune() {
+        const now = Date.now();
+        for (const [key, value] of this.cache.entries()) {
+            if (now - value.timestamp >= this.ttl) {
+                this.cache.delete(key);
+            }
+        }
+    }
 }
 Cache$1.Cache = Cache;
 
@@ -36675,30 +37052,37 @@ var DateUtils = {};
 Object.defineProperty(DateUtils, "__esModule", { value: true });
 DateUtils.getLocalTimestamp = DateUtils.calculateTimeDifference = DateUtils.toDateString = void 0;
 function toDateString(date) {
-  const offset = date.getTimezoneOffset();
-  const offsetDate = new Date(date.getTime() - offset * 60 * 1e3);
-  const [dateString] = offsetDate.toISOString().split("T");
-  return dateString;
+    const offset = date.getTimezoneOffset();
+    const offsetDate = new Date(date.getTime() - offset * 60 * 1000);
+    const [dateString] = offsetDate.toISOString().split('T');
+    return dateString;
 }
 DateUtils.toDateString = toDateString;
 function calculateTimeDifference(sleepStartTimestampGMT, sleepEndTimestampGMT) {
-  const timeDifferenceInSeconds = (sleepEndTimestampGMT - sleepStartTimestampGMT) / 1e3;
-  const hours = Math.floor(timeDifferenceInSeconds / 3600);
-  const minutes = Math.floor(timeDifferenceInSeconds % 3600 / 60);
-  return {
-    hours,
-    minutes
-  };
+    // Calculate time difference in seconds
+    const timeDifferenceInSeconds = (sleepEndTimestampGMT - sleepStartTimestampGMT) / 1000;
+    // Convert time difference to hours and minutes
+    const hours = Math.floor(timeDifferenceInSeconds / 3600);
+    const minutes = Math.floor((timeDifferenceInSeconds % 3600) / 60);
+    return {
+        hours,
+        minutes
+    };
 }
 DateUtils.calculateTimeDifference = calculateTimeDifference;
 function getLocalTimestamp(date, timezone) {
-  const localTimestampISO = date.toISOString().substring(0, 23);
-  const localTimestamp = new Date(localTimestampISO).toLocaleString("en-US", {
-    timeZone: timezone,
-    hour12: false
-  });
-  const formattedLocalTimestamp = new Date(localTimestamp).toISOString().substring(0, 23);
-  return formattedLocalTimestamp;
+    // Get the current local date timestamp in ISO format
+    const localTimestampISO = date.toISOString().substring(0, 23);
+    // Convert the ISO timestamp to local timezone while maintaining the same format
+    const localTimestamp = new Date(localTimestampISO).toLocaleString('en-US', {
+        timeZone: timezone,
+        hour12: false
+    });
+    // Format the local timestamp as `YYYY-MM-DDTHH:MM:SS.SSS`
+    const formattedLocalTimestamp = new Date(localTimestamp)
+        .toISOString()
+        .substring(0, 23);
+    return formattedLocalTimestamp;
 }
 DateUtils.getLocalTimestamp = getLocalTimestamp;
 
@@ -36707,236 +37091,254 @@ var HydrationUtils = {};
 Object.defineProperty(HydrationUtils, "__esModule", { value: true });
 HydrationUtils.convertOuncesToML = HydrationUtils.convertMLToOunces = void 0;
 function convertMLToOunces(valueInML) {
-  const conversionFactor = 0.033814;
-  const valueInOunces = valueInML * conversionFactor;
-  return valueInOunces;
+    const conversionFactor = 0.033814;
+    const valueInOunces = valueInML * conversionFactor;
+    return valueInOunces;
 }
 HydrationUtils.convertMLToOunces = convertMLToOunces;
 function convertOuncesToML(ounces) {
-  const ouncesToMillilitersConversionFactor = 29.5735;
-  const milliliters = ounces * ouncesToMillilitersConversionFactor;
-  return milliliters;
+    const ouncesToMillilitersConversionFactor = 29.5735;
+    const milliliters = ounces * ouncesToMillilitersConversionFactor;
+    return milliliters;
 }
 HydrationUtils.convertOuncesToML = convertOuncesToML;
 
 Object.defineProperty(GarminConnect$2, "__esModule", { value: true });
+// Import Obsidian types only if available
 let obsidianApp;
 let normalizePath;
 try {
-  const obsidian = require("obsidian");
-  obsidianApp = obsidian.App;
-  normalizePath = obsidian.normalizePath;
-} catch (e) {
-  obsidianApp = class {
-  };
-  normalizePath = (path) => path;
+    const obsidian = require('obsidian');
+    obsidianApp = obsidian.App;
+    normalizePath = obsidian.normalizePath;
+}
+catch (e) {
+    // Obsidian not available - provide fallbacks
+    obsidianApp = class {
+    };
+    normalizePath = (path) => path;
 }
 const UrlClass_1 = UrlClass$1;
 const HttpClient_1 = HttpClient$1;
 const Cache_1 = Cache$1;
 const DateUtils_1 = DateUtils;
 const HydrationUtils_1 = HydrationUtils;
+/* ---------------------------------------------------------
+   GarminConnect (Mobile-safe)
+--------------------------------------------------------- */
 let GarminConnect$1 = class GarminConnect {
-  constructor(credentials, domain = "garmin.com", config) {
-    this.profileCache = new Cache_1.Cache(5 * 60 * 1e3);
-    this.dailyCache = new Cache_1.Cache(60 * 60 * 1e3);
-    if (!credentials)
-      throw new Error("Missing credentials");
-    this.credentials = credentials;
-    this.url = new UrlClass_1.UrlClass(domain);
-    this.client = new HttpClient_1.HttpClient(this.url, {
-      ...config === null || config === void 0 ? void 0 : config.httpClientConfig,
-      tokenPersistence: config === null || config === void 0 ? void 0 : config.tokenPersistence
-    });
-    if (config === null || config === void 0 ? void 0 : config.headers) {
-      this.client.setCommonHeader(config.headers);
+    constructor(credentials, domain = 'garmin.com', config) {
+        // Cache for user profile (5 minutes TTL)
+        this.profileCache = new Cache_1.Cache(5 * 60 * 1000);
+        // Cache for daily data (1 hour TTL) - steps, weight, heart rate, sleep
+        // Key format: "type:YYYY-MM-DD"
+        this.dailyCache = new Cache_1.Cache(60 * 60 * 1000);
+        if (!credentials)
+            throw new Error('Missing credentials');
+        this.credentials = credentials;
+        this.url = new UrlClass_1.UrlClass(domain);
+        this.client = new HttpClient_1.HttpClient(this.url, {
+            ...config === null || config === void 0 ? void 0 : config.httpClientConfig,
+            tokenPersistence: config === null || config === void 0 ? void 0 : config.tokenPersistence
+        });
+        if (config === null || config === void 0 ? void 0 : config.headers) {
+            this.client.setCommonHeader(config.headers);
+        }
     }
-  }
-  /* ----------------------------------------------------- */
-  async login() {
-    await this.client.login(this.credentials.username, this.credentials.password);
-    this.profileCache.clear();
-    return this;
-  }
-  /* ----------------------------------------------------- */
-  async exportTokenToVault(app, dir) {
-    const base = normalizePath(dir);
-    const vault = app.vault;
-    if (!await vault.adapter.exists(base)) {
-      await vault.createFolder(base);
+    /* ----------------------------------------------------- */
+    async login() {
+        await this.client.login(this.credentials.username, this.credentials.password);
+        this.profileCache.clear();
+        return this;
     }
-    if (this.client.oauth1Token) {
-      await vault.adapter.write(`${base}/oauth1_token.json`, JSON.stringify(this.client.oauth1Token, null, 2));
+    /* ----------------------------------------------------- */
+    async exportTokenToVault(app, dir) {
+        const base = normalizePath(dir);
+        const vault = app.vault;
+        if (!(await vault.adapter.exists(base))) {
+            await vault.createFolder(base);
+        }
+        if (this.client.oauth1Token) {
+            await vault.adapter.write(`${base}/oauth1_token.json`, JSON.stringify(this.client.oauth1Token, null, 2));
+        }
+        if (this.client.oauth2Token) {
+            await vault.adapter.write(`${base}/oauth2_token.json`, JSON.stringify(this.client.oauth2Token, null, 2));
+        }
     }
-    if (this.client.oauth2Token) {
-      await vault.adapter.write(`${base}/oauth2_token.json`, JSON.stringify(this.client.oauth2Token, null, 2));
+    async loadTokenFromVault(app, dir) {
+        const base = normalizePath(dir);
+        const vault = app.vault;
+        const oauth1 = `${base}/oauth1_token.json`;
+        const oauth2 = `${base}/oauth2_token.json`;
+        if (await vault.adapter.exists(oauth1)) {
+            this.client.oauth1Token = JSON.parse(await vault.adapter.read(oauth1));
+        }
+        if (await vault.adapter.exists(oauth2)) {
+            this.client.oauth2Token = JSON.parse(await vault.adapter.read(oauth2));
+        }
+        if (!this.client.oauth1Token && !this.client.oauth2Token) {
+            throw new Error('No token found');
+        }
     }
-  }
-  async loadTokenFromVault(app, dir) {
-    const base = normalizePath(dir);
-    const vault = app.vault;
-    const oauth1 = `${base}/oauth1_token.json`;
-    const oauth2 = `${base}/oauth2_token.json`;
-    if (await vault.adapter.exists(oauth1)) {
-      this.client.oauth1Token = JSON.parse(await vault.adapter.read(oauth1));
+    exportToken() {
+        if (!this.client.oauth1Token || !this.client.oauth2Token) {
+            throw new Error('Missing tokens');
+        }
+        return {
+            oauth1: this.client.oauth1Token,
+            oauth2: this.client.oauth2Token
+        };
     }
-    if (await vault.adapter.exists(oauth2)) {
-      this.client.oauth2Token = JSON.parse(await vault.adapter.read(oauth2));
+    /* ----------------------------------------------------- */
+    async getUserProfile(force = false) {
+        if (!force) {
+            const cached = this.profileCache.get('profile');
+            if (cached) {
+                return cached;
+            }
+        }
+        const profile = await this.client.get(this.url.USER_PROFILE);
+        this.profileCache.set('profile', profile);
+        return profile;
     }
-    if (!this.client.oauth1Token && !this.client.oauth2Token) {
-      throw new Error("No token found");
+    async getActivities(start = 0, limit = 20, activityType, subActivityType) {
+        return this.client.get(this.url.ACTIVITIES, {
+            params: { start, limit, activityType, subActivityType }
+        });
     }
-  }
-  exportToken() {
-    if (!this.client.oauth1Token || !this.client.oauth2Token) {
-      throw new Error("Missing tokens");
+    async getSteps(date = new Date()) {
+        const d = (0, DateUtils_1.toDateString)(date);
+        const cacheKey = `steps:${d}`;
+        // Check cache first
+        const cached = this.dailyCache.get(cacheKey);
+        if (cached !== undefined) {
+            return cached;
+        }
+        const days = await this.client.get(`${this.url.DAILY_STEPS}${d}/${d}`);
+        const day = days.find((x) => x.calendarDate === d);
+        if (!day)
+            throw new Error('No steps');
+        // Cache the result
+        this.dailyCache.set(cacheKey, day.totalSteps);
+        return day.totalSteps;
     }
-    return {
-      oauth1: this.client.oauth1Token,
-      oauth2: this.client.oauth2Token
-    };
-  }
-  /* ----------------------------------------------------- */
-  async getUserProfile(force = false) {
-    if (!force) {
-      const cached = this.profileCache.get("profile");
-      if (cached) {
-        return cached;
-      }
+    async getSleep(date = new Date()) {
+        const d = (0, DateUtils_1.toDateString)(date);
+        const cacheKey = `sleep:${d}`;
+        // Check cache first
+        const cached = this.dailyCache.get(cacheKey);
+        if (cached !== undefined) {
+            return cached;
+        }
+        const sleepData = await this.client.get(this.url.DAILY_SLEEP, { params: { date: d } });
+        // Cache the result
+        this.dailyCache.set(cacheKey, sleepData);
+        return sleepData;
     }
-    const profile = await this.client.get(this.url.USER_PROFILE);
-    this.profileCache.set("profile", profile);
-    return profile;
-  }
-  async getActivities(start = 0, limit = 20, activityType, subActivityType) {
-    return this.client.get(this.url.ACTIVITIES, {
-      params: { start, limit, activityType, subActivityType }
-    });
-  }
-  async getSteps(date = /* @__PURE__ */ new Date()) {
-    const d = (0, DateUtils_1.toDateString)(date);
-    const cacheKey = `steps:${d}`;
-    const cached = this.dailyCache.get(cacheKey);
-    if (cached !== void 0) {
-      return cached;
+    async getSleepDuration(date = new Date()) {
+        const sleep = await this.getSleep(date);
+        return (0, DateUtils_1.calculateTimeDifference)(sleep.dailySleepDTO.sleepStartTimestampGMT, sleep.dailySleepDTO.sleepEndTimestampGMT);
     }
-    const days = await this.client.get(`${this.url.DAILY_STEPS}${d}/${d}`);
-    const day = days.find((x) => x.calendarDate === d);
-    if (!day)
-      throw new Error("No steps");
-    this.dailyCache.set(cacheKey, day.totalSteps);
-    return day.totalSteps;
-  }
-  async getSleep(date = /* @__PURE__ */ new Date()) {
-    const d = (0, DateUtils_1.toDateString)(date);
-    const cacheKey = `sleep:${d}`;
-    const cached = this.dailyCache.get(cacheKey);
-    if (cached !== void 0) {
-      return cached;
+    async updateHydrationLogOunces(date, oz) {
+        const profile = await this.getUserProfile();
+        return this.client.put(this.url.HYDRATION_LOG, {
+            calendarDate: (0, DateUtils_1.toDateString)(date),
+            valueInML: (0, HydrationUtils_1.convertOuncesToML)(oz),
+            userProfileId: profile.profileId,
+            timestampLocal: date.toISOString().substring(0, 23)
+        });
     }
-    const sleepData = await this.client.get(this.url.DAILY_SLEEP, { params: { date: d } });
-    this.dailyCache.set(cacheKey, sleepData);
-    return sleepData;
-  }
-  async getSleepDuration(date = /* @__PURE__ */ new Date()) {
-    const sleep = await this.getSleep(date);
-    return (0, DateUtils_1.calculateTimeDifference)(sleep.dailySleepDTO.sleepStartTimestampGMT, sleep.dailySleepDTO.sleepEndTimestampGMT);
-  }
-  async updateHydrationLogOunces(date, oz) {
-    const profile = await this.getUserProfile();
-    return this.client.put(this.url.HYDRATION_LOG, {
-      calendarDate: (0, DateUtils_1.toDateString)(date),
-      valueInML: (0, HydrationUtils_1.convertOuncesToML)(oz),
-      userProfileId: profile.profileId,
-      timestampLocal: date.toISOString().substring(0, 23)
-    });
-  }
-  async getWeight(date = /* @__PURE__ */ new Date()) {
-    var _a;
-    const d = (0, DateUtils_1.toDateString)(date);
-    const cacheKey = `weight:${d}`;
-    const cached = this.dailyCache.get(cacheKey);
-    if (cached !== void 0) {
-      return cached;
+    async getWeight(date = new Date()) {
+        var _a;
+        const d = (0, DateUtils_1.toDateString)(date);
+        const cacheKey = `weight:${d}`;
+        // Check cache first
+        const cached = this.dailyCache.get(cacheKey);
+        if (cached !== undefined) {
+            return cached;
+        }
+        const data = await this.client.get(`${this.url.DAILY_WEIGHT}/${d}`);
+        let result = null;
+        const weight = (_a = data.dateWeightList) === null || _a === void 0 ? void 0 : _a.find((x) => x.calendarDate === d);
+        if (weight) {
+            // Convert weight from grams to kg
+            result = {
+                ...weight,
+                weight: weight.weight / 1000
+            };
+        }
+        else if (data.dateWeightList && data.dateWeightList.length > 0) {
+            const firstWeight = data.dateWeightList[0];
+            // Convert weight from grams to kg
+            result = {
+                ...firstWeight,
+                weight: firstWeight.weight / 1000
+            };
+        }
+        // Cache the result (even if null to avoid repeated failed requests)
+        this.dailyCache.set(cacheKey, result);
+        return result;
     }
-    const data = await this.client.get(`${this.url.DAILY_WEIGHT}/${d}`);
-    let result = null;
-    const weight = (_a = data.dateWeightList) === null || _a === void 0 ? void 0 : _a.find((x) => x.calendarDate === d);
-    if (weight) {
-      result = {
-        ...weight,
-        weight: weight.weight / 1e3
-      };
-    } else if (data.dateWeightList && data.dateWeightList.length > 0) {
-      const firstWeight = data.dateWeightList[0];
-      result = {
-        ...firstWeight,
-        weight: firstWeight.weight / 1e3
-      };
+    async getHeartRate(date = new Date()) {
+        const d = (0, DateUtils_1.toDateString)(date);
+        const cacheKey = `heartrate:${d}`;
+        // Check cache first
+        const cached = this.dailyCache.get(cacheKey);
+        if (cached) {
+            return cached;
+        }
+        const heartRate = await this.client.get(this.url.DAILY_HEART_RATE, {
+            params: { date: d }
+        });
+        // Cache the result
+        this.dailyCache.set(cacheKey, heartRate);
+        return heartRate;
     }
-    this.dailyCache.set(cacheKey, result);
-    return result;
-  }
-  async getHeartRate(date = /* @__PURE__ */ new Date()) {
-    const d = (0, DateUtils_1.toDateString)(date);
-    const cacheKey = `heartrate:${d}`;
-    const cached = this.dailyCache.get(cacheKey);
-    if (cached) {
-      return cached;
+    /* ----------------------------------------------------- */
+    async uploadActivity() {
+        throw new Error('uploadActivity is not supported on mobile');
     }
-    const heartRate = await this.client.get(this.url.DAILY_HEART_RATE, {
-      params: { date: d }
-    });
-    this.dailyCache.set(cacheKey, heartRate);
-    return heartRate;
-  }
-  /* ----------------------------------------------------- */
-  async uploadActivity() {
-    throw new Error("uploadActivity is not supported on mobile");
-  }
-  async downloadOriginalActivityData() {
-    throw new Error("downloadOriginalActivityData is not supported on mobile");
-  }
+    async downloadOriginalActivityData() {
+        throw new Error('downloadOriginalActivityData is not supported on mobile');
+    }
 };
 GarminConnect$2.default = GarminConnect$1;
 
 var types = {};
 
-(function(exports) {
-  Object.defineProperty(exports, "__esModule", { value: true });
-  exports.UploadFileType = exports.ExportFileType = void 0;
-  (function(ExportFileType2) {
-    ExportFileType2["tcx"] = "tcx";
-    ExportFileType2["gpx"] = "gpx";
-    ExportFileType2["kml"] = "kml";
-    ExportFileType2["zip"] = "zip";
-  })(exports.ExportFileType || (exports.ExportFileType = {}));
-  (function(UploadFileType2) {
-    UploadFileType2["tcx"] = "tcx";
-    UploadFileType2["gpx"] = "gpx";
-    UploadFileType2["fit"] = "fit";
-  })(exports.UploadFileType || (exports.UploadFileType = {}));
-})(types);
+(function (exports) {
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.UploadFileType = exports.ExportFileType = void 0;
+	(function (ExportFileType) {
+	    ExportFileType["tcx"] = "tcx";
+	    ExportFileType["gpx"] = "gpx";
+	    ExportFileType["kml"] = "kml";
+	    ExportFileType["zip"] = "zip";
+	})(exports.ExportFileType || (exports.ExportFileType = {}));
+	(function (UploadFileType) {
+	    UploadFileType["tcx"] = "tcx";
+	    UploadFileType["gpx"] = "gpx";
+	    UploadFileType["fit"] = "fit";
+	})(exports.UploadFileType || (exports.UploadFileType = {}));
+	
+} (types));
 
-(function(exports) {
-  var __importDefault = commonjsGlobal && commonjsGlobal.__importDefault || function(mod) {
-    return mod && mod.__esModule ? mod : { "default": mod };
-  };
-  Object.defineProperty(exports, "__esModule", { value: true });
-  exports.UploadFileType = exports.ExportFileType = exports.GarminConnect = void 0;
-  var GarminConnect_1 = GarminConnect$2;
-  Object.defineProperty(exports, "GarminConnect", { enumerable: true, get: function() {
-    return __importDefault(GarminConnect_1).default;
-  } });
-  var types_1 = types;
-  Object.defineProperty(exports, "ExportFileType", { enumerable: true, get: function() {
-    return types_1.ExportFileType;
-  } });
-  Object.defineProperty(exports, "UploadFileType", { enumerable: true, get: function() {
-    return types_1.UploadFileType;
-  } });
-})(dist);
-var index = /* @__PURE__ */ getDefaultExportFromCjs(dist);
+(function (exports) {
+	var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+	    return (mod && mod.__esModule) ? mod : { "default": mod };
+	};
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.UploadFileType = exports.ExportFileType = exports.GarminConnect = void 0;
+	var GarminConnect_1 = GarminConnect$2;
+	Object.defineProperty(exports, "GarminConnect", { enumerable: true, get: function () { return __importDefault(GarminConnect_1).default; } });
+	// Export enums
+	var types_1 = types;
+	Object.defineProperty(exports, "ExportFileType", { enumerable: true, get: function () { return types_1.ExportFileType; } });
+	Object.defineProperty(exports, "UploadFileType", { enumerable: true, get: function () { return types_1.UploadFileType; } });
+	
+} (dist));
+
+var index = /*@__PURE__*/getDefaultExportFromCjs(dist);
 
 var GarminConnectModule = /*#__PURE__*/_mergeNamespaces({
 	__proto__: null,
@@ -36987,25 +37389,6 @@ class Logger {
 const logger = new Logger();
 
 const { GarminConnect } = GarminConnectModule;
-const GARMIN_TRANSPORT_RE = /\bcycl|biking|bike\b|bicycle|velomobile|handcycle|e.bike|\bwalk(ing)?\b|indoor.?walk|casual.?walk|speed.?walk|race.?walk|commute.?walk/;
-const GARMIN_SPORT_EMOJI = [
-  { re: /\brun|trail.?run|treadmill|indoor.?run|track.?run|virtual.?run/, emoji: "\u{1F3C3}" },
-  { re: /\bswim/, emoji: "\u{1F3CA}" },
-  { re: /\bhik|backcountry.?hik|raquette/, emoji: "\u{1F97E}" },
-  { re: /\bstrength|gym\b|fitness.?equip|crossfit|weight.?train|bouldering|climbing/, emoji: "\u{1F3CB}\uFE0F" },
-  { re: /\byoga|pilates|meditation/, emoji: "\u{1F9D8}" },
-  { re: /\brow|kayak|paddl|canoe/, emoji: "\u{1F6A3}" },
-  { re: /\btennis|squash|badminton|racquet|pickleball|padel/, emoji: "\u{1F3BE}" },
-  { re: /\bgolf/, emoji: "\u26F3" },
-  { re: /\bski|snowboard|nordic.?ski/, emoji: "\u26F7\uFE0F" },
-  { re: /\bsoccer|football\b|basketball|volleyball|hockey|rugby/, emoji: "\u26BD" }
-];
-function getGarminSportEmoji(lower) {
-  for (const { re, emoji } of GARMIN_SPORT_EMOJI) {
-    if (re.test(lower)) return emoji;
-  }
-  return "\u{1F3C5}";
-}
 function extractDistanceFromActivity(activity) {
   if (!activity) return null;
   const keys = ["distance", "activityDistance", "totalDistance", "distanceMeters", "activityDistanceInMeters", "distanceInMeters", "totalDistanceInMeters"];
@@ -37040,11 +37423,7 @@ class GarminProvider {
   }
   async init() {
     if (this.client) return;
-    this.client = new GarminConnect(
-      { username: this.username, password: this.password },
-      "garmin.com",
-      { httpClientConfig: { logLevel: "error" } }
-    );
+    this.client = new GarminConnect({ username: this.username, password: this.password });
     await this.client.login();
   }
   async getData(date) {
@@ -37086,11 +37465,9 @@ class GarminProvider {
     } catch (e) {
       avgHeartRate = null;
     }
-    const sportsSet = /* @__PURE__ */ new Set();
-    let transportKm = 0;
     let didRunning = false, runningDistance = null;
     let didSwimming = false, swimmingDistance = null;
-    let didCycling = false;
+    let didCycling = false, cyclingDistance = null;
     try {
       const activities = await this.client.getActivities(0, 100).catch(() => null);
       if (activities && Array.isArray(activities)) {
@@ -37103,20 +37480,17 @@ class GarminProvider {
         for (const a of todays) {
           const lower = JSON.stringify(a).toLowerCase();
           const dist = extractDistanceFromActivity(a);
-          const distKm = dist != null ? metersToKm(dist) : null;
-          if (GARMIN_TRANSPORT_RE.test(lower)) {
-            didCycling = lower.includes("cycl") || lower.includes("bik");
-            transportKm = Number((transportKm + (distKm ?? 0)).toFixed(2));
-          } else {
-            sportsSet.add(getGarminSportEmoji(lower));
-            if (/\brun|trail.?run|treadmill|indoor.?run/.test(lower)) {
-              didRunning = true;
-              runningDistance = Number(((runningDistance ?? 0) + (distKm ?? 0)).toFixed(2));
-            }
-            if (/\bswim/.test(lower)) {
-              didSwimming = true;
-              swimmingDistance = Number(((swimmingDistance ?? 0) + (distKm ?? 0)).toFixed(2));
-            }
+          if (!didRunning && /run|running/.test(lower)) {
+            didRunning = true;
+            if (dist != null) runningDistance = metersToKm(dist);
+          }
+          if (!didSwimming && /swim|swimming/.test(lower)) {
+            didSwimming = true;
+            if (dist != null) swimmingDistance = metersToKm(dist);
+          }
+          if (!didCycling && /bike|cycling|cycle|bicycle/.test(lower)) {
+            didCycling = true;
+            if (dist != null) cyclingDistance = metersToKm(dist);
           }
         }
       }
@@ -37145,32 +37519,76 @@ class GarminProvider {
       sleepMinutes = null;
       sleepScore = null;
     }
+    let hrv = null;
+    let stress = null;
+    let bodyBattery = null;
+    let spO2 = null;
+    try {
+      const stressData = await this.client.getStress?.(targetDate).catch(() => null);
+      const stressAny = stressData;
+      const stressVal = stressAny?.averageStressLevel ?? stressAny?.avgStressLevel ?? stressAny?.stressLevel;
+      if (stressVal !== void 0 && stressVal !== null && !isNaN(Number(stressVal))) {
+        stress = Number(stressVal);
+      }
+    } catch {
+    }
+    try {
+      const bodyBatteryData = await this.client.getBodyBattery?.(targetDate).catch(() => null);
+      const bbAny = bodyBatteryData;
+      const bbVal = bbAny?.mostRecentValue ?? bbAny?.average ?? bbAny?.bodyBattery;
+      if (bbVal !== void 0 && bbVal !== null && !isNaN(Number(bbVal))) {
+        bodyBattery = Number(bbVal);
+      }
+    } catch {
+    }
+    try {
+      const pulseOxData = await this.client.getPulseOx?.(targetDate).catch(() => null);
+      const poAny = pulseOxData;
+      const poVal = poAny?.average ?? poAny?.averageSpo2 ?? poAny?.spo2;
+      if (poVal !== void 0 && poVal !== null && !isNaN(Number(poVal))) {
+        spO2 = Number(poVal);
+      }
+    } catch {
+    }
+    try {
+      const hrvData = await this.client.getHrv?.(targetDate).catch(() => null);
+      const hrvAny = hrvData;
+      const hrvVal = hrvAny?.dailyAverage ?? hrvAny?.average ?? hrvAny?.hrv;
+      if (hrvVal !== void 0 && hrvVal !== null && !isNaN(Number(hrvVal))) {
+        hrv = Number(hrvVal);
+      }
+    } catch {
+    }
     const otherActivities = false;
     return {
       steps: steps ?? null,
       weight,
       averageHeartRate: avgHeartRate,
+      hrv,
+      stress,
+      bodyBattery,
+      spO2,
       sleep: sleepMinutes,
       sleepScore,
-      sports: [...sportsSet],
-      transport_km: transportKm > 0 ? transportKm : null,
+      sports: [],
+      transport_km: cyclingDistance,
       didRunning,
       runningDistance_km: runningDistance,
       didSwimming,
       SwimmingDistance_km: swimmingDistance,
       didCycling,
-      cyclingDistance_km: transportKm > 0 ? transportKm : null,
+      cyclingDistance_km: cyclingDistance,
       otherActivities
     };
   }
 }
 
-let requestUrl;
+let requestUrl$1;
 try {
   const obsidian = require("obsidian");
-  requestUrl = obsidian.requestUrl;
+  requestUrl$1 = obsidian.requestUrl;
 } catch {
-  requestUrl = async (config) => {
+  requestUrl$1 = async (config) => {
     const response = await fetch(config.url, {
       method: config.method || "GET",
       headers: config.headers || {},
@@ -37228,7 +37646,7 @@ class StravaProvider {
       grant_type: "refresh_token",
       refresh_token: this.tokens.refreshToken
     }).toString();
-    const response = await requestUrl({
+    const response = await requestUrl$1({
       url: STRAVA_TOKEN_URL,
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -37255,7 +37673,7 @@ class StravaProvider {
     const before = Math.floor(endOfDay.getTime() / 1e3);
     const url = `${STRAVA_BASE}/athlete/activities?after=${after}&before=${before}&per_page=100`;
     logger.debug("\u{1F4E1} Fetching Strava activities for", date.toISOString().slice(0, 10));
-    const response = await requestUrl({
+    const response = await requestUrl$1({
       url,
       method: "GET",
       headers: { Authorization: `Bearer ${this.tokens.accessToken}` }
@@ -37304,6 +37722,10 @@ class StravaProvider {
       steps: null,
       weight: null,
       averageHeartRate,
+      hrv: null,
+      stress: null,
+      bodyBattery: null,
+      spO2: null,
       sleep: null,
       sleepScore: null,
       sports: [...sportsSet],
@@ -37325,7 +37747,7 @@ class StravaProvider {
       code,
       grant_type: "authorization_code"
     }).toString();
-    const response = await requestUrl({
+    const response = await requestUrl$1({
       url: STRAVA_TOKEN_URL,
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -37339,6 +37761,328 @@ class StravaProvider {
       accessToken: data.access_token,
       refreshToken: data.refresh_token,
       expiresAt: data.expires_at
+    };
+  }
+}
+
+let requestUrl;
+try {
+  const obsidian = require("obsidian");
+  requestUrl = obsidian.requestUrl;
+} catch {
+  requestUrl = async (config) => {
+    const response = await fetch(config.url, {
+      method: config.method || "GET",
+      headers: config.headers || {},
+      body: config.body
+    });
+    const text = await response.text();
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      json = void 0;
+    }
+    return { status: response.status, text, json };
+  };
+}
+const GOOGLE_FIT_BASE = "https://www.googleapis.com/fitness/v1";
+const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
+const truncate = (value, max = 1200) => {
+  const text = String(value ?? "");
+  return text.length > max ? `${text.slice(0, max)}\u2026` : text;
+};
+class GoogleHealthProvider {
+  constructor(clientId, clientSecret, tokens, onTokensUpdated) {
+    this.clientId = clientId;
+    this.clientSecret = clientSecret;
+    this.tokens = tokens;
+    this.onTokensUpdated = onTokensUpdated;
+  }
+  redactToken(token) {
+    if (!token) return "(empty)";
+    if (token.length <= 10) return `${token.slice(0, 3)}...${token.slice(-2)}`;
+    return `${token.slice(0, 6)}...${token.slice(-4)}`;
+  }
+  async safeRequest(config, label) {
+    try {
+      return await requestUrl({
+        throw: false,
+        ...config
+      });
+    } catch (error) {
+      const status = Number(error?.status ?? error?.response?.status ?? 0) || void 0;
+      const body = error?.response?.text ?? error?.body ?? error?.message;
+      logger.warn(`[GoogleHealth] ${label} threw before response handling`, {
+        status,
+        body: truncate(body, 1200)
+      });
+      throw new Error(`Google request failed (${label}): HTTP ${status ?? "unknown"}`);
+    }
+  }
+  parseJsonResponse(response) {
+    if (response?.json !== void 0 && response?.json !== null) return response.json;
+    return JSON.parse(response?.text ?? "{}");
+  }
+  handleGoogleHttpError(operation, response) {
+    const status = Number(response?.status ?? 0) || 0;
+    const bodyPreview = truncate(response?.text, 1200);
+    let googleMessage = "";
+    let googleReason = "";
+    let googleService = "";
+    try {
+      const parsed = this.parseJsonResponse(response);
+      googleMessage = String(parsed?.error?.message || "");
+      const firstDetail = Array.isArray(parsed?.error?.details) ? parsed.error.details[0] : void 0;
+      const firstError = Array.isArray(firstDetail?.errors) ? firstDetail.errors[0] : void 0;
+      googleReason = String(firstError?.reason || parsed?.error?.status || "");
+      googleService = String(firstDetail?.service || "");
+    } catch {
+    }
+    logger.warn(`[GoogleHealth] ${operation} failed`, {
+      status,
+      body: bodyPreview,
+      googleMessage,
+      googleReason,
+      googleService
+    });
+    if (googleMessage) {
+      logger.warn("[GoogleHealth] API message:", googleMessage);
+    }
+    if (googleReason) {
+      logger.warn("[GoogleHealth] API reason:", googleReason);
+    }
+    if (status === 403) {
+      logger.warn("[GoogleHealth] 403 diagnostic checklist:");
+      logger.warn("[GoogleHealth] 1) Verify Google Fitness API is enabled for this GCP project.");
+      logger.warn("[GoogleHealth] 2) Reconnect Google to refresh consent after scope changes.");
+      logger.warn("[GoogleHealth] 3) Confirm OAuth app includes your account as test user (if app is in testing mode).");
+      logger.warn("[GoogleHealth] 4) Ensure requested scopes include fitness.activity.read, fitness.body.read, fitness.heart_rate.read, fitness.sleep.read.");
+    }
+    throw new Error(`Google ${operation} failed: HTTP ${status}`);
+  }
+  async init() {
+    logger.debug("[GoogleHealth] init()");
+    await this.ensureValidToken();
+  }
+  async ensureValidToken() {
+    const now = Math.floor(Date.now() / 1e3);
+    logger.debug("[GoogleHealth] ensureValidToken()", {
+      hasAccessToken: !!this.tokens.accessToken,
+      hasRefreshToken: !!this.tokens.refreshToken,
+      expiresAt: this.tokens.expiresAt,
+      now,
+      secondsUntilExpiry: this.tokens.expiresAt - now,
+      accessTokenPreview: this.redactToken(this.tokens.accessToken)
+    });
+    if (this.tokens.accessToken && this.tokens.expiresAt > now + 300) {
+      logger.debug("Google Health access token still valid");
+      return;
+    }
+    if (!this.tokens.refreshToken) {
+      throw new Error("GoogleHealthNotConnected");
+    }
+    const body = new URLSearchParams({
+      client_id: this.clientId,
+      client_secret: this.clientSecret,
+      grant_type: "refresh_token",
+      refresh_token: this.tokens.refreshToken
+    }).toString();
+    logger.info("[GoogleHealth] Refreshing access token...");
+    const response = await this.safeRequest({
+      url: GOOGLE_TOKEN_URL,
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body
+    }, "token_refresh");
+    logger.debug("[GoogleHealth] Token refresh HTTP status:", response.status);
+    if (response.status !== 200) {
+      this.handleGoogleHttpError("token refresh", response);
+    }
+    const data = this.parseJsonResponse(response);
+    this.tokens = {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token || this.tokens.refreshToken,
+      expiresAt: Math.floor(Date.now() / 1e3) + Number(data.expires_in || 3600)
+    };
+    logger.info("[GoogleHealth] Token refreshed successfully", {
+      expiresAt: this.tokens.expiresAt,
+      accessTokenPreview: this.redactToken(this.tokens.accessToken)
+    });
+    await this.onTokensUpdated(this.tokens);
+  }
+  async getData(date) {
+    await this.ensureValidToken();
+    const start = new Date(date);
+    start.setHours(0, 0, 0, 0);
+    const end = new Date(date);
+    end.setHours(23, 59, 59, 999);
+    const aggregateBody = {
+      aggregateBy: [
+        { dataTypeName: "com.google.step_count.delta" },
+        { dataTypeName: "com.google.weight" },
+        { dataTypeName: "com.google.heart_rate.bpm" }
+      ],
+      bucketByTime: { durationMillis: end.getTime() - start.getTime() + 1 },
+      startTimeMillis: start.getTime(),
+      endTimeMillis: end.getTime()
+    };
+    logger.debug("[GoogleHealth] Fetch aggregate request", {
+      date: date.toISOString().slice(0, 10),
+      startTimeMillis: aggregateBody.startTimeMillis,
+      endTimeMillis: aggregateBody.endTimeMillis,
+      scopes: aggregateBody.aggregateBy.map((x) => x.dataTypeName),
+      accessTokenPreview: this.redactToken(this.tokens.accessToken)
+    });
+    const response = await this.safeRequest({
+      url: `${GOOGLE_FIT_BASE}/users/me/dataset:aggregate`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${this.tokens.accessToken}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(aggregateBody)
+    }, "dataset_aggregate");
+    logger.debug("[GoogleHealth] Aggregate HTTP status:", response.status);
+    if (response.status !== 200) {
+      this.handleGoogleHttpError("aggregate", response);
+    }
+    const data = this.parseJsonResponse(response);
+    const buckets = Array.isArray(data?.bucket) ? data.bucket : [];
+    logger.debug("[GoogleHealth] Aggregate parsed buckets:", buckets.length);
+    let steps = null;
+    let weight = null;
+    let averageHeartRate = null;
+    const hrValues = [];
+    const collectPoints = (dataset) => {
+      return Array.isArray(dataset?.point) ? dataset.point : [];
+    };
+    const collectStepsFromPoints = (points) => {
+      let total = 0;
+      for (const p of points) {
+        const val = p?.value?.[0]?.intVal;
+        if (typeof val === "number") total += val;
+      }
+      return total;
+    };
+    const collectMaxWeightFromPoints = (points) => {
+      let max = null;
+      for (const p of points) {
+        const val = p?.value?.[0]?.fpVal;
+        if (typeof val === "number" && !isNaN(val)) {
+          if (max === null || val > max) max = Number(val.toFixed(2));
+        }
+      }
+      return max;
+    };
+    const collectHeartRateFromPoints = (points) => {
+      for (const p of points) {
+        const val = p?.value?.[0]?.fpVal;
+        if (typeof val === "number" && !isNaN(val)) hrValues.push(val);
+      }
+    };
+    for (let index = 0; index < buckets.length; index++) {
+      const bucket = buckets[index];
+      const datasets = Array.isArray(bucket?.dataset) ? bucket.dataset : [];
+      const usedOrderedParsing = datasets.length >= 3;
+      logger.debug("[GoogleHealth] Bucket summary", {
+        bucketIndex: index,
+        datasetCount: datasets.length,
+        pointCounts: datasets.map((d) => Array.isArray(d?.point) ? d.point.length : 0),
+        usedOrderedParsing
+      });
+      const stepDataset = datasets[0];
+      const weightDataset = datasets[1];
+      const heartDataset = datasets[2];
+      if (stepDataset) {
+        const total = collectStepsFromPoints(collectPoints(stepDataset));
+        if (total > 0) steps = (steps ?? 0) + total;
+      }
+      if (weightDataset) {
+        const maxWeight = collectMaxWeightFromPoints(collectPoints(weightDataset));
+        if (maxWeight !== null) {
+          if (weight === null || maxWeight > weight) weight = maxWeight;
+        }
+      }
+      if (heartDataset) {
+        collectHeartRateFromPoints(collectPoints(heartDataset));
+      }
+      if (usedOrderedParsing) continue;
+      for (const dataset of datasets) {
+        const points = collectPoints(dataset);
+        const sourceType = String(dataset?.dataSourceId || dataset?.dataTypeName || "").toLowerCase();
+        if (sourceType.includes("step_count")) {
+          const total = collectStepsFromPoints(points);
+          if (total > 0) steps = Math.max(steps ?? 0, total);
+        }
+        if (sourceType.includes("weight")) {
+          const maxWeight = collectMaxWeightFromPoints(points);
+          if (maxWeight !== null) {
+            if (weight === null || maxWeight > weight) weight = maxWeight;
+          }
+        }
+        if (sourceType.includes("heart_rate")) {
+          collectHeartRateFromPoints(points);
+        }
+      }
+    }
+    if (hrValues.length > 0) {
+      const avg = hrValues.reduce((a, b) => a + b, 0) / hrValues.length;
+      averageHeartRate = Math.round(avg);
+    }
+    logger.info("[GoogleHealth] Extracted metrics", {
+      steps,
+      weight,
+      averageHeartRate,
+      hrSamples: hrValues.length
+    });
+    return {
+      steps,
+      weight,
+      averageHeartRate,
+      hrv: null,
+      stress: null,
+      bodyBattery: null,
+      spO2: null,
+      sleep: null,
+      sleepScore: null,
+      sports: [],
+      transport_km: null,
+      didRunning: false,
+      runningDistance_km: null,
+      didSwimming: false,
+      SwimmingDistance_km: null,
+      didCycling: false,
+      cyclingDistance_km: null,
+      otherActivities: false
+    };
+  }
+  static async exchangeCode(clientId, clientSecret, code, redirectUri) {
+    logger.info("[GoogleHealth] Exchanging OAuth code for tokens");
+    const body = new URLSearchParams({
+      client_id: clientId,
+      client_secret: clientSecret,
+      code,
+      grant_type: "authorization_code",
+      redirect_uri: redirectUri
+    }).toString();
+    const response = await requestUrl({
+      url: GOOGLE_TOKEN_URL,
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+      throw: false
+    });
+    logger.debug("[GoogleHealth] Code exchange HTTP status:", response.status);
+    if (response.status !== 200) {
+      logger.warn("[GoogleHealth] Code exchange error body:", truncate(response.text, 800));
+      throw new Error(`Google code exchange failed: HTTP ${response.status}`);
+    }
+    const data = response.json ?? JSON.parse(response.text);
+    return {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresAt: Math.floor(Date.now() / 1e3) + Number(data.expires_in || 3600)
     };
   }
 }
@@ -37360,11 +38104,25 @@ const DEFAULT_SETTINGS = {
   password: "",
   vaultFolder: "obsidian-garmin-plugin",
   provider: "garmin",
+  enabledProviders: ["garmin"],
   stravaClientId: "",
   stravaClientSecret: "",
   stravaAccessToken: "",
   stravaRefreshToken: "",
-  stravaExpiresAt: 0
+  stravaExpiresAt: 0,
+  googleClientId: "",
+  googleClientSecret: "",
+  googleAccessToken: "",
+  googleRefreshToken: "",
+  googleExpiresAt: 0
+};
+
+const GOOGLE_OAUTH_CONFIG = {
+  // Optional legacy values. Preferred source is plugin settings UI.
+  clientId: "",
+  clientSecret: "",
+  // Must exactly match one Authorized redirect URI in Google Cloud OAuth credentials.
+  redirectUri: "http://127.0.0.1:53682/google/oauth/callback"
 };
 
 var en = {
@@ -37377,21 +38135,64 @@ var en = {
     noteCreated: (date) => `Garmin note (${date}) created!`,
     noActiveFile: "No active file",
     invalidDate: "Invalid date",
-    addedToFile: "Garmin data added to active file",
+    addedToFile: "Health data added to active file",
+    addedToFileFromProviders: (providers) => `Health data fetched from: ${providers}`,
     fetchError: "Unable to fetch health data",
-    interactiveAuth: "Garmin login blocked: interactive auth returned. Use external/headless auth."
+    interactiveAuth: "Garmin login blocked: interactive auth returned. Use external/headless auth.",
+    dateNotFoundInFile: "Date not found in file (frontmatter date: YYYY-MM-DD or filename YYYY-MM-DD.md)",
+    loadingHealthData: "Fetching health data...",
+    stravaMissingCredentials: "Strava: set Client ID and Client Secret first.",
+    stravaAuthorizeBrowser: "Authorize access in the browser that just opened...",
+    stravaConnected: "Strava connected successfully!",
+    stravaError: (message) => `Strava: ${message}`,
+    googleMissingCredentials: "Google Health: set Client ID and Client Secret first.",
+    googleAuthorizeBrowser: "Authorize Google Health access in your browser...",
+    googleConnected: "Google Health connected successfully.",
+    googleError: (message) => `Google Health: ${message}`,
+    batchInvalidRange: "Invalid date range",
+    batchRangeTooLong: (days) => `Range too long (${days} days > 90). Reduce the range.`,
+    batchCreating: (days) => `Creating ${days} notes...`,
+    batchProgress: (created, total) => `${created}/${total} notes created...`,
+    batchCreated: (count) => `${count} note(s) created`,
+    batchSkipped: (count) => `${count} already existing`,
+    batchErrors: (count) => `${count} error(s)`
   },
   modal: {
     dateLabel: "Date (YYYY-MM-DD)",
     ok: "OK",
     cancel: "Cancel",
     loading: "Fetching data\u2026",
+    healthEntryTitle: (date) => `Health data - ${date}`,
+    healthEntryLoading: "Fetching provider data...",
+    healthEntryProviderUnavailable: "Provider unavailable - manual entry",
+    healthEntryProviderReceived: "Provider data received",
+    healthEntrySteps: "\u{1F463} Steps",
+    healthEntrySleep: "\u{1F4A4} Sleep (min)",
+    healthEntrySleepScore: "\u{1F4A4} Sleep score",
+    healthEntryHeartRate: "\u2764\uFE0F Resting HR (bpm)",
+    healthEntryWeight: "\u2696\uFE0F Weight (kg)",
+    healthEntrySport: "\u{1F3C5} Sport",
+    healthEntrySportPlaceholder: "e.g. \u{1F3C3} \u{1F3CA}",
+    healthEntryTransport: "\u{1F6B2} Cycling - transport (km)",
+    healthEntrySave: "Save",
     batchTitle: "Create health notes",
     batchStartLabel: "Start date",
     batchEndLabel: "End date",
     batchSubmit: "Create notes",
     batchFolder: "Destination folder",
-    batchFolderPlaceholder: "e.g. Journal/Health"
+    batchFolderPlaceholder: "e.g. Journal/Health",
+    folderSearchPlaceholder: "Search a folder...",
+    browseFolder: "Browse",
+    batchCount: (days) => `${days} note(s) to create`,
+    batchInvalidRange: "Invalid range",
+    batchInvalidRangeCheck: "Invalid range - please check dates"
+  },
+  auth: {
+    successTitle: (provider) => `${provider} connected`,
+    successCloseTab: "You can close this tab and return to Obsidian.",
+    errorTitle: "Error",
+    deniedDefault: "access denied",
+    internalError: "error"
   },
   settings: {
     title: "Health Connector",
@@ -37405,7 +38206,35 @@ var en = {
     vaultFolderDesc: "Where to save Garmin notes in your vault",
     supportTitle: "Support development",
     supportDesc: "If you enjoy having your Garmin data in Obsidian, consider supporting its development",
-    supportButton: "\u2615\uFE0F Tip"
+    supportButton: "\u2615\uFE0F Tip",
+    providerGarminName: "Garmin",
+    providerGarminDesc: "Enable Garmin sync",
+    providerStravaName: "Strava",
+    providerStravaDesc: "Enable Strava sync",
+    providerGoogleName: "Google Health",
+    providerGoogleDesc: "Enable Google Health sync",
+    garminSectionTitle: "Garmin Connect",
+    garminEmailPlaceholder: "Garmin email",
+    stravaSectionTitle: "Strava",
+    stravaClientIdName: "Client ID",
+    stravaClientIdDesc: "Your Strava app client ID (strava.com/settings/api)",
+    stravaClientSecretName: "Client Secret",
+    stravaClientSecretDesc: "Your Strava app client secret",
+    stravaConnectName: "Strava connection",
+    stravaConnectedDesc: "Account connected. Click to reconnect.",
+    stravaDisconnectedDesc: "Click to authorize access to your Strava activities.",
+    reconnectButton: "Reconnect",
+    stravaConnectButton: "Connect Strava",
+    googleSectionTitle: "Google Health",
+    googleClientIdName: "Client ID",
+    googleClientIdDesc: "OAuth Client ID from Google Cloud",
+    googleClientIdPlaceholder: "e.g. xxxxx.apps.googleusercontent.com",
+    googleClientSecretName: "Client Secret",
+    googleClientSecretDesc: "OAuth Client Secret from Google Cloud",
+    googleConnectName: "Google Health connection",
+    googleConnectedDesc: "Account connected. Click to reconnect.",
+    googleDisconnectedDesc: "Click to authorize access to Google Health/Fit.",
+    googleConnectButton: "Connect Google"
   },
   template: {
     title: "Health Stats",
@@ -37429,21 +38258,64 @@ var fr = {
     noteCreated: (date) => `Note Garmin (${date}) cr\xE9\xE9e !`,
     noActiveFile: "Aucun fichier actif",
     invalidDate: "Date invalide",
-    addedToFile: "Donn\xE9es Garmin ajout\xE9es au fichier actif",
+    addedToFile: "Donn\xE9es sant\xE9 ajout\xE9es au fichier actif",
+    addedToFileFromProviders: (providers) => `Donn\xE9es sant\xE9 r\xE9cup\xE9r\xE9es depuis : ${providers}`,
     fetchError: "Impossible de r\xE9cup\xE9rer les donn\xE9es sant\xE9",
-    interactiveAuth: "Connexion Garmin bloqu\xE9e : page d'authentification interactive retourn\xE9e. Utilise une m\xE9thode d'authentification externe ou headless."
+    interactiveAuth: "Connexion Garmin bloqu\xE9e : page d'authentification interactive retourn\xE9e. Utilise une m\xE9thode d'authentification externe ou headless.",
+    dateNotFoundInFile: "Date introuvable dans le fichier (frontmatter date: YYYY-MM-DD ou nom de fichier YYYY-MM-DD.md)",
+    loadingHealthData: "R\xE9cup\xE9ration des donn\xE9es sant\xE9...",
+    stravaMissingCredentials: "Strava : renseigne d'abord le Client ID et le Client Secret.",
+    stravaAuthorizeBrowser: "Autorise l'acc\xE8s dans le navigateur qui vient de s'ouvrir...",
+    stravaConnected: "Strava connect\xE9 avec succ\xE8s !",
+    stravaError: (message) => `Strava : ${message}`,
+    googleMissingCredentials: "Google Health : renseigne d'abord le Client ID et le Client Secret.",
+    googleAuthorizeBrowser: "Autorise l'acc\xE8s Google Health dans le navigateur...",
+    googleConnected: "Google Health connect\xE9 avec succ\xE8s.",
+    googleError: (message) => `Google Health : ${message}`,
+    batchInvalidRange: "Plage de dates invalide",
+    batchRangeTooLong: (days) => `Plage trop longue (${days} jours > 90). R\xE9duis la plage.`,
+    batchCreating: (days) => `Cr\xE9ation de ${days} notes...`,
+    batchProgress: (created, total) => `${created}/${total} notes cr\xE9\xE9es...`,
+    batchCreated: (count) => `${count} note(s) cr\xE9\xE9e(s)`,
+    batchSkipped: (count) => `${count} d\xE9j\xE0 existante(s)`,
+    batchErrors: (count) => `${count} erreur(s)`
   },
   modal: {
     dateLabel: "Date (JJ-MM-AAAA)",
     ok: "OK",
     cancel: "Annuler",
     loading: "R\xE9cup\xE9ration des donn\xE9es\u2026",
+    healthEntryTitle: (date) => `Donn\xE9es sant\xE9 - ${date}`,
+    healthEntryLoading: "R\xE9cup\xE9ration provider en cours...",
+    healthEntryProviderUnavailable: "Provider indisponible - saisie manuelle",
+    healthEntryProviderReceived: "Donn\xE9es re\xE7ues du provider",
+    healthEntrySteps: "\u{1F463} Pas",
+    healthEntrySleep: "\u{1F4A4} Sommeil (min)",
+    healthEntrySleepScore: "\u{1F4A4} Score sommeil",
+    healthEntryHeartRate: "\u2764\uFE0F FC repos (bpm)",
+    healthEntryWeight: "\u2696\uFE0F Poids (kg)",
+    healthEntrySport: "\u{1F3C5} Sport",
+    healthEntrySportPlaceholder: "ex : \u{1F3C3} \u{1F3CA}",
+    healthEntryTransport: "\u{1F6B2} V\xE9lo - transport (km)",
+    healthEntrySave: "Enregistrer",
     batchTitle: "Cr\xE9er les notes de sant\xE9",
     batchStartLabel: "Date de d\xE9but",
     batchEndLabel: "Date de fin",
     batchSubmit: "Cr\xE9er les notes",
     batchFolder: "Dossier de destination",
-    batchFolderPlaceholder: "ex : Journal/Sant\xE9"
+    batchFolderPlaceholder: "ex : Journal/Sant\xE9",
+    folderSearchPlaceholder: "Rechercher un dossier...",
+    browseFolder: "Parcourir",
+    batchCount: (days) => `${days} note(s) \xE0 cr\xE9er`,
+    batchInvalidRange: "Plage invalide",
+    batchInvalidRangeCheck: "Plage invalide - v\xE9rifie les dates"
+  },
+  auth: {
+    successTitle: (provider) => `${provider} connect\xE9`,
+    successCloseTab: "Tu peux fermer cet onglet et retourner dans Obsidian.",
+    errorTitle: "Erreur",
+    deniedDefault: "acc\xE8s refus\xE9",
+    internalError: "erreur"
   },
   settings: {
     title: "Health Connector",
@@ -37457,7 +38329,35 @@ var fr = {
     vaultFolderDesc: "O\xF9 enregistrer les notes Garmin dans votre coffre ?",
     supportTitle: "Soutenir le d\xE9veloppement",
     supportDesc: "Si vous appr\xE9ciez pouvoir retrouver vos donn\xE9es Garmin dans Obsidian, n'h\xE9sitez pas \xE0 soutenir son d\xE9veloppement",
-    supportButton: "\u2615\uFE0F Pourboire"
+    supportButton: "\u2615\uFE0F Pourboire",
+    providerGarminName: "Garmin",
+    providerGarminDesc: "Activer la synchronisation Garmin",
+    providerStravaName: "Strava",
+    providerStravaDesc: "Activer la synchronisation Strava",
+    providerGoogleName: "Google Health",
+    providerGoogleDesc: "Activer la synchronisation Google Health",
+    garminSectionTitle: "Garmin Connect",
+    garminEmailPlaceholder: "email Garmin",
+    stravaSectionTitle: "Strava",
+    stravaClientIdName: "Client ID",
+    stravaClientIdDesc: "ID de ton application Strava (strava.com/settings/api)",
+    stravaClientSecretName: "Client Secret",
+    stravaClientSecretDesc: "Secret de ton application Strava",
+    stravaConnectName: "Connexion Strava",
+    stravaConnectedDesc: "Compte connect\xE9. Clique pour reconnecter.",
+    stravaDisconnectedDesc: "Clique pour autoriser l'acc\xE8s \xE0 tes activit\xE9s Strava.",
+    reconnectButton: "Reconnecter",
+    stravaConnectButton: "Connecter Strava",
+    googleSectionTitle: "Google Health",
+    googleClientIdName: "Client ID",
+    googleClientIdDesc: "ID OAuth de ton application Google Cloud",
+    googleClientIdPlaceholder: "ex. xxxxx.apps.googleusercontent.com",
+    googleClientSecretName: "Client Secret",
+    googleClientSecretDesc: "Secret OAuth de ton application Google Cloud",
+    googleConnectName: "Connexion Google Health",
+    googleConnectedDesc: "Compte connect\xE9. Clique pour reconnecter.",
+    googleDisconnectedDesc: "Clique pour autoriser l'acc\xE8s \xE0 Google Health/Fit.",
+    googleConnectButton: "Connecter Google"
   },
   template: {
     title: "Statistiques Sant\xE9",
@@ -37474,21 +38374,71 @@ var fr = {
 var es = {
   commands: {
     addTodayToFrontmatter: "Agregar datos de salud de hoy a las propiedades del archivo activo",
-    addDateToFrontmatter: "Agregar datos de salud de una fecha a las propiedades del archivo activo"
+    addDateToFrontmatter: "Agregar datos de salud de una fecha a las propiedades del archivo activo",
+    batchCreateNotes: "Crear notas de salud para un rango de fechas"
   },
   notices: {
     noteCreated: (date) => `\xA1Nota de Garmin (${date}) creada!`,
     noActiveFile: "No hay archivo activo",
     invalidDate: "Fecha inv\xE1lida",
-    addedToFile: "Datos de Garmin agregados al archivo activo",
+    addedToFile: "Datos de salud agregados al archivo activo",
+    addedToFileFromProviders: (providers) => `Datos de salud obtenidos de: ${providers}`,
     fetchError: "No se pueden obtener los datos de salud",
-    interactiveAuth: "Inicio de sesi\xF3n de Garmin bloqueado: se devolvi\xF3 autenticaci\xF3n interactiva. Usa autenticaci\xF3n externa o sin interfaz."
+    interactiveAuth: "Inicio de sesi\xF3n de Garmin bloqueado: se devolvi\xF3 autenticaci\xF3n interactiva. Usa autenticaci\xF3n externa o sin interfaz.",
+    dateNotFoundInFile: "Fecha no encontrada en el archivo (frontmatter date: YYYY-MM-DD o nombre YYYY-MM-DD.md)",
+    loadingHealthData: "Obteniendo datos de salud...",
+    stravaMissingCredentials: "Strava: primero completa Client ID y Client Secret.",
+    stravaAuthorizeBrowser: "Autoriza el acceso en el navegador que se abri\xF3...",
+    stravaConnected: "Strava conectado con \xE9xito.",
+    stravaError: (message) => `Strava: ${message}`,
+    googleMissingCredentials: "Google Health: primero completa Client ID y Client Secret.",
+    googleAuthorizeBrowser: "Autoriza el acceso a Google Health en el navegador...",
+    googleConnected: "Google Health conectado con \xE9xito.",
+    googleError: (message) => `Google Health: ${message}`,
+    batchInvalidRange: "Rango de fechas inv\xE1lido",
+    batchRangeTooLong: (days) => `Rango demasiado largo (${days} d\xEDas > 90). Reduce el rango.`,
+    batchCreating: (days) => `Creando ${days} notas...`,
+    batchProgress: (created, total) => `${created}/${total} notas creadas...`,
+    batchCreated: (count) => `${count} nota(s) creada(s)`,
+    batchSkipped: (count) => `${count} ya existente(s)`,
+    batchErrors: (count) => `${count} error(es)`
   },
   modal: {
     dateLabel: "Fecha (DD-MM-YYYY)",
     ok: "OK",
     cancel: "Cancelar",
-    loading: "Obteniendo datos de Garmin\u2026"
+    loading: "Obteniendo datos de Garmin\u2026",
+    healthEntryTitle: (date) => `Datos de salud - ${date}`,
+    healthEntryLoading: "Obteniendo datos del proveedor...",
+    healthEntryProviderUnavailable: "Proveedor no disponible - entrada manual",
+    healthEntryProviderReceived: "Datos recibidos del proveedor",
+    healthEntrySteps: "\u{1F463} Pasos",
+    healthEntrySleep: "\u{1F4A4} Sue\xF1o (min)",
+    healthEntrySleepScore: "\u{1F4A4} Puntuaci\xF3n de sue\xF1o",
+    healthEntryHeartRate: "\u2764\uFE0F FC en reposo (bpm)",
+    healthEntryWeight: "\u2696\uFE0F Peso (kg)",
+    healthEntrySport: "\u{1F3C5} Deporte",
+    healthEntrySportPlaceholder: "ej. \u{1F3C3} \u{1F3CA}",
+    healthEntryTransport: "\u{1F6B2} Ciclismo - transporte (km)",
+    healthEntrySave: "Guardar",
+    batchTitle: "Crear notas de salud",
+    batchStartLabel: "Fecha de inicio",
+    batchEndLabel: "Fecha de fin",
+    batchSubmit: "Crear notas",
+    batchFolder: "Carpeta de destino",
+    batchFolderPlaceholder: "ej.: Diario/Salud",
+    folderSearchPlaceholder: "Buscar carpeta...",
+    browseFolder: "Explorar",
+    batchCount: (days) => `${days} nota(s) por crear`,
+    batchInvalidRange: "Rango inv\xE1lido",
+    batchInvalidRangeCheck: "Rango inv\xE1lido - revisa las fechas"
+  },
+  auth: {
+    successTitle: (provider) => `${provider} conectado`,
+    successCloseTab: "Puedes cerrar esta pesta\xF1a y volver a Obsidian.",
+    errorTitle: "Error",
+    deniedDefault: "acceso denegado",
+    internalError: "error"
   },
   settings: {
     title: "Health Connector",
@@ -37502,7 +38452,35 @@ var es = {
     vaultFolderDesc: "D\xF3nde guardar las notas de Garmin en tu vault",
     supportTitle: "Apoya el desarrollo",
     supportDesc: "Si te gusta poder ver tus datos de Garmin en Obsidian, considera apoyar su desarrollo",
-    supportButton: "\u2615\uFE0F Propina"
+    supportButton: "\u2615\uFE0F Propina",
+    providerGarminName: "Garmin",
+    providerGarminDesc: "Activar sincronizaci\xF3n Garmin",
+    providerStravaName: "Strava",
+    providerStravaDesc: "Activar sincronizaci\xF3n Strava",
+    providerGoogleName: "Google Health",
+    providerGoogleDesc: "Activar sincronizaci\xF3n Google Health",
+    garminSectionTitle: "Garmin Connect",
+    garminEmailPlaceholder: "email Garmin",
+    stravaSectionTitle: "Strava",
+    stravaClientIdName: "Client ID",
+    stravaClientIdDesc: "ID de tu app Strava (strava.com/settings/api)",
+    stravaClientSecretName: "Client Secret",
+    stravaClientSecretDesc: "Secret de tu app Strava",
+    stravaConnectName: "Conexi\xF3n Strava",
+    stravaConnectedDesc: "Cuenta conectada. Haz clic para reconectar.",
+    stravaDisconnectedDesc: "Haz clic para autorizar acceso a tus actividades de Strava.",
+    reconnectButton: "Reconectar",
+    stravaConnectButton: "Conectar Strava",
+    googleSectionTitle: "Google Health",
+    googleClientIdName: "Client ID",
+    googleClientIdDesc: "ID OAuth de tu app en Google Cloud",
+    googleClientIdPlaceholder: "ej. xxxxx.apps.googleusercontent.com",
+    googleClientSecretName: "Client Secret",
+    googleClientSecretDesc: "Secret OAuth de tu app en Google Cloud",
+    googleConnectName: "Conexi\xF3n Google Health",
+    googleConnectedDesc: "Cuenta conectada. Haz clic para reconectar.",
+    googleDisconnectedDesc: "Haz clic para autorizar acceso a Google Health/Fit.",
+    googleConnectButton: "Conectar Google"
   },
   template: {
     title: "Estad\xEDsticas de Salud",
@@ -37531,15 +38509,19 @@ class HealthConnectorPlugin extends obsidian.Plugin {
   constructor() {
     super(...arguments);
     this.i18n = getLocale();
-    this._healthService = null;
-    this._healthServiceCredKey = "";
+    this._healthServices = /* @__PURE__ */ new Map();
+    this._healthServiceCredKeys = /* @__PURE__ */ new Map();
   }
   async onload() {
     await this.loadSettings();
     this.i18n = getLocale(this.app.vault?.adapter?.basePath ? this.app.language : void 0);
     this.api = {
-      syncToday: () => this.writeProviderDataToActiveFile(/* @__PURE__ */ new Date()),
-      syncDate: (date) => this.writeProviderDataToActiveFile(date)
+      syncToday: async () => {
+        await this.writeProviderDataToActiveFile(/* @__PURE__ */ new Date());
+      },
+      syncDate: async (date) => {
+        await this.writeProviderDataToActiveFile(date);
+      }
     };
     try {
       globalThis.__HealthConnectorPluginInstance = this;
@@ -37597,7 +38579,7 @@ class HealthConnectorPlugin extends obsidian.Plugin {
         }
         const d = await this.resolveDateFromFile(file);
         if (!d) {
-          new obsidian.Notice("\u26A0\uFE0F Date introuvable dans le fichier (frontmatter date: YYYY-MM-DD ou nom de fichier YYYY-MM-DD.md)");
+          new obsidian.Notice(this.i18n.notices.dateNotFoundInFile);
           return;
         }
         await this.addHealthDataForDateToActiveFile(d);
@@ -37613,6 +38595,8 @@ class HealthConnectorPlugin extends obsidian.Plugin {
         await this.batchCreateNotes(params.startDate, params.endDate, params.folder);
       }
     });
+  }
+  async onunload() {
   }
   // Health data access handled by `HealthService` with provider pattern
   // The method to create standalone notes has been removed per configuration.
@@ -37660,10 +38644,10 @@ class HealthConnectorPlugin extends obsidian.Plugin {
    */
   async writeProviderDataToActiveFile(date) {
     this.app.workspace.getActiveFile();
-    const loadingNotice = new obsidian.Notice("\u23F3 R\xE9cup\xE9ration donn\xE9es sant\xE9\u2026", 0);
-    const data = await this.fetchHealthData(date);
+    const loadingNotice = new obsidian.Notice(this.i18n.notices.loadingHealthData, 0);
+    const result = await this.fetchHealthData(date);
     loadingNotice.hide();
-    return data;
+    return result.data;
   }
   // from provider in background, fill/override modal when data arrives.
   async addHealthDataForDateToActiveFile(date) {
@@ -37673,11 +38657,16 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       new obsidian.Notice(this.i18n.notices.noActiveFile);
       return;
     }
-    const loadingNotice = new obsidian.Notice("\u23F3 R\xE9cup\xE9ration des donn\xE9es sant\xE9\u2026", 0);
-    const providerData = await this.fetchHealthData(date);
+    const loadingNotice = new obsidian.Notice(this.i18n.notices.loadingHealthData, 0);
+    const result = await this.fetchHealthData(date);
     loadingNotice.hide();
-    await this.addDataToFile(file, date, providerData ?? {});
-    new obsidian.Notice(this.i18n.notices.addedToFile);
+    await this.addDataToFile(file, date, result.data ?? {});
+    if (result.successfulProviders.length > 0) {
+      const names = result.successfulProviders.map((key) => this.getProviderDisplayName(key)).join(", ");
+      new obsidian.Notice(this.i18n.notices.addedToFileFromProviders(names));
+      return;
+    }
+    new obsidian.Notice(this.i18n.notices.fetchError);
   }
   async resolveDateFromFile(file) {
     try {
@@ -37747,27 +38736,159 @@ class HealthConnectorPlugin extends obsidian.Plugin {
   }
   // Start provider fetch in background; returns null on error (graceful)
   async fetchHealthData(date) {
+    const enabledProviders = this.getEnabledProviders();
+    if (enabledProviders.length === 0) {
+      return { data: null, successfulProviders: [], attemptedProviders: [] };
+    }
+    const services = [];
+    const attemptedProviders = [...enabledProviders];
     try {
-      const credKey = `${this.settings.provider || "garmin"}:${this.settings.username}`;
-      if (!this._healthService || this._healthServiceCredKey !== credKey) {
-        const provider = this.resolveProvider();
-        this._healthService = new HealthService(provider);
-        this._healthServiceCredKey = credKey;
-        await this._healthService.init();
+      for (const key of enabledProviders) {
+        const credKey = this.buildProviderCredKey(key);
+        const existingService = this._healthServices.get(key);
+        const existingCredKey = this._healthServiceCredKeys.get(key);
+        if (!existingService || existingCredKey !== credKey) {
+          try {
+            const provider = this.resolveProvider(key);
+            const service = new HealthService(provider);
+            await service.init();
+            this._healthServices.set(key, service);
+            this._healthServiceCredKeys.set(key, credKey);
+            services.push({ key, service });
+          } catch (e) {
+            logger.warn(`Provider ${key} initialization failed:`, e);
+          }
+          continue;
+        }
+        services.push({ key, service: existingService });
       }
-      return await this._healthService.getData(date);
+      if (services.length === 0) {
+        return { data: null, successfulProviders: [], attemptedProviders };
+      }
+      const successfulProviders = [];
+      const fetched = await Promise.all(
+        services.map(async ({ key, service }) => {
+          try {
+            const data = await service.getData(date);
+            successfulProviders.push(key);
+            return data;
+          } catch (e) {
+            logger.warn(`Provider ${key} failed to fetch data:`, e);
+            return null;
+          }
+        })
+      );
+      return {
+        data: this.mergeProviderHealthData(fetched.filter((d) => d !== null)),
+        successfulProviders,
+        attemptedProviders
+      };
     } catch (e) {
-      if (e.message === "InteractiveAuthRequired") return null;
-      this._healthService = null;
-      this._healthServiceCredKey = "";
+      if (e.message === "InteractiveAuthRequired") {
+        return { data: null, successfulProviders: [], attemptedProviders };
+      }
+      this.clearHealthServiceCache();
       logger.error("fetchHealthData failed:", e);
-      return null;
+      return { data: null, successfulProviders: [], attemptedProviders };
     }
   }
-  // Resolve selected provider
-  resolveProvider() {
-    const key = (this.settings.provider || "garmin").toLowerCase();
+  getProviderDisplayName(key) {
+    if (key === "garmin") return this.i18n.settings.providerGarminName;
+    if (key === "strava") return this.i18n.settings.providerStravaName;
+    return this.i18n.settings.providerGoogleName;
+  }
+  clearHealthServiceCache() {
+    this._healthServices.clear();
+    this._healthServiceCredKeys.clear();
+  }
+  renderAuthHtml(title, message) {
+    return `<html><body><h2>${title}</h2><p>${message}</p></body></html>`;
+  }
+  invalidateProviderCache() {
+    this.clearHealthServiceCache();
+  }
+  getEnabledProviders() {
+    if (Array.isArray(this.settings.enabledProviders)) {
+      return this.settings.enabledProviders.map((p) => String(p).toLowerCase()).filter((p) => p === "garmin" || p === "strava" || p === "google");
+    }
+    const legacy = String(this.settings.provider || "garmin").toLowerCase();
+    if (legacy === "strava") return ["strava"];
+    if (legacy === "google") return ["google"];
+    return ["garmin"];
+  }
+  buildProviderCredKey(key) {
+    if (key === "strava") {
+      return [
+        key,
+        this.settings.stravaClientId || "",
+        this.settings.stravaClientSecret || "",
+        this.settings.stravaAccessToken || "",
+        this.settings.stravaRefreshToken || "",
+        String(this.settings.stravaExpiresAt || 0)
+      ].join(":");
+    }
+    if (key === "google") {
+      return [
+        key,
+        this.settings.googleClientId || "",
+        this.settings.googleClientSecret || "",
+        this.settings.googleAccessToken || "",
+        this.settings.googleRefreshToken || "",
+        String(this.settings.googleExpiresAt || 0)
+      ].join(":");
+    }
+    return [key, this.settings.username || "", this.settings.password || ""].join(":");
+  }
+  mergeProviderHealthData(allData) {
+    if (allData.length === 0) return null;
+    const maxNullable = (values) => {
+      const present = values.filter((v) => v !== null && v !== void 0);
+      if (present.length === 0) return null;
+      return Number(Math.max(...present).toFixed(2));
+    };
+    const sports = [...new Set(allData.flatMap((d) => d.sports ?? []))];
+    return {
+      steps: maxNullable(allData.map((d) => d.steps)),
+      weight: maxNullable(allData.map((d) => d.weight)),
+      averageHeartRate: maxNullable(allData.map((d) => d.averageHeartRate)),
+      hrv: maxNullable(allData.map((d) => d.hrv)),
+      stress: maxNullable(allData.map((d) => d.stress)),
+      bodyBattery: maxNullable(allData.map((d) => d.bodyBattery)),
+      spO2: maxNullable(allData.map((d) => d.spO2)),
+      sleep: maxNullable(allData.map((d) => d.sleep)),
+      sleepScore: maxNullable(allData.map((d) => d.sleepScore)),
+      sports,
+      transport_km: maxNullable(allData.map((d) => d.transport_km)),
+      didRunning: allData.some((d) => d.didRunning),
+      runningDistance_km: maxNullable(allData.map((d) => d.runningDistance_km)),
+      didSwimming: allData.some((d) => d.didSwimming),
+      SwimmingDistance_km: maxNullable(allData.map((d) => d.SwimmingDistance_km)),
+      didCycling: allData.some((d) => d.didCycling),
+      cyclingDistance_km: maxNullable(allData.map((d) => d.cyclingDistance_km)),
+      otherActivities: allData.some((d) => d.otherActivities)
+    };
+  }
+  // Resolve a provider by key
+  resolveProvider(key) {
     switch (key) {
+      case "google": {
+        const tokens = {
+          accessToken: this.settings.googleAccessToken || "",
+          refreshToken: this.settings.googleRefreshToken || "",
+          expiresAt: this.settings.googleExpiresAt || 0
+        };
+        return new GoogleHealthProvider(
+          this.settings.googleClientId || "",
+          this.settings.googleClientSecret || "",
+          tokens,
+          async (updated) => {
+            this.settings.googleAccessToken = updated.accessToken;
+            this.settings.googleRefreshToken = updated.refreshToken;
+            this.settings.googleExpiresAt = updated.expiresAt;
+            await this.saveSettings();
+          }
+        );
+      }
       case "strava": {
         const tokens = {
           accessToken: this.settings.stravaAccessToken || "",
@@ -37796,7 +38917,7 @@ class HealthConnectorPlugin extends obsidian.Plugin {
     const clientId = this.settings.stravaClientId?.trim();
     const clientSecret = this.settings.stravaClientSecret?.trim();
     if (!clientId || !clientSecret) {
-      new obsidian.Notice("Strava: renseigne d'abord le Client ID et le Client Secret.");
+      new obsidian.Notice(this.i18n.notices.stravaMissingCredentials);
       return;
     }
     let server;
@@ -37815,14 +38936,14 @@ class HealthConnectorPlugin extends obsidian.Plugin {
           const error = url.searchParams.get("error");
           res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
           if (code2) {
-            res.end("<html><body><h2>\u2705 Strava connect\xE9 !</h2><p>Tu peux fermer cet onglet et retourner dans Obsidian.</p></body></html>");
+            res.end(this.renderAuthHtml(`\u2705 ${this.i18n.auth.successTitle("Strava")}`, this.i18n.auth.successCloseTab));
             resolveCode(code2);
           } else {
-            res.end(`<html><body><h2>\u274C Erreur</h2><p>${error ?? "acc\xE8s refus\xE9"}</p></body></html>`);
+            res.end(this.renderAuthHtml(`\u274C ${this.i18n.auth.errorTitle}`, error ?? this.i18n.auth.deniedDefault));
             rejectCode(new Error(`Strava OAuth denied: ${error ?? "unknown"}`));
           }
         } catch (e) {
-          res.end("error");
+          res.end(this.i18n.auth.internalError);
           rejectCode(e);
         }
       });
@@ -37832,7 +38953,7 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       const authUrl = `https://www.strava.com/oauth/authorize?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&approval_prompt=force&scope=activity%3Aread_all`;
       const { shell } = window.require("electron");
       await shell.openExternal(authUrl);
-      new obsidian.Notice("Autorise l'acc\xE8s dans le navigateur qui vient de s'ouvrir\u2026", 6e3);
+      new obsidian.Notice(this.i18n.notices.stravaAuthorizeBrowser, 6e3);
       const timeoutHandle = setTimeout(() => rejectCode(new Error("Timeout: pas de r\xE9ponse Strava apr\xE8s 5 minutes")), 5 * 60 * 1e3);
       const code = await codePromise;
       clearTimeout(timeoutHandle);
@@ -37841,12 +38962,90 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       this.settings.stravaRefreshToken = tokens.refreshToken;
       this.settings.stravaExpiresAt = tokens.expiresAt;
       await this.saveSettings();
-      this._healthService = null;
-      this._healthServiceCredKey = "";
-      new obsidian.Notice("\u2705 Strava connect\xE9 avec succ\xE8s !");
+      this.clearHealthServiceCache();
+      new obsidian.Notice(this.i18n.notices.stravaConnected);
     } catch (e) {
       logger.error("Strava connect error:", e);
-      new obsidian.Notice(`\u274C Strava: ${e.message}`);
+      new obsidian.Notice(this.i18n.notices.stravaError(e.message));
+    } finally {
+      if (server) server.close();
+    }
+  }
+  /** Open Google OAuth flow and exchange code for Google Health tokens */
+  async connectGoogleHealth() {
+    const clientId = String(this.settings.googleClientId || "").trim();
+    const clientSecret = String(this.settings.googleClientSecret || "").trim();
+    const redirectUri = String(GOOGLE_OAUTH_CONFIG.redirectUri ).trim();
+    if (!clientId || !clientSecret || !redirectUri) {
+      new obsidian.Notice(this.i18n.notices.googleMissingCredentials);
+      return;
+    }
+    let redirectUrl;
+    try {
+      redirectUrl = new URL(redirectUri);
+    } catch {
+      new obsidian.Notice(this.i18n.notices.googleError("redirect_uri invalide dans src/config/oauth.ts"));
+      return;
+    }
+    const listenHost = redirectUrl.hostname;
+    const listenPort = Number(redirectUrl.port || (redirectUrl.protocol === "https:" ? 443 : 80));
+    const callbackPath = redirectUrl.pathname || "/";
+    let server;
+    let resolveCode;
+    let rejectCode;
+    const codePromise = new Promise((res, rej) => {
+      resolveCode = res;
+      rejectCode = rej;
+    });
+    try {
+      const http = window.require("http");
+      server = http.createServer((req, res) => {
+        try {
+          const url = new URL(req.url, redirectUrl.origin);
+          if (url.pathname !== callbackPath) {
+            res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+            res.end("Not Found");
+            return;
+          }
+          const code2 = url.searchParams.get("code");
+          const error = url.searchParams.get("error");
+          res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+          if (code2) {
+            res.end(this.renderAuthHtml(this.i18n.auth.successTitle("Google Health"), this.i18n.auth.successCloseTab));
+            resolveCode(code2);
+          } else {
+            res.end(this.renderAuthHtml(this.i18n.auth.errorTitle, error ?? this.i18n.auth.deniedDefault));
+            rejectCode(new Error(`Google OAuth denied: ${error ?? "unknown"}`));
+          }
+        } catch (e) {
+          res.end(this.i18n.auth.internalError);
+          rejectCode(e);
+        }
+      });
+      await new Promise((res, rej) => server.listen(listenPort, listenHost, (err) => err ? rej(err) : res()));
+      const scopes = [
+        "https://www.googleapis.com/auth/fitness.activity.read",
+        "https://www.googleapis.com/auth/fitness.body.read",
+        "https://www.googleapis.com/auth/fitness.heart_rate.read",
+        "https://www.googleapis.com/auth/fitness.sleep.read"
+      ].join(" ");
+      const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(clientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&access_type=offline&prompt=consent&scope=${encodeURIComponent(scopes)}`;
+      const { shell } = window.require("electron");
+      await shell.openExternal(authUrl);
+      new obsidian.Notice(this.i18n.notices.googleAuthorizeBrowser, 6e3);
+      const timeoutHandle = setTimeout(() => rejectCode(new Error("Timeout: pas de r\xE9ponse Google apr\xE8s 5 minutes")), 5 * 60 * 1e3);
+      const code = await codePromise;
+      clearTimeout(timeoutHandle);
+      const tokens = await GoogleHealthProvider.exchangeCode(clientId, clientSecret, code, redirectUri);
+      this.settings.googleAccessToken = tokens.accessToken;
+      this.settings.googleRefreshToken = tokens.refreshToken;
+      this.settings.googleExpiresAt = tokens.expiresAt;
+      await this.saveSettings();
+      this.clearHealthServiceCache();
+      new obsidian.Notice(this.i18n.notices.googleConnected);
+    } catch (e) {
+      logger.error("Google Health connect error:", e);
+      new obsidian.Notice(this.i18n.notices.googleError(e.message));
     } finally {
       if (server) server.close();
     }
@@ -37859,12 +39058,28 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       const set = (key, value) => {
         if (value !== void 0 && value !== null) frontmatter[key] = value;
       };
+      const toSportList = (value) => {
+        if (Array.isArray(value)) return value.map((v) => String(v)).filter(Boolean);
+        if (typeof value === "string") return value.split(/[\s,]+/).map((v) => v.trim()).filter(Boolean);
+        return [];
+      };
       set("steps", data.steps);
       set("sleep", data.sleep);
       set("sleepScore", data.sleepScore);
       set("weight", data.weight);
       set("averageHeartRate", data.averageHeartRate);
-      if (data.sports && data.sports.length > 0) frontmatter["sport"] = data.sports;
+      set("hrv", data.hrv);
+      set("stress", data.stress);
+      set("bodyBattery", data.bodyBattery);
+      set("spO2", data.spO2);
+      if (data.sports && data.sports.length > 0) {
+        const merged = [.../* @__PURE__ */ new Set([
+          ...toSportList(frontmatter["sport"]),
+          ...toSportList(frontmatter["sports"]),
+          ...data.sports.map((s) => String(s)).filter(Boolean)
+        ])];
+        frontmatter["sport"] = merged;
+      }
       set("runningDistance_km", data.runningDistance_km);
       set("SwimmingDistance_km", data.SwimmingDistance_km);
       set("transport_km", data.transport_km);
@@ -37885,14 +39100,20 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       "date",
       "steps",
       "sleep",
+      "sleepScore",
       "weight",
       "averageHeartRate",
+      "hrv",
+      "stress",
+      "bodyBattery",
+      "spO2",
       "didRunning",
       "runningDistance_km",
       "didSwimming",
       "SwimmingDistance_km",
       "didCycling",
       "cyclingDistance_km",
+      "transport_km",
       "otherActivities"
     ];
     const newKeys = /* @__PURE__ */ new Map();
@@ -37920,6 +39141,18 @@ ${key}: ${newValue}
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    if (!this.settings.googleClientId && String("").trim()) {
+      this.settings.googleClientId = String("").trim();
+    }
+    if (!this.settings.googleClientSecret && String("").trim()) {
+      this.settings.googleClientSecret = String("").trim();
+    }
+    if (!Array.isArray(this.settings.enabledProviders)) {
+      const legacy = String(this.settings.provider || "garmin").toLowerCase();
+      if (legacy === "strava") this.settings.enabledProviders = ["strava"];
+      else if (legacy === "google") this.settings.enabledProviders = ["google"];
+      else this.settings.enabledProviders = ["garmin"];
+    }
   }
   async saveSettings() {
     await this.saveData(this.settings);
@@ -37944,11 +39177,11 @@ ${key}: ${newValue}
       cur.setDate(cur.getDate() + 1);
     }
     if (dates.length === 0) {
-      new obsidian.Notice("\u26A0\uFE0F Plage de dates invalide");
+      new obsidian.Notice(this.i18n.notices.batchInvalidRange);
       return;
     }
     if (dates.length > 90) {
-      new obsidian.Notice(`\u26A0\uFE0F Plage trop longue (${dates.length} jours > 90). R\xE9duis la plage.`);
+      new obsidian.Notice(this.i18n.notices.batchRangeTooLong(dates.length));
       return;
     }
     const targetFolder = folder.trim() || this.settings.vaultFolder;
@@ -37957,22 +39190,10 @@ ${key}: ${newValue}
       if (!existing) await this.app.vault.createFolder(targetFolder);
     } catch (e) {
     }
-    const notice = new obsidian.Notice(`\u23F3 Cr\xE9ation de ${dates.length} notes\u2026`, 0);
+    const notice = new obsidian.Notice(this.i18n.notices.batchCreating(dates.length), 0);
     let created = 0;
     let skipped = 0;
     let errors = 0;
-    try {
-      const credKey = `${this.settings.provider || "garmin"}:${this.settings.username}`;
-      if (!this._healthService || this._healthServiceCredKey !== credKey) {
-        this._healthService = new HealthService(this.resolveProvider());
-        this._healthServiceCredKey = credKey;
-        await this._healthService.init();
-      }
-    } catch (e) {
-      notice.hide();
-      new obsidian.Notice(`\u274C Impossible d'initialiser le provider: ${e.message}`);
-      return;
-    }
     for (const date of dates) {
       const dateStr = date.toISOString().slice(0, 10);
       const filePath = `${targetFolder}/${dateStr}.md`;
@@ -37983,14 +39204,14 @@ ${key}: ${newValue}
       try {
         let data = null;
         try {
-          data = await this._healthService.getData(date);
+          data = (await this.fetchHealthData(date)).data;
         } catch (e) {
           logger.warn(`Fetch failed for ${dateStr}:`, e);
         }
         const content = this.buildNoteContent(date, data);
         await this.app.vault.create(filePath, content);
         created++;
-        notice.setMessage(`\u23F3 ${created}/${dates.length} notes cr\xE9\xE9es\u2026`);
+        notice.setMessage(this.i18n.notices.batchProgress(created, dates.length));
       } catch (e) {
         logger.error(`Failed to create note for ${dateStr}:`, e);
         errors++;
@@ -37998,9 +39219,9 @@ ${key}: ${newValue}
       await new Promise((r) => setTimeout(r, 300));
     }
     notice.hide();
-    const parts = [`\u2705 ${created} note(s) cr\xE9\xE9e(s)`];
-    if (skipped > 0) parts.push(`${skipped} d\xE9j\xE0 existante(s)`);
-    if (errors > 0) parts.push(`${errors} erreur(s)`);
+    const parts = [this.i18n.notices.batchCreated(created)];
+    if (skipped > 0) parts.push(this.i18n.notices.batchSkipped(skipped));
+    if (errors > 0) parts.push(this.i18n.notices.batchErrors(errors));
     new obsidian.Notice(parts.join(", "), 5e3);
   }
   /** Build a markdown note with YAML frontmatter for a given date + health data */
@@ -38020,6 +39241,10 @@ ${key}: ${newValue}
       `sleep: ${yv(data?.sleep)}`,
       `sleepScore: ${yv(data?.sleepScore)}`,
       `averageHeartRate: ${yv(data?.averageHeartRate)}`,
+      `hrv: ${yv(data?.hrv)}`,
+      `stress: ${yv(data?.stress)}`,
+      `bodyBattery: ${yv(data?.bodyBattery)}`,
+      `spO2: ${yv(data?.spO2)}`,
       `transport_km: ${yv(data?.transport_km)}`,
       'alcool: ""',
       'fruits&vegetables: ""',
@@ -38044,7 +39269,7 @@ class FolderSuggestModal extends obsidian.FuzzySuggestModal {
   constructor(app, onChoose) {
     super(app);
     this.onChoose = onChoose;
-    this.setPlaceholder("Rechercher un dossier\u2026");
+    this.setPlaceholder(getLocale(this.app.language).modal.folderSearchPlaceholder);
   }
   getItems() {
     return this.app.vault.getAllLoadedFiles().filter((f) => f instanceof obsidian.TFolder);
@@ -38081,13 +39306,13 @@ class DateRangeModal extends obsidian.Modal {
     let selectedFolder = this.defaultFolder;
     const folderRow = form.createDiv({ cls: "health-entry-row" });
     folderRow.createEl("label", { text: this.i18n.modal.batchFolder, cls: "health-entry-label" });
-    const folderCell = folderRow.createDiv({ style: "display:flex;gap:0.4rem;align-items:center;flex:1;" });
+    const folderCell = folderRow.createDiv({ attr: { style: "display:flex;gap:0.4rem;align-items:center;flex:1;" } });
     const folderDisplay = folderCell.createEl("span", {
       cls: "health-entry-folder-display",
       attr: { style: "flex:1;padding:0.3rem 0.5rem;border:1px solid var(--background-modifier-border);border-radius:4px;background:var(--background-primary);color:var(--text-normal);font-size:0.9em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" }
     });
     folderDisplay.setText(selectedFolder || "/");
-    const browseBtn = folderCell.createEl("button", { text: "\u{1F4C2} Parcourir", attr: { style: "flex-shrink:0;" } });
+    const browseBtn = folderCell.createEl("button", { text: `\u{1F4C2} ${this.i18n.modal.browseFolder}`, attr: { style: "flex-shrink:0;" } });
     browseBtn.addEventListener("click", () => {
       new FolderSuggestModal(this.app, (folder) => {
         selectedFolder = folder;
@@ -38100,9 +39325,9 @@ class DateRangeModal extends obsidian.Modal {
       const e = new Date(endInput.value);
       if (!isNaN(s.getTime()) && !isNaN(e.getTime()) && e >= s) {
         const days = Math.round((e.getTime() - s.getTime()) / 864e5) + 1;
-        infoEl.setText(`\u{1F4C5} ${days} note(s) \xE0 cr\xE9er`);
+        infoEl.setText(`\u{1F4C5} ${this.i18n.modal.batchCount(days)}`);
       } else {
-        infoEl.setText("\u26A0\uFE0F Plage invalide");
+        infoEl.setText(`\u26A0\uFE0F ${this.i18n.modal.batchInvalidRange}`);
       }
     };
     startInput.addEventListener("change", updateInfo);
@@ -38119,7 +39344,7 @@ class DateRangeModal extends obsidian.Modal {
       const s = new Date(startInput.value);
       const e = new Date(endInput.value);
       if (isNaN(s.getTime()) || isNaN(e.getTime()) || e < s) {
-        infoEl.setText("\u26A0\uFE0F Plage invalide \u2014 v\xE9rifie les dates");
+        infoEl.setText(`\u26A0\uFE0F ${this.i18n.modal.batchInvalidRangeCheck}`);
         return;
       }
       this.resolve({ startDate: s, endDate: e, folder: selectedFolder });
@@ -38139,21 +39364,48 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
     const { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: this.plugin.i18n.settings.title });
-    new obsidian.Setting(containerEl).setName("Provider").setDesc("Source de donn\xE9es sant\xE9").addDropdown((dd) => {
-      dd.addOption("garmin", "Garmin");
-      dd.addOption("strava", "Strava");
-      dd.setValue(this.plugin.settings.provider || "garmin");
-      dd.onChange(async (value) => {
-        this.plugin.settings.provider = value;
-        await this.plugin.saveSettings();
-        this.display();
+    const enabledProviders = new Set(
+      Array.isArray(this.plugin.settings.enabledProviders) ? this.plugin.settings.enabledProviders.map((p) => String(p).toLowerCase()) : [String(this.plugin.settings.provider || "garmin").toLowerCase()]
+    );
+    const persistEnabledProviders = async () => {
+      const normalized = [...enabledProviders].filter((p) => p === "garmin" || p === "strava" || p === "google");
+      this.plugin.settings.enabledProviders = normalized;
+      this.plugin.settings.provider = normalized[0] || "garmin";
+      this.plugin.invalidateProviderCache();
+      await this.plugin.saveSettings();
+      this.display();
+    };
+    new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.providerGarminName).setDesc(this.plugin.i18n.settings.providerGarminDesc).addToggle((toggle) => {
+      toggle.setValue(enabledProviders.has("garmin"));
+      toggle.onChange(async (value) => {
+        if (value) enabledProviders.add("garmin");
+        else enabledProviders.delete("garmin");
+        await persistEnabledProviders();
       });
     });
-    const provider = this.plugin.settings.provider || "garmin";
-    if (provider === "garmin") {
-      containerEl.createEl("h3", { text: "Garmin Connect" });
+    new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.providerStravaName).setDesc(this.plugin.i18n.settings.providerStravaDesc).addToggle((toggle) => {
+      toggle.setValue(enabledProviders.has("strava"));
+      toggle.onChange(async (value) => {
+        if (value) enabledProviders.add("strava");
+        else enabledProviders.delete("strava");
+        await persistEnabledProviders();
+      });
+    });
+    new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.providerGoogleName).setDesc(this.plugin.i18n.settings.providerGoogleDesc).addToggle((toggle) => {
+      toggle.setValue(enabledProviders.has("google"));
+      toggle.onChange(async (value) => {
+        if (value) enabledProviders.add("google");
+        else enabledProviders.delete("google");
+        await persistEnabledProviders();
+      });
+    });
+    const showGarmin = enabledProviders.has("garmin");
+    const showStrava = enabledProviders.has("strava");
+    const showGoogle = enabledProviders.has("google");
+    if (showGarmin) {
+      containerEl.createEl("h3", { text: this.plugin.i18n.settings.garminSectionTitle });
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.username).setDesc(this.plugin.i18n.settings.usernameDesc).addText(
-        (text) => text.setPlaceholder("email Garmin").setValue(this.plugin.settings.username).onChange(async (value) => {
+        (text) => text.setPlaceholder(this.plugin.i18n.settings.garminEmailPlaceholder).setValue(this.plugin.settings.username).onChange(async (value) => {
           this.plugin.settings.username = value;
           await this.plugin.saveSettings();
         })
@@ -38193,15 +39445,15 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         return text;
       });
     }
-    if (provider === "strava") {
-      containerEl.createEl("h3", { text: "Strava" });
-      new obsidian.Setting(containerEl).setName("Client ID").setDesc("ID de ton application Strava (strava.com/settings/api)").addText(
+    if (showStrava) {
+      containerEl.createEl("h3", { text: this.plugin.i18n.settings.stravaSectionTitle });
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.stravaClientIdName).setDesc(this.plugin.i18n.settings.stravaClientIdDesc).addText(
         (text) => text.setPlaceholder("ex. 123456").setValue(this.plugin.settings.stravaClientId || "").onChange(async (value) => {
           this.plugin.settings.stravaClientId = value.trim();
           await this.plugin.saveSettings();
         })
       );
-      new obsidian.Setting(containerEl).setName("Client Secret").setDesc("Secret de ton application Strava").addText((text) => {
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.stravaClientSecretName).setDesc(this.plugin.i18n.settings.stravaClientSecretDesc).addText((text) => {
         text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.settings.stravaClientSecret || "").onChange(async (value) => {
           this.plugin.settings.stravaClientSecret = value.trim();
           await this.plugin.saveSettings();
@@ -38214,11 +39466,41 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         return text;
       });
       const isConnected = !!this.plugin.settings.stravaRefreshToken;
-      new obsidian.Setting(containerEl).setName("Connexion Strava").setDesc(isConnected ? "\u2705 Compte connect\xE9. Clique pour reconnecter." : "Clique pour autoriser l'acc\xE8s \xE0 tes activit\xE9s Strava.").addButton((btn) => {
-        btn.setButtonText(isConnected ? "Reconnecter" : "Connecter Strava");
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.stravaConnectName).setDesc(isConnected ? this.plugin.i18n.settings.stravaConnectedDesc : this.plugin.i18n.settings.stravaDisconnectedDesc).addButton((btn) => {
+        btn.setButtonText(isConnected ? this.plugin.i18n.settings.reconnectButton : this.plugin.i18n.settings.stravaConnectButton);
         if (!isConnected) btn.setCta?.();
         btn.onClick(async () => {
           await this.plugin.connectStrava();
+          this.display();
+        });
+      });
+    }
+    if (showGoogle) {
+      containerEl.createEl("h3", { text: this.plugin.i18n.settings.googleSectionTitle });
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.googleClientIdName).setDesc(this.plugin.i18n.settings.googleClientIdDesc).addText(
+        (text) => text.setPlaceholder(this.plugin.i18n.settings.googleClientIdPlaceholder).setValue(this.plugin.settings.googleClientId || "").onChange(async (value) => {
+          this.plugin.settings.googleClientId = value.trim();
+          await this.plugin.saveSettings();
+        })
+      );
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.googleClientSecretName).setDesc(this.plugin.i18n.settings.googleClientSecretDesc).addText((text) => {
+        text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.settings.googleClientSecret || "").onChange(async (value) => {
+          this.plugin.settings.googleClientSecret = value.trim();
+          await this.plugin.saveSettings();
+        });
+        try {
+          const inputEl = text.inputEl;
+          if (inputEl) inputEl.setAttribute("type", "password");
+        } catch {
+        }
+        return text;
+      });
+      const isGoogleConnected = !!this.plugin.settings.googleRefreshToken;
+      new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.googleConnectName).setDesc(isGoogleConnected ? this.plugin.i18n.settings.googleConnectedDesc : this.plugin.i18n.settings.googleDisconnectedDesc).addButton((btn) => {
+        btn.setButtonText(isGoogleConnected ? this.plugin.i18n.settings.reconnectButton : this.plugin.i18n.settings.googleConnectButton);
+        if (!isGoogleConnected) btn.setCta?.();
+        btn.onClick(async () => {
+          await this.plugin.connectGoogleHealth();
           this.display();
         });
       });
@@ -38229,13 +39511,13 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
       btn.onClick(() => {
         try {
           const a = document.createElement("a");
-          a.href = "https://paypal.me/axgdco";
+          a.href = "https://paypal.me/axgdcode";
           a.target = "_blank";
           a.rel = "noopener";
           a.click();
-        } catch (e) {
+        } catch {
           try {
-            window.open("https://paypal.me/axgdco", "_blank");
+            window.open("https://paypal.me/axgdcode", "_blank");
           } catch {
           }
         }

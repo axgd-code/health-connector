@@ -1,79 +1,101 @@
-# Garmin Connector for Obsidian
+# Health Connector for Obsidian
 
-Garmin Connector is a plugin for Obsidian that allows you to import and synchronize your Garmin health data directly into your Obsidian vault. This plugin is designed to help you track your health metrics, visualize your progress, and integrate your fitness data with your notes and workflows.
+Turn your daily notes into a reliable health dashboard.
 
-## Features
+Health Connector imports your data from Garmin, Strava, and Google Health, then automatically writes it into the frontmatter of your Obsidian notes. You keep a clean, queryable history that works with Dataview, Templates, and your personal workflows.
 
-- Import daily health data (steps, distance, etc.) from Garmin
-- Synchronize data automatically or manually
-- Multi-provider support (Garmin, Strava, etc.)
-- Customizable templates for data display
+## Why this plugin
 
-## Installation
+- Centralize your activity data in one place: your vault
+- Standardize frontmatter fields for consistent long-term tracking
+- Remove repetitive manual health data entry
 
-1. Download the latest release from the [GitHub repository](https://github.com/axgd-code/obsidian-health-connector/releases).
-2. Copy the plugin folder into your Obsidian vault's `.obsidian/plugins/` directory.
-3. Restart Obsidian and enable the plugin in the settings panel.
+## What you get
 
-## Configuration
+- Multi-provider sync: Garmin, Strava, Google Health
+- Unified frontmatter structure for daily notes
+- Quick sync commands (today or a target date)
+- Localized interface: French, English, Spanish
 
-1. Create a `.env` file in the root of the plugin folder with your API credentials:
+## Example workflow
 
-   ```env
-   GARMIN_CLIENT_ID=your_client_id
-   GARMIN_CLIENT_SECRET=your_client_secret
-   # Add other provider credentials as needed
-   ```
+Open your daily note, run a sync command, and your latest data appears in frontmatter. You can then build weekly or monthly trends with Dataview without manual cleanup.
 
-2. Edit the `manifest.json` and `config/template.ts` files if you need to customize plugin behavior or templates.
+Example fields (depending on provider):
 
-## Usage
+```yaml
+steps: 10234
+distance_km: 7.4
+calories: 2180
+resting_hr: 54
+sleep_hours: 7.2
+```
 
-- Use the command palette to trigger data synchronization (`Sync Garmin Data`).
-- View your imported health data in daily or weekly notes.
-- Customize templates in `src/config/template.ts` to change how data is displayed.
+## Manual installation
 
-## Development
-
-### Requirements
-- Node.js (v18 or higher recommended)
-- npm
-
-### Build & Test
+1. Build the plugin
 
 ```bash
 npm install
 npm run build
+```
+
+2. Copy `main.js`, `manifest.json`, and `styles.css` into:
+
+```text
+<vault>/.obsidian/plugins/obsidian-health-connector/
+```
+
+3. Enable the plugin in Obsidian settings
+
+## Configuration
+
+Configure your credentials in the plugin settings UI:
+
+- Garmin: username + password
+- Strava: Client ID + Client Secret
+- Google Health: Client ID + Client Secret
+
+The Google OAuth redirect URI is defined in `src/config/oauth.ts`:
+
+```ts
+redirectUri: "http://127.0.0.1:53682/google/oauth/callback"
+```
+
+This value must exactly match an authorized redirect URI in Google Cloud.
+
+## FAQ
+
+### Do the data leave my vault?
+No. Synced data are written to your local Obsidian notes.
+
+### Can I use only one provider?
+Yes. You can configure only Garmin, only Strava, only Google Health, or any combination.
+
+### Is the plugin mobile-compatible?
+Yes. The manifest declares the plugin as not desktop-only.
+
+## Support the project
+
+If this plugin helps you every day, you can support its development:
+
+- https://paypal.me/axgdcode
+
+## Development
+
+```bash
+npm run build
 npm test
 ```
 
-### File Structure
+Optional shortcut for local deployment:
 
-- `src/` — Main plugin source code
-- `scripts/` — Utility scripts for debugging and integration
-- `tests/` — Unit and integration tests
-- `styles.css` — Plugin styles
-- `manifest.json` — Obsidian plugin manifest
-
-## Providers
-
-- **Garmin**: Main provider for health data
-- **Strava**: Optional integration
-
-
-## Localization
-
-The plugin supports English, French, and Spanish. You can add more languages by editing the files in `src/i18n/`.
+```bash
+OBSIDIAN_PLUGIN_DIR="/absolute/path/to/vault/.obsidian/plugins/obsidian-health-connector" npm run deploy:obsidian
+```
 
 ## Security
 
-- Credentials are stored locally in the `.env` file and are not shared.
-- OAuth and SSO flows are handled securely.
-
-## Contributing
-
-Contributions are welcome! Please open issues or pull requests on the [GitHub repository](https://github.com/your-repo/garmin-connector).
-
-## License
-
-This project is licensed under the MIT License.
+- Never commit real secrets or a `.env` file that contains credentials.
+- Use `.env.example` only as a local template.
+- API credentials are stored locally in Obsidian plugin data.

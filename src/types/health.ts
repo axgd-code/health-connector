@@ -2,6 +2,10 @@ export interface HealthData {
   steps: number | null;
   weight: number | null;
   averageHeartRate: number | null;
+  hrv: number | null;
+  stress: number | null;
+  bodyBattery: number | null;
+  spO2: number | null;
   sleep: number | null;
   sleepScore: number | null;
   /** Sports performed as emoji strings. Cycling excluded (→ transport_km). */
