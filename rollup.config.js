@@ -1,7 +1,9 @@
-import esbuild from 'rollup-plugin-esbuild';
+import esbuildImport from 'rollup-plugin-esbuild';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
+
+const esbuild = esbuildImport.default ?? esbuildImport;
 
 export default {
   input: 'src/plugin/main.ts',
