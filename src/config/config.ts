@@ -1,17 +1,9 @@
 export const DEFAULT_SETTINGS = {
-  username: "",
-  password: "",
   vaultFolder: "obsidian-garmin-plugin",
   provider: "garmin",
   enabledProviders: ["garmin"],
   stravaClientId: "",
-  stravaClientSecret: "",
-  stravaAccessToken: "",
-  stravaRefreshToken: "",
   stravaExpiresAt: 0,
   googleClientId: "",
-  googleClientSecret: "",
-  googleAccessToken: "",
-  googleRefreshToken: "",
   googleExpiresAt: 0,
 };

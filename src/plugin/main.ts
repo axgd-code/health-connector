@@ -16,8 +16,8 @@ import { logger } from "../common/Logger";
 import { mergeProviderHealthData } from "../common/mergeHealthData";
 
 interface HealthConnectorSettings {
-  username: string;
-  password: string;
+  username?: string;
+  password?: string;
   vaultFolder: string;
   provider?: string; // legacy single-provider setting
   enabledProviders?: string[];
@@ -41,6 +41,38 @@ interface FetchHealthDataResult {
   attemptedProviders: ProviderKey[];
 }
 
+type SecretKey =
+  | 'garminUsername'
+  | 'garminPassword'
+  | 'stravaClientSecret'
+  | 'stravaAccessToken'
+  | 'stravaRefreshToken'
+  | 'googleClientSecret'
+  | 'googleAccessToken'
+  | 'googleRefreshToken';
+
+const SECRET_IDS: Record<SecretKey, string> = {
+  garminUsername: 'health-connector-garmin-username',
+  garminPassword: 'health-connector-garmin-password',
+  stravaClientSecret: 'health-connector-strava-client-secret',
+  stravaAccessToken: 'health-connector-strava-access-token',
+  stravaRefreshToken: 'health-connector-strava-refresh-token',
+  googleClientSecret: 'health-connector-google-client-secret',
+  googleAccessToken: 'health-connector-google-access-token',
+  googleRefreshToken: 'health-connector-google-refresh-token',
+};
+
+const LEGACY_SECRET_FIELDS: Array<{ field: keyof HealthConnectorSettings; secret: SecretKey }> = [
+  { field: 'username', secret: 'garminUsername' },
+  { field: 'password', secret: 'garminPassword' },
+  { field: 'stravaClientSecret', secret: 'stravaClientSecret' },
+  { field: 'stravaAccessToken', secret: 'stravaAccessToken' },
+  { field: 'stravaRefreshToken', secret: 'stravaRefreshToken' },
+  { field: 'googleClientSecret', secret: 'googleClientSecret' },
+  { field: 'googleAccessToken', secret: 'googleAccessToken' },
+  { field: 'googleRefreshToken', secret: 'googleRefreshToken' },
+];
+
 export interface HealthConnectorAPI {
   /** Sync today's health data into the active file's frontmatter */
   syncToday(): Promise<void>;
@@ -54,6 +86,42 @@ export default class HealthConnectorPlugin extends Plugin {
   public api!: HealthConnectorAPI;
   private _healthServices = new Map<ProviderKey, HealthService>();
   private _healthServiceCredKeys = new Map<ProviderKey, string>();
+
+  public getSecret(secret: SecretKey): string {
+    try {
+      return this.app.secretStorage.getSecret(SECRET_IDS[secret]) ?? '';
+    } catch (e) {
+      logger.warn(`Unable to read secret ${secret}:`, e);
+      return '';
+    }
+  }
+
+  public setSecret(secret: SecretKey, value: string) {
+    try {
+      this.app.secretStorage.setSecret(SECRET_IDS[secret], value);
+    } catch (e) {
+      logger.warn(`Unable to store secret ${secret}:`, e);
+    }
+  }
+
+  private sanitizeSettingsForPersist() {
+    for (const { field } of LEGACY_SECRET_FIELDS) {
+      (this.settings as any)[field] = '';
+    }
+  }
+
+  private migrateLegacySecretsFromSettings() {
+    let migrated = false;
+    for (const { field, secret } of LEGACY_SECRET_FIELDS) {
+      const raw = (this.settings as any)[field];
+      const value = typeof raw === 'string' ? raw.trim() : '';
+      if (!value) continue;
+      this.setSecret(secret, value);
+      (this.settings as any)[field] = '';
+      migrated = true;
+    }
+    return migrated;
+  }
 
   async onload() {
     await this.loadSettings();
@@ -426,9 +494,9 @@ export default class HealthConnectorPlugin extends Plugin {
       return [
         key,
         this.settings.stravaClientId || '',
-        this.settings.stravaClientSecret || '',
-        this.settings.stravaAccessToken || '',
-        this.settings.stravaRefreshToken || '',
+        this.getSecret('stravaClientSecret'),
+        this.getSecret('stravaAccessToken'),
+        this.getSecret('stravaRefreshToken'),
         String(this.settings.stravaExpiresAt || 0),
       ].join(':');
     }
@@ -437,14 +505,14 @@ export default class HealthConnectorPlugin extends Plugin {
       return [
         key,
         this.settings.googleClientId || '',
-        this.settings.googleClientSecret || '',
-        this.settings.googleAccessToken || '',
-        this.settings.googleRefreshToken || '',
+        this.getSecret('googleClientSecret'),
+        this.getSecret('googleAccessToken'),
+        this.getSecret('googleRefreshToken'),
         String(this.settings.googleExpiresAt || 0),
       ].join(':');
     }
 
-    return [key, this.settings.username || '', this.settings.password || ''].join(':');
+    return [key, this.getSecret('garminUsername'), this.getSecret('garminPassword')].join(':');
   }
 
   // Resolve a provider by key
@@ -452,17 +520,17 @@ export default class HealthConnectorPlugin extends Plugin {
     switch (key) {
       case 'google': {
         const tokens: GoogleTokens = {
-          accessToken: this.settings.googleAccessToken || '',
-          refreshToken: this.settings.googleRefreshToken || '',
+          accessToken: this.getSecret('googleAccessToken'),
+          refreshToken: this.getSecret('googleRefreshToken'),
           expiresAt: this.settings.googleExpiresAt || 0,
         };
         return new GoogleHealthProvider(
           this.settings.googleClientId || '',
-          this.settings.googleClientSecret || '',
+          this.getSecret('googleClientSecret'),
           tokens,
           async (updated) => {
-            this.settings.googleAccessToken = updated.accessToken;
-            this.settings.googleRefreshToken = updated.refreshToken;
+            this.setSecret('googleAccessToken', updated.accessToken);
+            this.setSecret('googleRefreshToken', updated.refreshToken);
             this.settings.googleExpiresAt = updated.expiresAt;
             await this.saveSettings();
           },
@@ -470,17 +538,17 @@ export default class HealthConnectorPlugin extends Plugin {
       }
       case 'strava': {
         const tokens: StravaTokens = {
-          accessToken: this.settings.stravaAccessToken || '',
-          refreshToken: this.settings.stravaRefreshToken || '',
+          accessToken: this.getSecret('stravaAccessToken'),
+          refreshToken: this.getSecret('stravaRefreshToken'),
           expiresAt: this.settings.stravaExpiresAt || 0,
         };
         return new StravaProvider(
           this.settings.stravaClientId || '',
-          this.settings.stravaClientSecret || '',
+          this.getSecret('stravaClientSecret'),
           tokens,
           async (updated) => {
-            this.settings.stravaAccessToken = updated.accessToken;
-            this.settings.stravaRefreshToken = updated.refreshToken;
+            this.setSecret('stravaAccessToken', updated.accessToken);
+            this.setSecret('stravaRefreshToken', updated.refreshToken);
             this.settings.stravaExpiresAt = updated.expiresAt;
             await this.saveSettings();
           },
@@ -488,14 +556,14 @@ export default class HealthConnectorPlugin extends Plugin {
       }
       case 'garmin':
       default:
-        return new GarminProvider(this.settings.username, this.settings.password);
+        return new GarminProvider(this.getSecret('garminUsername'), this.getSecret('garminPassword'));
     }
   }
 
   /** Open Strava OAuth flow in the browser and exchange the code for tokens */
   async connectStrava(): Promise<void> {
     const clientId = this.settings.stravaClientId?.trim();
-    const clientSecret = this.settings.stravaClientSecret?.trim();
+    const clientSecret = this.getSecret('stravaClientSecret').trim();
     if (!clientId || !clientSecret) {
       new Notice(this.i18n.notices.stravaMissingCredentials);
       return;
@@ -550,8 +618,8 @@ export default class HealthConnectorPlugin extends Plugin {
       clearTimeout(timeoutHandle);
 
       const tokens = await StravaProvider.exchangeCode(clientId, clientSecret, code);
-      this.settings.stravaAccessToken = tokens.accessToken;
-      this.settings.stravaRefreshToken = tokens.refreshToken;
+      this.setSecret('stravaAccessToken', tokens.accessToken);
+      this.setSecret('stravaRefreshToken', tokens.refreshToken);
       this.settings.stravaExpiresAt = tokens.expiresAt;
       await this.saveSettings();
 
@@ -570,7 +638,7 @@ export default class HealthConnectorPlugin extends Plugin {
   /** Open Google OAuth flow and exchange code for Google Health tokens */
   async connectGoogleHealth(): Promise<void> {
     const clientId = String(this.settings.googleClientId || '').trim();
-    const clientSecret = String(this.settings.googleClientSecret || '').trim();
+    const clientSecret = this.getSecret('googleClientSecret').trim();
     const redirectUri = String((GOOGLE_OAUTH_CONFIG as any).redirectUri || '').trim();
     if (!clientId || !clientSecret || !redirectUri) {
       new Notice(this.i18n.notices.googleMissingCredentials);
@@ -642,8 +710,8 @@ export default class HealthConnectorPlugin extends Plugin {
       clearTimeout(timeoutHandle);
 
       const tokens = await GoogleHealthProvider.exchangeCode(clientId, clientSecret, code, redirectUri);
-      this.settings.googleAccessToken = tokens.accessToken;
-      this.settings.googleRefreshToken = tokens.refreshToken;
+      this.setSecret('googleAccessToken', tokens.accessToken);
+      this.setSecret('googleRefreshToken', tokens.refreshToken);
       this.settings.googleExpiresAt = tokens.expiresAt;
       await this.saveSettings();
       this.clearHealthServiceCache();
@@ -745,12 +813,14 @@ export default class HealthConnectorPlugin extends Plugin {
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
 
+    const migrated = this.migrateLegacySecretsFromSettings();
+
     // One-time migration support from legacy static oauth.ts values.
     if (!this.settings.googleClientId && String(GOOGLE_OAUTH_CONFIG.clientId || '').trim()) {
       this.settings.googleClientId = String(GOOGLE_OAUTH_CONFIG.clientId || '').trim();
     }
-    if (!this.settings.googleClientSecret && String(GOOGLE_OAUTH_CONFIG.clientSecret || '').trim()) {
-      this.settings.googleClientSecret = String(GOOGLE_OAUTH_CONFIG.clientSecret || '').trim();
+    if (!this.getSecret('googleClientSecret') && String(GOOGLE_OAUTH_CONFIG.clientSecret || '').trim()) {
+      this.setSecret('googleClientSecret', String(GOOGLE_OAUTH_CONFIG.clientSecret || '').trim());
     }
 
     if (!Array.isArray(this.settings.enabledProviders)) {
@@ -759,9 +829,15 @@ export default class HealthConnectorPlugin extends Plugin {
       else if (legacy === 'google') this.settings.enabledProviders = ['google'];
       else this.settings.enabledProviders = ['garmin'];
     }
+
+    this.sanitizeSettingsForPersist();
+    if (migrated) {
+      await this.saveSettings();
+    }
   }
 
   async saveSettings() {
+    this.sanitizeSettingsForPersist();
     await this.saveData(this.settings);
   }
 
@@ -1223,9 +1299,10 @@ class HealthConnectorSettingTab extends PluginSettingTab {
         .addText((text: any) =>
           text
             .setPlaceholder(this.plugin.i18n.settings.garminEmailPlaceholder)
-            .setValue(this.plugin.settings.username)
+            .setValue(this.plugin.getSecret('garminUsername'))
             .onChange(async (value: string) => {
-              this.plugin.settings.username = value;
+              this.plugin.setSecret('garminUsername', value.trim());
+              this.plugin.invalidateProviderCache();
               await this.plugin.saveSettings();
             })
         );
@@ -1236,9 +1313,10 @@ class HealthConnectorSettingTab extends PluginSettingTab {
         .addText((text: any) => {
           text
             .setPlaceholder(this.plugin.i18n.settings.password)
-            .setValue(this.plugin.settings.password)
+            .setValue(this.plugin.getSecret('garminPassword'))
             .onChange(async (value: string) => {
-              this.plugin.settings.password = value;
+              this.plugin.setSecret('garminPassword', value.trim());
+              this.plugin.invalidateProviderCache();
               await this.plugin.saveSettings();
             });
           try {
@@ -1296,9 +1374,10 @@ class HealthConnectorSettingTab extends PluginSettingTab {
         .addText((text: any) => {
           text
             .setPlaceholder('••••••••••••')
-            .setValue(this.plugin.settings.stravaClientSecret || '')
+            .setValue(this.plugin.getSecret('stravaClientSecret'))
             .onChange(async (value: string) => {
-              this.plugin.settings.stravaClientSecret = value.trim();
+              this.plugin.setSecret('stravaClientSecret', value.trim());
+              this.plugin.invalidateProviderCache();
               await this.plugin.saveSettings();
             });
           try {
@@ -1308,7 +1387,7 @@ class HealthConnectorSettingTab extends PluginSettingTab {
           return text;
         });
 
-      const isConnected = !!(this.plugin.settings.stravaRefreshToken);
+      const isConnected = !!this.plugin.getSecret('stravaRefreshToken');
       new Setting(containerEl)
         .setName(this.plugin.i18n.settings.stravaConnectName)
         .setDesc(isConnected ? this.plugin.i18n.settings.stravaConnectedDesc : this.plugin.i18n.settings.stravaDisconnectedDesc)
@@ -1345,9 +1424,10 @@ class HealthConnectorSettingTab extends PluginSettingTab {
         .addText((text: any) => {
           text
             .setPlaceholder('••••••••••••')
-            .setValue(this.plugin.settings.googleClientSecret || '')
+            .setValue(this.plugin.getSecret('googleClientSecret'))
             .onChange(async (value: string) => {
-              this.plugin.settings.googleClientSecret = value.trim();
+              this.plugin.setSecret('googleClientSecret', value.trim());
+              this.plugin.invalidateProviderCache();
               await this.plugin.saveSettings();
             });
           try {
@@ -1357,7 +1437,7 @@ class HealthConnectorSettingTab extends PluginSettingTab {
           return text;
         });
 
-      const isGoogleConnected = !!(this.plugin.settings.googleRefreshToken);
+      const isGoogleConnected = !!this.plugin.getSecret('googleRefreshToken');
       new Setting(containerEl)
         .setName(this.plugin.i18n.settings.googleConnectName)
         .setDesc(isGoogleConnected ? this.plugin.i18n.settings.googleConnectedDesc : this.plugin.i18n.settings.googleDisconnectedDesc)

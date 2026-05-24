@@ -38100,20 +38100,12 @@ class HealthService {
 }
 
 const DEFAULT_SETTINGS = {
-  username: "",
-  password: "",
   vaultFolder: "obsidian-garmin-plugin",
   provider: "garmin",
   enabledProviders: ["garmin"],
   stravaClientId: "",
-  stravaClientSecret: "",
-  stravaAccessToken: "",
-  stravaRefreshToken: "",
   stravaExpiresAt: 0,
   googleClientId: "",
-  googleClientSecret: "",
-  googleAccessToken: "",
-  googleRefreshToken: "",
   googleExpiresAt: 0
 };
 
@@ -38543,12 +38535,64 @@ function mergeProviderHealthData(entries) {
   };
 }
 
+const SECRET_IDS = {
+  garminUsername: "health-connector-garmin-username",
+  garminPassword: "health-connector-garmin-password",
+  stravaClientSecret: "health-connector-strava-client-secret",
+  stravaAccessToken: "health-connector-strava-access-token",
+  stravaRefreshToken: "health-connector-strava-refresh-token",
+  googleClientSecret: "health-connector-google-client-secret",
+  googleAccessToken: "health-connector-google-access-token",
+  googleRefreshToken: "health-connector-google-refresh-token"
+};
+const LEGACY_SECRET_FIELDS = [
+  { field: "username", secret: "garminUsername" },
+  { field: "password", secret: "garminPassword" },
+  { field: "stravaClientSecret", secret: "stravaClientSecret" },
+  { field: "stravaAccessToken", secret: "stravaAccessToken" },
+  { field: "stravaRefreshToken", secret: "stravaRefreshToken" },
+  { field: "googleClientSecret", secret: "googleClientSecret" },
+  { field: "googleAccessToken", secret: "googleAccessToken" },
+  { field: "googleRefreshToken", secret: "googleRefreshToken" }
+];
 class HealthConnectorPlugin extends obsidian.Plugin {
   constructor() {
     super(...arguments);
     this.i18n = getLocale();
     this._healthServices = /* @__PURE__ */ new Map();
     this._healthServiceCredKeys = /* @__PURE__ */ new Map();
+  }
+  getSecret(secret) {
+    try {
+      return this.app.secretStorage.getSecret(SECRET_IDS[secret]) ?? "";
+    } catch (e) {
+      logger.warn(`Unable to read secret ${secret}:`, e);
+      return "";
+    }
+  }
+  setSecret(secret, value) {
+    try {
+      this.app.secretStorage.setSecret(SECRET_IDS[secret], value);
+    } catch (e) {
+      logger.warn(`Unable to store secret ${secret}:`, e);
+    }
+  }
+  sanitizeSettingsForPersist() {
+    for (const { field } of LEGACY_SECRET_FIELDS) {
+      this.settings[field] = "";
+    }
+  }
+  migrateLegacySecretsFromSettings() {
+    let migrated = false;
+    for (const { field, secret } of LEGACY_SECRET_FIELDS) {
+      const raw = this.settings[field];
+      const value = typeof raw === "string" ? raw.trim() : "";
+      if (!value) continue;
+      this.setSecret(secret, value);
+      this.settings[field] = "";
+      migrated = true;
+    }
+    return migrated;
   }
   async onload() {
     await this.loadSettings();
@@ -38859,9 +38903,9 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       return [
         key,
         this.settings.stravaClientId || "",
-        this.settings.stravaClientSecret || "",
-        this.settings.stravaAccessToken || "",
-        this.settings.stravaRefreshToken || "",
+        this.getSecret("stravaClientSecret"),
+        this.getSecret("stravaAccessToken"),
+        this.getSecret("stravaRefreshToken"),
         String(this.settings.stravaExpiresAt || 0)
       ].join(":");
     }
@@ -38869,30 +38913,30 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       return [
         key,
         this.settings.googleClientId || "",
-        this.settings.googleClientSecret || "",
-        this.settings.googleAccessToken || "",
-        this.settings.googleRefreshToken || "",
+        this.getSecret("googleClientSecret"),
+        this.getSecret("googleAccessToken"),
+        this.getSecret("googleRefreshToken"),
         String(this.settings.googleExpiresAt || 0)
       ].join(":");
     }
-    return [key, this.settings.username || "", this.settings.password || ""].join(":");
+    return [key, this.getSecret("garminUsername"), this.getSecret("garminPassword")].join(":");
   }
   // Resolve a provider by key
   resolveProvider(key) {
     switch (key) {
       case "google": {
         const tokens = {
-          accessToken: this.settings.googleAccessToken || "",
-          refreshToken: this.settings.googleRefreshToken || "",
+          accessToken: this.getSecret("googleAccessToken"),
+          refreshToken: this.getSecret("googleRefreshToken"),
           expiresAt: this.settings.googleExpiresAt || 0
         };
         return new GoogleHealthProvider(
           this.settings.googleClientId || "",
-          this.settings.googleClientSecret || "",
+          this.getSecret("googleClientSecret"),
           tokens,
           async (updated) => {
-            this.settings.googleAccessToken = updated.accessToken;
-            this.settings.googleRefreshToken = updated.refreshToken;
+            this.setSecret("googleAccessToken", updated.accessToken);
+            this.setSecret("googleRefreshToken", updated.refreshToken);
             this.settings.googleExpiresAt = updated.expiresAt;
             await this.saveSettings();
           }
@@ -38900,17 +38944,17 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       }
       case "strava": {
         const tokens = {
-          accessToken: this.settings.stravaAccessToken || "",
-          refreshToken: this.settings.stravaRefreshToken || "",
+          accessToken: this.getSecret("stravaAccessToken"),
+          refreshToken: this.getSecret("stravaRefreshToken"),
           expiresAt: this.settings.stravaExpiresAt || 0
         };
         return new StravaProvider(
           this.settings.stravaClientId || "",
-          this.settings.stravaClientSecret || "",
+          this.getSecret("stravaClientSecret"),
           tokens,
           async (updated) => {
-            this.settings.stravaAccessToken = updated.accessToken;
-            this.settings.stravaRefreshToken = updated.refreshToken;
+            this.setSecret("stravaAccessToken", updated.accessToken);
+            this.setSecret("stravaRefreshToken", updated.refreshToken);
             this.settings.stravaExpiresAt = updated.expiresAt;
             await this.saveSettings();
           }
@@ -38918,13 +38962,13 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       }
       case "garmin":
       default:
-        return new GarminProvider(this.settings.username, this.settings.password);
+        return new GarminProvider(this.getSecret("garminUsername"), this.getSecret("garminPassword"));
     }
   }
   /** Open Strava OAuth flow in the browser and exchange the code for tokens */
   async connectStrava() {
     const clientId = this.settings.stravaClientId?.trim();
-    const clientSecret = this.settings.stravaClientSecret?.trim();
+    const clientSecret = this.getSecret("stravaClientSecret").trim();
     if (!clientId || !clientSecret) {
       new obsidian.Notice(this.i18n.notices.stravaMissingCredentials);
       return;
@@ -38967,8 +39011,8 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       const code = await codePromise;
       clearTimeout(timeoutHandle);
       const tokens = await StravaProvider.exchangeCode(clientId, clientSecret, code);
-      this.settings.stravaAccessToken = tokens.accessToken;
-      this.settings.stravaRefreshToken = tokens.refreshToken;
+      this.setSecret("stravaAccessToken", tokens.accessToken);
+      this.setSecret("stravaRefreshToken", tokens.refreshToken);
       this.settings.stravaExpiresAt = tokens.expiresAt;
       await this.saveSettings();
       this.clearHealthServiceCache();
@@ -38983,7 +39027,7 @@ class HealthConnectorPlugin extends obsidian.Plugin {
   /** Open Google OAuth flow and exchange code for Google Health tokens */
   async connectGoogleHealth() {
     const clientId = String(this.settings.googleClientId || "").trim();
-    const clientSecret = String(this.settings.googleClientSecret || "").trim();
+    const clientSecret = this.getSecret("googleClientSecret").trim();
     const redirectUri = String(GOOGLE_OAUTH_CONFIG.redirectUri ).trim();
     if (!clientId || !clientSecret || !redirectUri) {
       new obsidian.Notice(this.i18n.notices.googleMissingCredentials);
@@ -39046,8 +39090,8 @@ class HealthConnectorPlugin extends obsidian.Plugin {
       const code = await codePromise;
       clearTimeout(timeoutHandle);
       const tokens = await GoogleHealthProvider.exchangeCode(clientId, clientSecret, code, redirectUri);
-      this.settings.googleAccessToken = tokens.accessToken;
-      this.settings.googleRefreshToken = tokens.refreshToken;
+      this.setSecret("googleAccessToken", tokens.accessToken);
+      this.setSecret("googleRefreshToken", tokens.refreshToken);
       this.settings.googleExpiresAt = tokens.expiresAt;
       await this.saveSettings();
       this.clearHealthServiceCache();
@@ -39150,11 +39194,12 @@ ${key}: ${newValue}
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    const migrated = this.migrateLegacySecretsFromSettings();
     if (!this.settings.googleClientId && String("").trim()) {
       this.settings.googleClientId = String("").trim();
     }
-    if (!this.settings.googleClientSecret && String("").trim()) {
-      this.settings.googleClientSecret = String("").trim();
+    if (!this.getSecret("googleClientSecret") && String("").trim()) {
+      this.setSecret("googleClientSecret", String("").trim());
     }
     if (!Array.isArray(this.settings.enabledProviders)) {
       const legacy = String(this.settings.provider || "garmin").toLowerCase();
@@ -39162,8 +39207,13 @@ ${key}: ${newValue}
       else if (legacy === "google") this.settings.enabledProviders = ["google"];
       else this.settings.enabledProviders = ["garmin"];
     }
+    this.sanitizeSettingsForPersist();
+    if (migrated) {
+      await this.saveSettings();
+    }
   }
   async saveSettings() {
+    this.sanitizeSettingsForPersist();
     await this.saveData(this.settings);
   }
   // ── Date-range prompt ──────────────────────────────────────────────────────
@@ -39414,14 +39464,16 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
     if (showGarmin) {
       containerEl.createEl("h3", { text: this.plugin.i18n.settings.garminSectionTitle });
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.username).setDesc(this.plugin.i18n.settings.usernameDesc).addText(
-        (text) => text.setPlaceholder(this.plugin.i18n.settings.garminEmailPlaceholder).setValue(this.plugin.settings.username).onChange(async (value) => {
-          this.plugin.settings.username = value;
+        (text) => text.setPlaceholder(this.plugin.i18n.settings.garminEmailPlaceholder).setValue(this.plugin.getSecret("garminUsername")).onChange(async (value) => {
+          this.plugin.setSecret("garminUsername", value.trim());
+          this.plugin.invalidateProviderCache();
           await this.plugin.saveSettings();
         })
       );
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.password).setDesc(this.plugin.i18n.settings.passwordDesc).addText((text) => {
-        text.setPlaceholder(this.plugin.i18n.settings.password).setValue(this.plugin.settings.password).onChange(async (value) => {
-          this.plugin.settings.password = value;
+        text.setPlaceholder(this.plugin.i18n.settings.password).setValue(this.plugin.getSecret("garminPassword")).onChange(async (value) => {
+          this.plugin.setSecret("garminPassword", value.trim());
+          this.plugin.invalidateProviderCache();
           await this.plugin.saveSettings();
         });
         try {
@@ -39463,8 +39515,9 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         })
       );
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.stravaClientSecretName).setDesc(this.plugin.i18n.settings.stravaClientSecretDesc).addText((text) => {
-        text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.settings.stravaClientSecret || "").onChange(async (value) => {
-          this.plugin.settings.stravaClientSecret = value.trim();
+        text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.getSecret("stravaClientSecret")).onChange(async (value) => {
+          this.plugin.setSecret("stravaClientSecret", value.trim());
+          this.plugin.invalidateProviderCache();
           await this.plugin.saveSettings();
         });
         try {
@@ -39474,7 +39527,7 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         }
         return text;
       });
-      const isConnected = !!this.plugin.settings.stravaRefreshToken;
+      const isConnected = !!this.plugin.getSecret("stravaRefreshToken");
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.stravaConnectName).setDesc(isConnected ? this.plugin.i18n.settings.stravaConnectedDesc : this.plugin.i18n.settings.stravaDisconnectedDesc).addButton((btn) => {
         btn.setButtonText(isConnected ? this.plugin.i18n.settings.reconnectButton : this.plugin.i18n.settings.stravaConnectButton);
         if (!isConnected) btn.setCta?.();
@@ -39493,8 +39546,9 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         })
       );
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.googleClientSecretName).setDesc(this.plugin.i18n.settings.googleClientSecretDesc).addText((text) => {
-        text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.settings.googleClientSecret || "").onChange(async (value) => {
-          this.plugin.settings.googleClientSecret = value.trim();
+        text.setPlaceholder("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022").setValue(this.plugin.getSecret("googleClientSecret")).onChange(async (value) => {
+          this.plugin.setSecret("googleClientSecret", value.trim());
+          this.plugin.invalidateProviderCache();
           await this.plugin.saveSettings();
         });
         try {
@@ -39504,7 +39558,7 @@ class HealthConnectorSettingTab extends obsidian.PluginSettingTab {
         }
         return text;
       });
-      const isGoogleConnected = !!this.plugin.settings.googleRefreshToken;
+      const isGoogleConnected = !!this.plugin.getSecret("googleRefreshToken");
       new obsidian.Setting(containerEl).setName(this.plugin.i18n.settings.googleConnectName).setDesc(isGoogleConnected ? this.plugin.i18n.settings.googleConnectedDesc : this.plugin.i18n.settings.googleDisconnectedDesc).addButton((btn) => {
         btn.setButtonText(isGoogleConnected ? this.plugin.i18n.settings.reconnectButton : this.plugin.i18n.settings.googleConnectButton);
         if (!isGoogleConnected) btn.setCta?.();
