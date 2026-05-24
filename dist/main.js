@@ -26514,8 +26514,17 @@ function requireFunctionBind () {
 	return functionBind;
 }
 
-/** @type {import('./functionCall')} */
-var functionCall = Function.prototype.call;
+var functionCall;
+var hasRequiredFunctionCall;
+
+function requireFunctionCall () {
+	if (hasRequiredFunctionCall) return functionCall;
+	hasRequiredFunctionCall = 1;
+
+	/** @type {import('./functionCall')} */
+	functionCall = Function.prototype.call;
+	return functionCall;
+}
 
 var functionApply;
 var hasRequiredFunctionApply;
@@ -26535,7 +26544,7 @@ var reflectApply = typeof Reflect !== 'undefined' && Reflect && Reflect.apply;
 var bind$2 = requireFunctionBind();
 
 var $apply$1 = requireFunctionApply();
-var $call$2 = functionCall;
+var $call$2 = requireFunctionCall();
 var $reflectApply = reflectApply;
 
 /** @type {import('./actualApply')} */
@@ -26544,7 +26553,7 @@ var actualApply = $reflectApply || bind$2.call($call$2, $apply$1);
 var bind$1 = requireFunctionBind();
 var $TypeError$4 = type;
 
-var $call$1 = functionCall;
+var $call$1 = requireFunctionCall();
 var $actualApply = actualApply;
 
 /** @type {(args: [Function, thisArg?: unknown, ...args: unknown[]]) => Function} TODO FIXME, find a way to use import('.') */
@@ -26703,7 +26712,7 @@ var $ObjectGPO = requireObject_getPrototypeOf();
 var $ReflectGPO = requireReflect_getPrototypeOf();
 
 var $apply = requireFunctionApply();
-var $call = functionCall;
+var $call = requireFunctionCall();
 
 var needsEval = {};
 

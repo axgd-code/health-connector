@@ -1,12 +1,10 @@
 {
-  "id": "obsidian-health-connector",
+  "id": "health-connector",
   "name": "Health Connector",
   "version": "1.0.1",
   "minAppVersion": "1.5.0",
-  "description": "Health Connector centralizes your Garmin, Strava, and Google Health data in Obsidian, directly in the frontmatter of your daily notes.",
+  "description": "Sync Garmin, Strava, and Google Health metrics directly into your daily note frontmatter.",
   "author": "axgd-code",
   "fundingUrl": "https://paypal.me/axgdcode",
-  "isDesktopOnly": false,
-  "js": "main.js",
-  "css": "styles.css"
+  "isDesktopOnly": false
 }

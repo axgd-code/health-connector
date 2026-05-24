@@ -43,7 +43,7 @@ npm run build
 2. Copy `main.js`, `manifest.json`, and `styles.css` into:
 
 ```text
-<vault>/.obsidian/plugins/obsidian-health-connector/
+<vault>/.obsidian/plugins/health-connector/
 ```
 
 3. Enable the plugin in Obsidian settings
@@ -91,7 +91,7 @@ npm test
 Optional shortcut for local deployment:
 
 ```bash
-OBSIDIAN_PLUGIN_DIR="/absolute/path/to/vault/.obsidian/plugins/obsidian-health-connector" npm run deploy:obsidian
+OBSIDIAN_PLUGIN_DIR="/absolute/path/to/vault/.obsidian/plugins/health-connector" npm run deploy:obsidian
 ```
 
 ## Security
